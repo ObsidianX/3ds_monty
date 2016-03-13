@@ -7,9 +7,12 @@
 #include "../helpers.h"
 
 #define IGNORE_DEFAULT(dest, src, def) (dest = src == def ? dest : src)
+#define SELF(src) mod_citrus_console_PrintConsole_t *self = src;
 
 const mp_obj_type_t mod_citrus_console_PrintConsole_type;
 STATIC const mp_obj_fun_builtin_t mod_citrus_console_PrintConsole_select_obj;
+STATIC const mp_obj_fun_builtin_t mod_citrus_console_PrintConsole_set_color_obj;
+STATIC const mp_obj_fun_builtin_t mod_citrus_console_PrintConsole_set_position_obj;
 STATIC const mp_obj_fun_builtin_t mod_citrus_console_PrintConsole_set_window_obj;
 
 typedef struct {
@@ -73,7 +76,7 @@ STATIC mp_obj_t mod_citrus_console_PrintConsole_make_new(const mp_obj_type_t *ty
 }
 
 STATIC void mod_citrus_console_PrintConsole_attr(mp_obj_t self_in, qstr attr, mp_obj_t *dest) {
-    mod_citrus_console_PrintConsole_t *self = self_in;
+    SELF(self_in);
     const char *name = qstr_str(attr);
     bool load = dest[0] == MP_OBJ_NULL;
 
@@ -85,6 +88,10 @@ STATIC void mod_citrus_console_PrintConsole_attr(mp_obj_t self_in, qstr attr, mp
     // Methods
     if (!strcmp(name, qstr_str(MP_QSTR_select))) {
         dest[0] = (mp_obj_t) &mod_citrus_console_PrintConsole_select_obj;
+    } else if (!strcmp(name, qstr_str(MP_QSTR_set_color))) {
+        dest[0] = (mp_obj_t) &mod_citrus_console_PrintConsole_set_color_obj;
+    } else if (!strcmp(name, qstr_str(MP_QSTR_set_position))) {
+        dest[0] = (mp_obj_t) &mod_citrus_console_PrintConsole_set_position_obj;
     } else if (!strcmp(name, qstr_str(MP_QSTR_set_window))) {
         dest[0] = (mp_obj_t) &mod_citrus_console_PrintConsole_set_window_obj;
     }
@@ -110,9 +117,9 @@ STATIC void mod_citrus_console_PrintConsole_attr(mp_obj_t self_in, qstr attr, mp
         dest[0] = mp_obj_new_int(self->console.windowWidth);
     } else if (!strcmp(name, qstr_str(MP_QSTR_window_height))) {
         dest[0] = mp_obj_new_int(self->console.windowHeight);
-    } else if (!strcmp(name, qstr_str(MP_QSTR_foreground_color))) {
+    } else if (!strcmp(name, qstr_str(MP_QSTR_fg))) {
         dest[0] = mp_obj_new_int(self->console.fg);
-    } else if (!strcmp(name, qstr_str(MP_QSTR_background_color))) {
+    } else if (!strcmp(name, qstr_str(MP_QSTR_bg))) {
         dest[0] = mp_obj_new_int(self->console.bg);
     } else if (!strcmp(name, qstr_str(MP_QSTR_flags))) {
         dest[0] = mp_obj_new_int(self->console.flags);
@@ -123,7 +130,7 @@ STATIC void mod_citrus_console_PrintConsole_attr(mp_obj_t self_in, qstr attr, mp
 }
 
 STATIC void mod_citrus_console_PrintConsole_print(const mp_print_t *print, mp_obj_t self_in, mp_print_kind_t kind) {
-    mod_citrus_console_PrintConsole_t *self = self_in;
+    SELF(self_in);
 
     mp_printf(print, "<PrintConsole cursor=(%d,%d) console=(%d,%d), window=(%d,%d)@(%d,%d)>",
               self->console.cursorX, self->console.cursorY,
@@ -133,9 +140,59 @@ STATIC void mod_citrus_console_PrintConsole_print(const mp_print_t *print, mp_ob
 }
 
 STATIC mp_obj_t mod_citrus_console_PrintConsole_select(mp_obj_t self_in) {
-    mod_citrus_console_PrintConsole_t *self = self_in;
+    SELF(self_in);
 
     consoleSelect(&self->console);
+
+    return mp_const_none;
+}
+
+enum {
+    SET_COLOR_ARG_SELF = 0,
+    SET_COLOR_ARG_FG,
+    SET_COLOR_ARG_BG,
+    SET_COLOR_ARG_COUNT
+};
+
+STATIC mp_obj_t mod_citrus_console_PrintConsole_set_color(size_t n_args, const mp_obj_t *pos_args, mp_map_t *kw_args) {
+    static const mp_arg_t allowed_args[] = {
+            {MP_QSTR_self, MP_ARG_OBJ | MP_ARG_REQUIRED, {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
+            {MP_QSTR_fg,   MP_ARG_KW_ONLY | MP_ARG_INT,  {.u_int = 7 /*white*/}},
+            {MP_QSTR_bg,   MP_ARG_KW_ONLY | MP_ARG_INT,  {.u_int = 0 /*black*/}},
+    };
+
+    mp_arg_val_t args[SET_COLOR_ARG_COUNT];
+    mp_arg_parse_all((mp_uint_t) n_args, pos_args, kw_args, SET_COLOR_ARG_COUNT, allowed_args, args);
+
+    SELF(args[SET_COLOR_ARG_SELF].u_obj);
+
+    self->console.fg = args[SET_COLOR_ARG_FG].u_int;
+    self->console.bg = args[SET_COLOR_ARG_BG].u_int;
+
+    return mp_const_none;
+}
+
+enum {
+    SET_POS_ARG_SELF = 0,
+    SET_POS_ARG_X,
+    SET_POS_ARG_Y,
+    SET_POS_ARG_COUNT
+};
+
+STATIC mp_obj_t mod_citrus_console_PrintConsole_set_position(size_t n_args, const mp_obj_t *pos_args, mp_map_t *kw_args) {
+    static const mp_arg_t allowed_args[] = {
+            {MP_QSTR_self, MP_ARG_OBJ | MP_ARG_REQUIRED, {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
+            {MP_QSTR_x,    MP_ARG_KW_ONLY | MP_ARG_INT,  {.u_int = 0}},
+            {MP_QSTR_y,    MP_ARG_KW_ONLY | MP_ARG_INT,  {.u_int = 0}},
+    };
+
+    mp_arg_val_t args[SET_POS_ARG_COUNT];
+    mp_arg_parse_all((mp_uint_t) n_args, pos_args, kw_args, SET_POS_ARG_COUNT, allowed_args, args);
+
+    SELF(args[SET_POS_ARG_SELF].u_obj);
+
+    self->console.cursorX = args[SET_POS_ARG_X].u_int;
+    self->console.cursorY = args[SET_POS_ARG_Y].u_int;
 
     return mp_const_none;
 }
@@ -149,7 +206,7 @@ enum {
 };
 
 STATIC mp_obj_t mod_citrus_console_PrintConsole_set_window(size_t n_args, const mp_obj_t *args) {
-    mod_citrus_console_PrintConsole_t *self = args[SET_WIN_ARG_SELF];
+    SELF(args[SET_WIN_ARG_SELF]);
 
     int x = mp_obj_get_int(args[SET_WIN_ARG_X]);
     int y = mp_obj_get_int(args[SET_WIN_ARG_Y]);
@@ -162,12 +219,16 @@ STATIC mp_obj_t mod_citrus_console_PrintConsole_set_window(size_t n_args, const 
 }
 
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_citrus_console_PrintConsole_select_obj, mod_citrus_console_PrintConsole_select);
+STATIC MP_DEFINE_CONST_FUN_OBJ_KW(mod_citrus_console_PrintConsole_set_color_obj, 0, mod_citrus_console_PrintConsole_set_color);
+STATIC MP_DEFINE_CONST_FUN_OBJ_KW(mod_citrus_console_PrintConsole_set_position_obj, 0, mod_citrus_console_PrintConsole_set_position);
 STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_citrus_console_PrintConsole_set_window_obj, 5, 5, mod_citrus_console_PrintConsole_set_window);
 
 STATIC const mp_map_elem_t mod_citrus_console_PrintConsole_locals_dict_table[] = {
         // Methods
-        {MP_OBJ_NEW_QSTR(MP_QSTR_select),     (mp_obj_t) &mod_citrus_console_PrintConsole_select_obj},
-        {MP_OBJ_NEW_QSTR(MP_QSTR_set_window), (mp_obj_t) &mod_citrus_console_PrintConsole_set_window_obj},
+        {MP_OBJ_NEW_QSTR(MP_QSTR_select),       (mp_obj_t) &mod_citrus_console_PrintConsole_select_obj},
+        {MP_OBJ_NEW_QSTR(MP_QSTR_set_color),    (mp_obj_t) &mod_citrus_console_PrintConsole_set_color_obj},
+        {MP_OBJ_NEW_QSTR(MP_QSTR_set_position), (mp_obj_t) &mod_citrus_console_PrintConsole_set_position_obj},
+        {MP_OBJ_NEW_QSTR(MP_QSTR_set_window),   (mp_obj_t) &mod_citrus_console_PrintConsole_set_window_obj},
 };
 STATIC MP_DEFINE_CONST_DICT(mod_citrus_console_PrintConsole_locals_dict, mod_citrus_console_PrintConsole_locals_dict_table);
 

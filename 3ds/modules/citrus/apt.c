@@ -2,6 +2,8 @@
 
 #include "py/runtime.h"
 
+extern const mp_obj_type_t mod_citrus_apt_Hook_type;
+
 STATIC APT_AppStatus _mod_citrus_apt_get_app_status(mp_obj_t status) {
     if (mp_obj_is_integer(status)) {
         int _status = mp_obj_get_int(status);
@@ -82,14 +84,6 @@ STATIC mp_obj_t mod_citrus_apt_main_loop(void) {
     return mp_obj_new_bool(aptMainLoop());
 }
 
-STATIC mp_obj_t mod_citrus_apt_hook(mp_obj_t cookie, mp_obj_t callback, mp_obj_t param) {
-    nlr_raise(mp_obj_new_exception(&mp_type_NotImplementedError));
-}
-
-STATIC mp_obj_t mod_citrus_apt_unhook(mp_obj_t cookie) {
-    nlr_raise(mp_obj_new_exception(&mp_type_NotImplementedError));
-}
-
 STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_init_obj, mod_citrus_apt_init);
 STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_exit_obj, mod_citrus_apt_exit);
 STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_open_session_obj, mod_citrus_apt_open_session);
@@ -103,12 +97,13 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_wait_status_event_obj, mod_citru
 STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_signal_ready_for_sleep_obj, mod_citrus_apt_signal_ready_for_sleep);
 STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_get_menu_app_id_obj, mod_citrus_apt_get_menu_app_id);
 STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_main_loop_obj, mod_citrus_apt_main_loop);
-STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_citrus_apt_hook_obj, mod_citrus_apt_hook);
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_citrus_apt_unhook_obj, mod_citrus_apt_unhook);
 
 STATIC const mp_rom_map_elem_t mp_module_citrus_apt_globals_table[] = {
         // Package Info
         {MP_ROM_QSTR(MP_QSTR___name__),                 MP_ROM_QSTR(MP_QSTR_apt)},
+
+        // Classes
+        {MP_ROM_QSTR(MP_QSTR_Hook),                     MP_ROM_PTR(&mod_citrus_apt_Hook_type)},
 
         // Functions
         {MP_ROM_QSTR(MP_QSTR_init),                     MP_ROM_PTR(&mod_citrus_apt_init_obj)},
@@ -124,8 +119,6 @@ STATIC const mp_rom_map_elem_t mp_module_citrus_apt_globals_table[] = {
         {MP_ROM_QSTR(MP_QSTR_signal_ready_for_sleep),   MP_ROM_PTR(&mod_citrus_apt_signal_ready_for_sleep_obj)},
         {MP_ROM_QSTR(MP_QSTR_get_menu_app_id),          MP_ROM_PTR(&mod_citrus_apt_get_menu_app_id_obj)},
         {MP_ROM_QSTR(MP_QSTR_main_loop),                MP_ROM_PTR(&mod_citrus_apt_main_loop_obj)},
-        {MP_ROM_QSTR(MP_QSTR_hook),                     MP_ROM_PTR(&mod_citrus_apt_hook_obj)},
-        {MP_ROM_QSTR(MP_QSTR_unhook),                   MP_ROM_PTR(&mod_citrus_apt_unhook_obj)},
 
         // NS_APPID
         {MP_ROM_QSTR(MP_QSTR_APPID_HOMEMENU),           MP_ROM_INT(APPID_HOMEMENU)},

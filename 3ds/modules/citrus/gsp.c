@@ -15,6 +15,17 @@ int _mod_citrus_gsp_get_framebuffer_format(mp_obj_t format) {
     nlr_raise(mp_obj_new_exception(&mp_type_TypeError));
 }
 
+int _mod_citrus_gsp_get_gpu_event(mp_obj_t event) {
+    if (mp_obj_is_integer(event)) {
+        int evt = mp_obj_get_int(event);
+        if (evt >= GSPGPU_EVENT_PSC0 && evt < GSPGPU_EVENT_MAX) {
+            return evt;
+        }
+    }
+
+    nlr_raise(mp_obj_new_exception(&mp_type_TypeError));
+}
+
 STATIC mp_obj_t mod_citrus_gsp_init(void) {
     gspInit();
 
@@ -42,7 +53,10 @@ STATIC mp_obj_t mod_citrus_gsp_exit_event_handler(void) {
 }
 
 STATIC mp_obj_t mod_citrus_gsp_wait_for_event(mp_obj_t id, mp_obj_t next_event) {
-    nlr_raise(mp_obj_new_exception(&mp_type_NotImplementedError));
+    int event = _mod_citrus_gsp_get_gpu_event(id);
+    gspWaitForEvent(event, mp_obj_is_true(next_event));
+
+    return mp_const_none;
 }
 
 STATIC mp_obj_t mod_citrus_gsp_wait_for_any_event(void) {
