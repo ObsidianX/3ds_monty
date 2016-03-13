@@ -12,942 +12,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="408b26ca-bcfe-4df9-adf1-af36b0d08efa" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/FreeRTOSConfig.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/License/license.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/croutine.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/event_groups.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/include/FreeRTOS.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/include/StackMacros.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/include/croutine.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/include/event_groups.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/include/list.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/include/mpu_wrappers.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/include/portable.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/include/projdefs.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/include/queue.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/include/semphr.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/include/task.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/include/timers.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/list.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/portable/MemMang/heap_4.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/queue.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/tasks.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/FreeRTOS/Source/timers.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/application.lds" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/application.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/appsign.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/boards/LAUNCHXL/mpconfigboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/boards/LAUNCHXL/pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/boards/WIPY/mpconfigboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/boards/WIPY/pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/boards/cc3200_af.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/boards/cc3200_prefix.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/boards/make-pins.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/bootmgr/bootgen.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/bootmgr/bootloader.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/bootmgr/bootmgr.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/bootmgr/bootmgr.lds" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/bootmgr/flc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/bootmgr/main.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/bootmgr/relocator/relocator.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/bootmgr/runapp.s" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/bootmgr/sl/user.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/fatfs/src/diskio.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/fatfs/src/drivers/sd_diskio.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/fatfs/src/drivers/sd_diskio.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/fatfs/src/drivers/sflash_diskio.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/fatfs/src/drivers/sflash_diskio.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/fatfs/src/drivers/stdcmd.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/fatfs/src/ffconf.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/fatfs/src/option/syscall.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/ftp/ftp.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/ftp/ftp.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/ftp/updater.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/ftp/updater.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/adc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/adc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/aes.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/aes.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/cc3200_asm.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/cc3200_hal.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/cc3200_hal.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/cpu.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/cpu.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/crc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/crc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/debug.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/des.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/des.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/fault_registers.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/gpio.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/gpio.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/i2c.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/i2c.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/i2s.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/i2s.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/asmdefs.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_adc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_aes.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_apps_config.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_apps_rcm.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_camera.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_common_reg.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_des.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_dthe.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_flash_ctrl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_gpio.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_gprcm.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_hib1p2.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_hib3p3.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_i2c.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_ints.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_mcasp.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_mcspi.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_memmap.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_mmchs.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_nvic.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_ocp_shared.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_shamd5.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_stack_die_ctrl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_timer.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_types.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_uart.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_udma.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/inc/hw_wdt.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/interrupt.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/interrupt.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/pin.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/pin.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/prcm.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/prcm.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/rom.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/rom_map.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/rom_patch.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/sdhost.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/sdhost.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/shamd5.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/shamd5.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/spi.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/spi.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/startup_gcc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/systick.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/systick.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/timer.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/timer.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/uart.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/uart.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/utils.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/utils.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/wdt.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/hal/wdt.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/main.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/misc/FreeRTOSHooks.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/misc/antenna.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/misc/antenna.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/misc/help.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/misc/mperror.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/misc/mperror.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/misc/mpexception.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/misc/mpexception.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/misc/mpirq.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/misc/mpirq.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/misc/mpsystick.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/misc/mpsystick.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/modmachine.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/modnetwork.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/modnetwork.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/modubinascii.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/modubinascii.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/moduhashlib.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/moduos.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/moduos.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/modusocket.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/modusocket.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/modussl.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/modutime.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/modwipy.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/modwlan.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/modwlan.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybadc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybadc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybi2c.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybi2c.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybpin.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybpin.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybrtc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybrtc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybsd.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybsd.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybsleep.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybsleep.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybspi.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybspi.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybtimer.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybtimer.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybuart.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybuart.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybwdt.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mods/pybwdt.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mpconfigport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mptask.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/mptask.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/qstrdefsport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/serverstask.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/serverstask.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/simplelink/cc_pal.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/simplelink/cc_pal.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/simplelink/oslib/osi.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/simplelink/oslib/osi_freertos.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/simplelink/user.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/telnet/telnet.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/telnet/telnet.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/tools/smoke.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/tools/smoke.py.exp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/tools/uniflash.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/tools/update-wipy.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/util/cryptohash.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/util/cryptohash.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/util/fifo.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/util/fifo.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/util/gccollect.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/util/gccollect.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/util/gchelper.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/util/gchelper.s" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/util/random.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/util/random.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/util/sleeprestore.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/util/sleeprestore.s" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/util/socketfifo.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/util/socketfifo.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/util/std.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cc3200/version.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/inc/cc3000_common.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/inc/ccspi.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/inc/data_types.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/inc/evnt_handler.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/inc/hci.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/inc/host_driver_version.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/inc/inet_ntop.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/inc/inet_pton.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/inc/netapp.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/inc/nvmem.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/inc/patch_prog.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/inc/security.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/inc/socket.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/inc/wlan.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/src/cc3000_common.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/src/ccspi.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/src/evnt_handler.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/src/hci.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/src/inet_ntop.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/src/inet_pton.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/src/netapp.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/src/nvmem.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/src/patch.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/src/patch_prog.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/src/security.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/src/socket.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3000/src/wlan.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/inc/device.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/inc/driver.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/inc/flowcont.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/inc/fs.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/inc/netapp.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/inc/netcfg.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/inc/nonos.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/inc/objInclusion.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/inc/protocol.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/inc/simplelink.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/inc/socket.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/inc/spawn.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/inc/trace.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/inc/wlan.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/inc/wlan_rx_filters.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/src/device.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/src/driver.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/src/flowcont.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/src/fs.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/src/netapp.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/src/netcfg.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/src/nonos.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/src/socket.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/src/spawn.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/cc3100/src/wlan.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/nrf24l01/nrf24l01.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/nrf24l01/nrf24l01test.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/onewire/ds18x20.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/onewire/onewire.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/sdcard/sdcard.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/sdcard/sdtest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/wiznet5k/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/wiznet5k/ethernet/socket.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/wiznet5k/ethernet/socket.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/wiznet5k/ethernet/w5200/w5200.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/wiznet5k/ethernet/w5200/w5200.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/wiznet5k/ethernet/w5500/w5500.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/wiznet5k/ethernet/w5500/w5500.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/wiznet5k/ethernet/wizchip_conf.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/wiznet5k/ethernet/wizchip_conf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/wiznet5k/internet/dhcp/dhcp.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/wiznet5k/internet/dhcp/dhcp.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/wiznet5k/internet/dns/dns.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/drivers/wiznet5k/internet/dns/dns.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/eagle.rom.addr.v6.ld" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/esp8266.ld" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/esp_mphal.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/esp_mphal.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/etshal.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/gccollect.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/gccollect.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/gchelper.s" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/main.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/makeimg.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/modesp.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/modmachine.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/modnetwork.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/modpyb.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/modpyb.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/modpybadc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/modpybpin.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/modpybrtc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/modpybrtc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/moduos.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/modutime.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/mpconfigport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/qstrdefsport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/scripts/main.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/strtoll.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/uart.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/uart.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/uart_register.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/user_config.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/utils.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/esp8266/utils.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/SDdatalogger/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/SDdatalogger/boot.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/SDdatalogger/cardreader.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/SDdatalogger/datalogger.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/accel_i2c.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/accellog.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/asmled.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/asmsum.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/conwaylife.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/ledangle.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/mandel.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/micropython.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/pins.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/pyb.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/switch.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/unix/ffi_example.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/unix/http_client.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/unix/http_server.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logo/FONT-LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logo/logo.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logo/micropythonpowered-art.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logo/trans-logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logo/upython-with-micro.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logo/upython-with-micro.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logo/vector-logo-2-BW.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logo/vector-logo-2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logo/vector-logo-3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logo/vector-logo-R2000.dxf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logo/vector-logo-inkscape_master.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logo/vector-logo.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logo/vector-text-R2000.dxf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logo/vector-text.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/minimal/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/minimal/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/minimal/main.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/minimal/mpconfigport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/minimal/mphalport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/minimal/qstrdefsport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/minimal/stm32f405.ld" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/minimal/uart_core.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/minimal/uart_extra.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mpy-cross/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mpy-cross/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mpy-cross/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mpy-cross/gccollect.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mpy-cross/main.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mpy-cross/mpconfigport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mpy-cross/mphalport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mpy-cross/qstrdefsport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pic16bit/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pic16bit/board.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pic16bit/board.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pic16bit/main.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pic16bit/modpyb.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pic16bit/modpyb.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pic16bit/modpybled.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pic16bit/modpybswitch.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pic16bit/mpconfigport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pic16bit/pic16bit_mphal.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pic16bit/pic16bit_mphal.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pic16bit/qstrdefsport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pic16bit/unistd.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/qemu-arm/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/qemu-arm/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/qemu-arm/main.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/qemu-arm/mpconfigport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/qemu-arm/mphalport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/qemu-arm/qstrdefsport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/qemu-arm/test_main.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/accel.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/accel.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/adc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/adc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/autoflash" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/CERB40/mpconfigboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/CERB40/mpconfigboard.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/CERB40/pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/CERB40/stm32f4xx_hal_conf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/ESPRUINO_PICO/mpconfigboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/ESPRUINO_PICO/mpconfigboard.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/ESPRUINO_PICO/pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/ESPRUINO_PICO/stm32f4xx_hal_conf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/HYDRABUS/mpconfigboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/HYDRABUS/mpconfigboard.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/HYDRABUS/pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/HYDRABUS/stm32f4xx_hal_conf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/NETDUINO_PLUS_2/board_init.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/NETDUINO_PLUS_2/mpconfigboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/NETDUINO_PLUS_2/mpconfigboard.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/NETDUINO_PLUS_2/pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/NETDUINO_PLUS_2/stm32f4xx_hal_conf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBLITEV10/mpconfigboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBLITEV10/mpconfigboard.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBLITEV10/pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBLITEV10/stm32f4xx_hal_conf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBV10/mpconfigboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBV10/mpconfigboard.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBV10/pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBV10/stm32f4xx_hal_conf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBV11/mpconfigboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBV11/mpconfigboard.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBV11/pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBV11/stm32f4xx_hal_conf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBV3/mpconfigboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBV3/mpconfigboard.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBV3/pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBV3/stm32f4xx_hal_conf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBV4/mpconfigboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBV4/mpconfigboard.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBV4/pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/PYBV4/stm32f4xx_hal_conf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F401NUCLEO/mpconfigboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F401NUCLEO/mpconfigboard.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F401NUCLEO/pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F401NUCLEO/stm32f4xx_hal_conf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F411DISC/mpconfigboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F411DISC/mpconfigboard.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F411DISC/pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F411DISC/stm32f4xx_hal_conf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F429DISC/mpconfigboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F429DISC/mpconfigboard.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F429DISC/pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F429DISC/stm32f4xx_hal_conf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F439/mpconfigboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F439/mpconfigboard.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F439/pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F439/stm32f4xx_hal_conf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F4DISC/mpconfigboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F4DISC/mpconfigboard.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F4DISC/pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F4DISC/staccel.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F4DISC/stm32f4xx_hal_conf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F7DISC/board_init.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F7DISC/mpconfigboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F7DISC/mpconfigboard.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F7DISC/pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/STM32F7DISC/stm32f7xx_hal_conf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/make-pins.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/openocd_stm32f4.cfg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/stm32f401.ld" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/stm32f401_af.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/stm32f405.ld" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/stm32f405_af.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/stm32f411.ld" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/stm32f411_af.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/stm32f429.ld" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/stm32f429_af.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/stm32f439.ld" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/stm32f439_af.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/stm32f4xx_prefix.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/stm32f746.ld" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/boards/stm32f746_af.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/bufhelper.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/bufhelper.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/builtin_open.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/can.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/can.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f205xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f207xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f215xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f217xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f2xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f401xc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f401xe.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f405xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f407xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f411xe.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f415xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f417xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f427xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f429xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f437xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f439xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f4xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f745xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f746xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f756xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/stm32f7xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/system_stm32f2xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/system_stm32f4xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/devinc/system_stm32f7xx.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/inc/arm_common_tables.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/inc/arm_const_structs.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/inc/arm_math.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/inc/core_cm0.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/inc/core_cm0plus.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/inc/core_cm3.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/inc/core_cm4.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/inc/core_cm4_simd.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/inc/core_cm7.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/inc/core_cmFunc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/inc/core_cmInstr.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/inc/core_cmSimd.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/inc/core_sc000.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/cmsis/inc/core_sc300.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/dac.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/dac.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/dma.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/dma.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/extint.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/extint.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/fatfs_port.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/flash.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/flash.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/font_petme128_8x8.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/gccollect.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/gccollect.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/gchelper.s" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/HALCOMMITS" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_adc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_adc_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_can.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_cortex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_dac.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_dac_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_def.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_dma.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_dma_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_flash.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_flash_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_gpio.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_gpio_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_i2c.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_i2s.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_pcd.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_pwr.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_pwr_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_rcc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_rcc_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_rng.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_rtc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_rtc_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_sd.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_spi.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_tim.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_tim_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_hal_uart.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_ll_sdmmc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/inc/stm32f2xx_ll_usb.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_adc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_adc_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_can.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_cortex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_dac.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_dac_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_dma.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_flash.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_flash_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_gpio.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_i2c.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_i2s.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_i2s_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_pcd.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_pcd_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_pwr.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_pwr_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_rcc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_rcc_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_rng.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_rtc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_rtc_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_sd.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_spi.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_tim.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_tim_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_hal_uart.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_ll_sdmmc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f2/src/stm32f2xx_ll_usb.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_adc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_adc_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_can.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_cortex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_dac.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_dac_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_def.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_dma.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_dma_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_flash.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_flash_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_flash_ramfunc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_gpio.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_gpio_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_i2c.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_i2c_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_i2s.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_i2s_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_pcd.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_pcd_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_pwr.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_pwr_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_rcc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_rcc_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_rng.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_rtc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_rtc_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_sd.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_spi.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_tim.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_tim_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_hal_uart.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_ll_sdmmc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/inc/stm32f4xx_ll_usb.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_adc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_adc_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_can.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_cortex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_dac.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_dac_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_dma.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_flash.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_flash_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_gpio.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_i2c.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_i2s.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_i2s_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_pcd.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_pcd_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_pwr.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_pwr_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_rcc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_rcc_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_rng.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_rtc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_rtc_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_sd.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_spi.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_tim.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_tim_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_hal_uart.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_ll_sdmmc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f4/src/stm32f4xx_ll_usb.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/Legacy/stm32_hal_legacy.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_adc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_adc_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_can.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_cortex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_dac.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_dac_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_def.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_dma.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_dma_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_flash.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_flash_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_gpio.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_gpio_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_i2c.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_i2c_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_i2s.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_pcd.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_pcd_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_pwr.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_pwr_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_rcc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_rcc_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_rng.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_rtc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_rtc_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_sd.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_spi.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_tim.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_tim_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_uart.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_hal_uart_ex.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_ll_sdmmc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/inc/stm32f7xx_ll_usb.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_adc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_adc_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_can.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_cortex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_dac.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_dac_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_dma.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_flash.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_flash_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_gpio.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_i2c.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_i2s.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_pcd.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_pcd_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_pwr.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_pwr_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_rcc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_rcc_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_rng.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_rtc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_rtc_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_sd.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_spi.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_tim.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_tim_ex.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_hal_uart.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_ll_sdmmc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/hal/f7/src/stm32f7xx_ll_usb.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/help.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/i2c.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/i2c.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/import.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/input.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/irq.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/irq.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/lcd.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/lcd.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/led.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/led.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/lexerfatfs.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/main.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/make-stmconst.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/memory.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/modmachine.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/modmachine.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/modnetwork.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/modnetwork.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/modnwcc3k.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/modnwwiznet5k.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/modpyb.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/modstm.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/moduos.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/moduselect.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/modusocket.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/modutime.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/mpconfigport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/mpconfigport.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/mphalport.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/mphalport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/pendsv.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/pendsv.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/pin.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/pin.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/pin_defs_stmhal.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/pin_defs_stmhal.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/pin_named_pins.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/portmodules.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/pybcdc.inf_template" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/pybioctl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/pybstdio.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/qstrdefsport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/rng.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/rng.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/rtc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/rtc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/sdcard.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/sdcard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/servo.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/servo.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/spi.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/spi.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/startup_stm32.S" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/stm32_it.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/stm32_it.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/storage.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/storage.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/system_stm32.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/systick.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/systick.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/timer.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/timer.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/uart.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/uart.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usb.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usb.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbd_cdc_interface.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbd_cdc_interface.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbd_conf.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbd_conf.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbd_desc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbd_desc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbd_msc_storage.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbd_msc_storage.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/Release_Notes.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/class/inc/usbd_cdc_msc_hid.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/class/inc/usbd_cdc_msc_hid0.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/class/inc/usbd_msc_bot.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/class/inc/usbd_msc_data.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/class/inc/usbd_msc_scsi.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/class/src/usbd_cdc_msc_hid.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/class/src/usbd_msc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/class/src/usbd_msc_bot.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/class/src/usbd_msc_data.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/class/src/usbd_msc_scsi.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/core/inc/usbd_core.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/core/inc/usbd_ctlreq.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/core/inc/usbd_def.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/core/inc/usbd_ioreq.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/core/src/usbd_core.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/core/src/usbd_ctlreq.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbdev/core/src/usbd_ioreq.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/AUDIO/Inc/usbh_audio.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/AUDIO/Src/usbh_audio.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/CDC/Inc/usbh_cdc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/CDC/Src/usbh_cdc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/HID/Inc/usbh_hid.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/HID/Inc/usbh_hid_keybd.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/HID/Inc/usbh_hid_mouse.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/HID/Inc/usbh_hid_parser.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/HID/Inc/usbh_hid_usage.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/HID/Src/usbh_hid.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/HID/Src/usbh_hid_keybd.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/HID/Src/usbh_hid_mouse.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/HID/Src/usbh_hid_parser.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/MSC/Inc/usbh_msc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/MSC/Inc/usbh_msc_bot.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/MSC/Inc/usbh_msc_scsi.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/MSC/Src/usbh_msc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/MSC/Src/usbh_msc_bot.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/MSC/Src/usbh_msc_scsi.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/MTP/Inc/usbh_mtp.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/MTP/Inc/usbh_mtp_ptp.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/MTP/Src/usbh_mtp.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/MTP/Src/usbh_mtp_ptp.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/Template/Inc/usbh_template.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Class/Template/Src/usbh_template.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Core/Inc/usbh_conf_template.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Core/Inc/usbh_core.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Core/Inc/usbh_ctlreq.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Core/Inc/usbh_def.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Core/Inc/usbh_ioreq.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Core/Inc/usbh_pipes.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Core/Src/usbh_conf_template.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Core/Src/usbh_core.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Core/Src/usbh_ctlreq.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Core/Src/usbh_ioreq.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Core/Src/usbh_pipes.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usbhost/Release_Notes.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usrsw.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stmhal/usrsw.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/add-memzip.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/Arduino.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/HardwareSerial.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/analog.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/avr_functions.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/core_pins.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/mk20dx128.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/mk20dx128.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/pins_arduino.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/pins_teensy.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/usb_desc.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/usb_desc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/usb_dev.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/usb_dev.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/usb_mem.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/usb_mem.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/usb_names.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/usb_serial.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/usb_serial.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/core/yield.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/hal_ftm.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/hal_ftm.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/hal_gpio.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/help.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/lcd.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/led.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/led.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/lexerfatfs.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/lexerfrozen.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/lexermemzip.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/main.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/make-pins.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/memzip_files/boot.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/memzip_files/main.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/mk20dx256.ld" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/mk20dx256_af.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/mk20dx256_prefix.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/modpyb.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/mpconfigport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/pin_defs_teensy.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/pin_defs_teensy.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/qstrdefsport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/reg.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/reg.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/servo.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/servo.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/std.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/teensy_hal.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/teensy_hal.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/teensy_pins.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/timer.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/timer.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/uart.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/usb.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/teensy/usb.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/.appveyor.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/README" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/init.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/init.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/micropython.vcxproj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/mpconfigport.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/mpconfigport.mk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/msvc/common.props" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/msvc/debug.props" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/msvc/dirent.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/msvc/dirent.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/msvc/genhdr.targets" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/msvc/gettimeofday.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/msvc/paths.props" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/msvc/release.props" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/msvc/sources.props" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/msvc/sys/time.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/msvc/unistd.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/realpath.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/realpath.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/sleep.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/sleep.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/windows_mphal.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/windows/windows_mphal.h" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/unix/Makefile" afterPath="$PROJECT_DIR$/unix/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/3ds/Makefile" afterPath="$PROJECT_DIR$/3ds/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/3ds/modules/citrus/console.c" afterPath="$PROJECT_DIR$/3ds/modules/citrus/console.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/3ds/modules/citrus/gfx.c" afterPath="$PROJECT_DIR$/3ds/modules/citrus/gfx.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/3ds/modules/citrus/helpers.h" afterPath="$PROJECT_DIR$/3ds/modules/citrus/helpers.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/3ds/mpconfigport.h" afterPath="$PROJECT_DIR$/3ds/mpconfigport.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/3ds/python.lst" afterPath="$PROJECT_DIR$/3ds/python.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/3ds/qstrdefsport.h" afterPath="$PROJECT_DIR$/3ds/qstrdefsport.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/3ds/test.py" afterPath="$PROJECT_DIR$/3ds/test.py" />
     </list>
     <ignored path="micropython.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -972,7 +45,7 @@
         <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/console.c">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -988,51 +61,71 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PrintConsole.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/classes/PrintConsole.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="60" column="70" selection-start-line="60" selection-start-column="70" selection-end-line="60" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="qstrdefsport.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/3ds/qstrdefsport.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="232" column="11" selection-start-line="232" selection-start-column="11" selection-end-line="232" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="runtime.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/py/runtime.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="file.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/unix/file.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="259" column="13" selection-start-line="259" selection-start-column="5" selection-end-line="259" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="modlwip.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/extmod/modlwip.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="109" column="43" selection-start-line="109" selection-start-column="43" selection-end-line="109" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/3ds/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.64606744">
+              <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hello-world.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/3ds/hello-world.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2866242">
-              <caret line="15" column="53" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hid.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/hid.c">
+      <file leaf-file-name="gfx.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/gfx.c">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="173" column="0" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/3ds/main.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+              <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -1050,8 +143,16 @@
         <option value="$PROJECT_DIR$/3ds/modules/citrus/hid.c" />
         <option value="$PROJECT_DIR$/3ds/modules/citrus/apt.c" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/3ds/test.py" />
         <option value="$PROJECT_DIR$/3ds/hello-world.py" />
+        <option value="$PROJECT_DIR$/3ds/modules/citrus/classes/print_console.c" />
+        <option value="$PROJECT_DIR$/3ds/Makefile" />
+        <option value="$PROJECT_DIR$/3ds/modules/citrus/helpers.h" />
+        <option value="$PROJECT_DIR$/3ds/modules/citrus/gfx.c" />
+        <option value="$PROJECT_DIR$/3ds/mpconfigport.h" />
+        <option value="$PROJECT_DIR$/3ds/modules/citrus/console.c" />
+        <option value="$PROJECT_DIR$/3ds/qstrdefsport.h" />
+        <option value="$PROJECT_DIR$/3ds/modules/citrus/classes/PrintConsole.c" />
+        <option value="$PROJECT_DIR$/3ds/test.py" />
       </list>
     </option>
   </component>
@@ -1062,10 +163,10 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="378" />
-    <option name="y" value="46" />
-    <option name="width" value="1380" />
-    <option name="height" value="960" />
+    <option name="x" value="417" />
+    <option name="y" value="40" />
+    <option name="width" value="1489" />
+    <option name="height" value="982" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -1107,6 +208,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="micropython" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="micropython" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="micropython" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="unix" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1164,12 +279,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="micropython" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="micropython" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="3ds" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="citrus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS="FALSE" TEST_MODE="SUITE_TEST">
@@ -1212,16 +355,17 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="378" y="46" width="1380" height="960" extended-state="0" />
+    <frame x="417" y="40" width="1489" height="982" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24981578" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23124148" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881773" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1229,7 +373,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1259,152 +402,17 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/console.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3ds/modules/citrus.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3ds/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/3ds/hello-world.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/hid.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/console.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.2858958">
+          <caret line="15" column="53" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="174" column="0" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3ds/main.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/apt.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py/obj.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3ds/mpconfigport.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3ds/modules/citrus.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py/obj.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3ds/mpconfigport.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31464967">
-          <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/gfx.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.8853503">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/apt.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32484075">
-          <caret line="119" column="103" selection-start-line="119" selection-start-column="103" selection-end-line="119" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/gsp.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7834394">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/console.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3ds/modules/citrus.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.8856417">
           <caret line="173" column="0" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
           <folding />
         </state>
@@ -1412,32 +420,410 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/hid.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.019059721">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extmod/moduzlib.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5717916">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <element signature="e#1313#3903#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/modmicropython.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/apt.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="85" column="66" selection-start-line="85" selection-start-column="66" selection-end-line="85" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3ds/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.82846254">
+          <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/misc.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2757306">
+          <caret line="59" column="16" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
+          <folding>
+            <element signature="e#2514#2601#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extmod/fsusermount.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.4">
+          <caret line="106" column="16" selection-start-line="106" selection-start-column="12" selection-end-line="106" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/objtuple.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9672447">
+          <caret line="51" column="10" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/objdict.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07321773">
+          <caret line="575" column="15" selection-start-line="575" selection-start-column="15" selection-end-line="575" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extmod/moduhashlib.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="112" column="36" selection-start-line="112" selection-start-column="36" selection-end-line="112" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extmod/modussl.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="164" column="13" selection-start-line="164" selection-start-column="13" selection-end-line="164" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/string.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4026975">
+          <caret line="143" column="17" selection-start-line="143" selection-start-column="11" selection-end-line="143" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/qstr.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.098265894">
+          <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3ds/build/genhdr/qstrdefs.generated.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.057803467">
+          <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/objattrtuple.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="15" selection-start-line="48" selection-start-column="15" selection-end-line="48" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extmod/vfs_fat_file.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21982211">
+          <caret line="223" column="4" selection-start-line="223" selection-start-column="4" selection-end-line="223" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/objenumerate.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21982211">
+          <caret line="44" column="61" selection-start-line="44" selection-start-column="61" selection-end-line="44" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/objstr.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.8970776">
+          <caret line="1849" column="52" selection-start-line="1849" selection-start-column="52" selection-end-line="1849" selection-end-column="52" />
+          <folding>
+            <element signature="e#66273#66342#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/obj.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="89" column="34" selection-start-line="89" selection-start-column="34" selection-end-line="89" selection-end-column="34" />
+          <folding>
+            <element signature="e#3295#3369#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/objexcept.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/unix/mpconfigport_minimal.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="95" column="8" selection-start-line="95" selection-start-column="8" selection-end-line="95" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/compile.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="10" selection-start-line="43" selection-start-column="10" selection-end-line="43" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/compile.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3335" column="35" selection-start-line="3335" selection-start-column="35" selection-end-line="3335" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/nlrthumb.S">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/objexcept.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29956895">
+          <caret line="430" column="0" selection-start-line="430" selection-start-column="0" selection-end-line="430" selection-end-column="0" />
+          <folding>
+            <element signature="e#1835#3187#0" expanded="false" />
+            <element signature="e#12522#14344#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/unix/mpconfigport.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36223507">
+          <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/nlr.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="41" column="17" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="17" />
+          <folding>
+            <element signature="e#1769#1783#0" expanded="true" />
+            <element signature="e#1840#1855#0" expanded="true" />
+            <element signature="e#2191#2206#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/3ds/main.c">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+          <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/unix/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33189654">
+          <caret line="74" column="36" selection-start-line="74" selection-start-column="11" selection-end-line="74" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/runtime.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2177264">
+          <caret line="1046" column="50" selection-start-line="1046" selection-start-column="50" selection-end-line="1046" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/mpconfig.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="465" column="8" selection-start-line="465" selection-start-column="8" selection-end-line="465" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3ds/mpconfigport.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="20" column="70" selection-start-line="20" selection-start-column="70" selection-end-line="20" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58068615">
+          <caret line="405" column="8" selection-start-line="405" selection-start-column="8" selection-end-line="405" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/obj.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33250928">
+          <caret line="85" column="8" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="8" />
+          <folding>
+            <element signature="e#1542#1601#0" expanded="true" />
+            <element signature="e#2828#3007#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/helpers.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2039555">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/builtin.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="68" column="45" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/modbuiltins.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="404" column="5" selection-start-line="404" selection-start-column="5" selection-end-line="404" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///opt/devkitpro/libctru/include/3ds/gfx.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extmod/modlwip.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="109" column="43" selection-start-line="109" selection-start-column="43" selection-end-line="109" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/unix/file.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="259" column="13" selection-start-line="259" selection-start-column="5" selection-end-line="259" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///opt/devkitpro/libctru/include/3ds/console.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43820226">
+          <caret line="159" column="14" selection-start-line="159" selection-start-column="14" selection-end-line="159" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/runtime.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/argcheck.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.3202248">
+          <caret line="106" column="54" selection-start-line="106" selection-start-column="54" selection-end-line="106" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3ds/qstrdefsport.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="232" column="11" selection-start-line="232" selection-start-column="11" selection-end-line="232" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/classes/PrintConsole.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="70" selection-start-line="60" selection-start-column="70" selection-end-line="60" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3ds/modules/citrus.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/console.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3ds/modules/citrus/gfx.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/3ds/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3ds/hello-world.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2866242">
-          <caret line="15" column="53" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.64606744">
+          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
           <folding />
         </state>
       </provider>

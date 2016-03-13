@@ -27,16 +27,7 @@ CFLAGS += -DARM11 -D_3DS
 LDFLAGS = -specs=3dsx.specs -g $(CFLAGS_ARCH) -Wl,-Map,$(notdir $*.map) -L$(CTRULIB)/lib
 LIBS = -lctru -lm
 
-SRC_C = \
-	main.c \
-    stubs.c \
-    file_lexer.c \
-    $(wildcard modules/*.c) \
-    $(wildcard modules/**/*.c)
-#	printf.c \
-	string0.c \
-	malloc0.c \
-	gccollect.c \
+SRC_C = $(shell find -type f -name '*.c')
 
 SRC_S = \
 #	startup_stm32f40xx.s \
@@ -44,6 +35,8 @@ SRC_S = \
 
 OFILES = $(PY_O) $(addprefix $(BUILD)/, $(SRC_C:.c=.o) $(SRC_S:.s=.o))
 OBJ = $(OFILES)
+
+DATA = data
 
 all: $(BUILD)/python.3dsx
 

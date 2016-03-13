@@ -1,29 +1,27 @@
 from citrus import *
 
-raise Exception('Hello, Exception handling!')
-
 gfx.init_default()
 
-console.init(gfx.GFX_SCREEN_TOP, None)
+left  = console.PrintConsole(gfx.SCREEN_TOP, window_x=1, window_y=1, window_width=23, window_height=28)
+right = console.PrintConsole(gfx.SCREEN_TOP)
+bot   = console.PrintConsole(gfx.SCREEN_BOTTOM)
 
-def pos_print(msg, x, y):
-    print('\x1b[%d;%dH%s' % (y, x, msg))
+right.set_window(26, 1, 23, 28)
 
-def move_cursor(x, y):
-    print('\x1b[%d;%dH' % (y, x))
+left.select()
+print('This text is in the left window!')
+print('3DS rocks!!!')
+print('x: %d\ny: %d\nw: %d\nh: %d\nfg: %d\nbg: %d' %
+    (left.window_x, left.window_y, left.window_width, left.window_height, left.foreground_color, left.background_color))
 
-pos_print('Hello, world!', 19, 15)
+right.select()
+print('This text is in the right window!')
+print('This thing works pretty well!')
+print('x: %d\ny: %d\nw: %d\nh: %d\nfg: %d\nbg: %d' %
+    (right.window_x, right.window_y, right.window_width, right.window_height, right.foreground_color, right.background_color))
 
-move_cursor(0, 0)
-
-print('Roses are \x1b[31mred\x1b[0m')
-print('Violets are \x1b[34mblue\x1b[0m')
-print('Piracy is bad')
-print('While homebrews are good\n')
-
-print('\x1b[47;30mBlack text on white background\x1b[0m')
-
-pos_print('Press Start to exit.', 15, 29)
+bot.select()
+print('\x1b[29;10HPress Start to exit.', end_data='')
 
 while apt.main_loop():
     hid.scan_input()
@@ -37,5 +35,3 @@ while apt.main_loop():
     gsp.wait_for_vblank()
 
 gfx.exit()
-
-
