@@ -5,12 +5,11 @@
 // 8kb
 #define DEFAULT_SHAREDMEM_SIZE 8192
 
-int _mod_citrus_httpc_get_request_method(mp_obj_t method) {
-    if (mp_obj_is_integer(method)) {
-        int m = mp_obj_get_int(method);
-        if (m >= HTTPC_METHOD_GET && m <= HTTPC_METHOD_DELETE) {
-            return m;
-        }
+extern const mp_obj_type_t mod_citrus_httpc_Request_type;
+
+int _mod_citrus_httpc_get_request_method(int method) {
+    if (method >= HTTPC_METHOD_GET && method <= HTTPC_METHOD_DELETE) {
+        return method;
     }
 
     nlr_raise(mp_obj_new_exception(&mp_type_TypeError));
@@ -38,12 +37,15 @@ STATIC mp_obj_t mod_citrus_httpc_exit(void) {
     return mp_const_none;
 }
 
-STATIC MP_DEFINE_CONST_FUN_OBJ_KW(mod_citrus_httpc_init_obj, 0, mod_citrus_init);
+STATIC MP_DEFINE_CONST_FUN_OBJ_KW(mod_citrus_httpc_init_obj, 0, mod_citrus_httpc_init);
 STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_httpc_exit_obj, mod_citrus_httpc_exit);
 
 STATIC const mp_rom_map_elem_t mp_module_citrus_httpc_globals_table[] = {
         // Package Info
         {MP_ROM_QSTR(MP_QSTR___name__),              MP_ROM_QSTR(MP_QSTR_httpc)},
+
+        // Classes
+        {MP_ROM_QSTR(MP_QSTR_Request),               MP_ROM_PTR(&mod_citrus_httpc_Request_type)},
 
         // Functions
         {MP_ROM_QSTR(MP_QSTR_init),                  MP_ROM_PTR(&mod_citrus_httpc_init_obj)},

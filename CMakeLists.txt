@@ -3,7 +3,7 @@ project(micropython)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES 3ds/main.c)
+set(SOURCE_FILES 3ds/main.c 3ds/netload.c)
 #    3ds/build/genhdr/
 #    3ds/modules/citrus/apt.c
 #    3ds/modules/citrus/console.c
@@ -170,5 +170,7 @@ set(SOURCE_FILES 3ds/main.c)
 
 include_directories(/opt/devkitpro/libctru/include)
 include_directories(.)
+
+set(MOD_PY_ARRAY)
 
 add_executable(micropython ${SOURCE_FILES})

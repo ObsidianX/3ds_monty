@@ -1,17 +1,32 @@
+#include <string.h>
+
 #include <3ds.h>
 
 #include "py/runtime.h"
+#include "py/objstr.h"
+#include "py/misc.h"
 
 #include "../helpers.h"
 
 #define SELF(src) mod_citrus_httpc_Request_t *self = src;
 
+#define DEFAULT_HEADER_BUFFER_SIZE 1024
+
 const mp_obj_type_t mod_citrus_httpc_Request_type;
+STATIC const mp_obj_fun_builtin_t mod_citrus_httpc_Request_close_obj;
+STATIC const mp_obj_fun_builtin_t mod_citrus_httpc_Request_add_header_obj;
+STATIC const mp_obj_fun_builtin_t mod_citrus_httpc_Request_add_post_string_obj;
+STATIC const mp_obj_fun_builtin_t mod_citrus_httpc_Request_add_post_bytes_obj;
+STATIC const mp_obj_fun_builtin_t mod_citrus_httpc_Request_begin_request_obj;
+STATIC const mp_obj_fun_builtin_t mod_citrus_httpc_Request_receive_data_obj;
+STATIC const mp_obj_fun_builtin_t mod_citrus_httpc_Request_download_data_obj;
+STATIC const mp_obj_fun_builtin_t mod_citrus_httpc_Request_get_response_header_obj;
 
 typedef struct {
     mp_obj_base_t base;
 
     httpcContext context;
+    Result last_result;
 } mod_citrus_httpc_Request_t;
 
 enum {
@@ -40,11 +55,11 @@ STATIC mp_obj_t mod_citrus_httpc_Request_make_new(const mp_obj_type_t *type, siz
         nlr_raise(mp_obj_new_exception(&mp_type_TypeError));
     }
 
-    const char *url = mp_obj_str_get_str(args[NEW_ARG_URL]);
+    const char *url = mp_obj_str_get_str(args[NEW_ARG_URL].u_obj);
     int method = _mod_citrus_httpc_get_request_method(args[NEW_ARG_METHOD].u_int);
     bool proxy = args[NEW_ARG_USE_PROXY].u_bool;
 
-    httpcOpenContext(&obj->context, method, url, proxy ? 1 : 0);
+    httpcOpenContext(&obj->context, method, (char *) url, proxy ? 1 : 0);
 
     return obj;
 }
@@ -60,9 +75,65 @@ STATIC void mod_citrus_httpc_Request_attr(mp_obj_t self_in, qstr attr, mp_obj_t 
     }
 
     // Methods
-    /*if (!strcmp(name, qstr_str(MP_QSTR_))) {
-        dest[0] = (mp_obj_t) &mod_citrus_httpc_Request__obj;
-    }*/
+    if (!strcmp(name, qstr_str(MP_QSTR___del__))) {
+        dest[0] = (mp_obj_t) &mod_citrus_httpc_Request_close_obj;
+    } else if (!strcmp(name, qstr_str(MP_QSTR_close))) {
+        dest[0] = (mp_obj_t) &mod_citrus_httpc_Request_close_obj;
+    } else if (!strcmp(name, qstr_str(MP_QSTR_add_header))) {
+        dest[0] = (mp_obj_t) &mod_citrus_httpc_Request_add_header_obj;
+    } else if (!strcmp(name, qstr_str(MP_QSTR_add_post_string))) {
+        dest[0] = (mp_obj_t) &mod_citrus_httpc_Request_add_post_string_obj;
+    } else if (!strcmp(name, qstr_str(MP_QSTR_add_post_bytes))) {
+        dest[0] = (mp_obj_t) &mod_citrus_httpc_Request_add_post_bytes_obj;
+    } else if (!strcmp(name, qstr_str(MP_QSTR_begin_request))) {
+        dest[0] = (mp_obj_t) &mod_citrus_httpc_Request_begin_request_obj;
+    } else if (!strcmp(name, qstr_str(MP_QSTR_receive_data))) {
+        dest[0] = (mp_obj_t) &mod_citrus_httpc_Request_receive_data_obj;
+    } else if (!strcmp(name, qstr_str(MP_QSTR_get_response_header))) {
+        dest[0] = (mp_obj_t) &mod_citrus_httpc_Request_get_response_header_obj;
+    } else if (!strcmp(name, qstr_str(MP_QSTR_download_data))) {
+        dest[0] = (mp_obj_t) &mod_citrus_httpc_Request_download_data_obj;
+    }
+    if (dest[0] != MP_OBJ_NULL) {
+        dest[1] = self_in;
+        return;
+    }
+
+    if (!strcmp(name, qstr_str(MP_QSTR_request_state))) {
+        HTTPC_RequestStatus status;
+        self->last_result = httpcGetRequestState(&self->context, &status);
+
+        if (!R_SUCCEEDED(self->last_result)) {
+            return;
+        }
+
+        dest[0] = mp_obj_new_int(status);
+    } else if (!strcmp(name, qstr_str(MP_QSTR_response_status_code))) {
+        u32 status = 0;
+        self->last_result = httpcGetResponseStatusCode(&self->context, &status, 0 /* delay: unused 1.1.0 */);
+
+        if (!R_SUCCEEDED(self->last_result)) {
+            return;
+        }
+
+        dest[0] = mp_obj_new_int(status);
+    } else if (!strcmp(name, qstr_str(MP_QSTR_bytes_downloaded)) || !strcmp(name, qstr_str(MP_QSTR_download_size))) {
+        u32 downloaded_size = 0;
+        u32 content_size = 0;
+        self->last_result = httpcGetDownloadSizeState(&self->context, &downloaded_size, &content_size);
+
+        if (!R_SUCCEEDED(self->last_result)) {
+            return;
+        }
+
+        if (!strcmp(name, qstr_str(MP_QSTR_bytes_downloaded))) {
+            dest[0] = mp_obj_new_int(downloaded_size);
+        } else if (!strcmp(name, qstr_str(MP_QSTR_download_size))) {
+            dest[0] = mp_obj_new_int(content_size);
+        }
+    } else if (!strcmp(name, qstr_str(MP_QSTR_last_result))) {
+        dest[0] = mp_obj_new_int(self->last_result);
+    }
 }
 
 STATIC void mod_citrus_httpc_Request_print(const mp_print_t *print, mp_obj_t self_in, mp_print_kind_t kind) {
@@ -71,9 +142,144 @@ STATIC void mod_citrus_httpc_Request_print(const mp_print_t *print, mp_obj_t sel
     mp_printf(print, "<Request context=%p>", &self->context);
 }
 
+STATIC mp_obj_t mod_citrus_httpc_Request_close(mp_obj_t self_in) {
+    SELF(self_in);
+
+    self->last_result = httpcCloseContext(&self->context);
+
+    return mp_obj_new_int(self->last_result);
+}
+
+STATIC mp_obj_t mod_citrus_httpc_Request_add_header(mp_obj_t self_in, mp_obj_t name, mp_obj_t value) {
+    SELF(self_in);
+
+    const char *_name = mp_obj_str_get_str(name);
+    const char *_value = mp_obj_str_get_str(value);
+
+    self->last_result = httpcAddRequestHeaderField(&self->context, (char *) _name, (char *) _value);
+
+    return mp_obj_new_int(self->last_result);
+}
+
+STATIC mp_obj_t mod_citrus_httpc_Request_add_post_string(mp_obj_t self_in, mp_obj_t name, mp_obj_t value) {
+    SELF(self_in);
+
+    const char *_name = mp_obj_str_get_str(name);
+    const char *_value = mp_obj_str_get_str(value);
+
+    self->last_result = httpcAddPostDataAscii(&self->context, (char *) _name, (char *) _value);
+
+    return mp_obj_new_int(self->last_result);
+}
+
+STATIC mp_obj_t mod_citrus_httpc_Request_add_post_bytes(mp_obj_t self_in, mp_obj_t value) {
+    SELF(self_in);
+
+    mp_buffer_info_t bufinfo;
+    mp_get_buffer_raise(value, &bufinfo, MP_BUFFER_READ);
+
+    self->last_result = httpcAddPostDataRaw(&self->context, bufinfo.buf, bufinfo.len);
+
+    return mp_obj_new_int(self->last_result);
+}
+
+STATIC mp_obj_t mod_citrus_httpc_Request_begin_request(mp_obj_t self_in) {
+    SELF(self_in);
+
+    self->last_result = httpcBeginRequest(&self->context);
+
+    return mp_obj_new_int(self->last_result);
+}
+
+STATIC mp_obj_t mod_citrus_httpc_Request_receive_data(mp_obj_t self_in, mp_obj_t size) {
+    SELF(self_in);
+
+    if (!mp_obj_is_integer(size)) {
+        nlr_raise(mp_obj_new_exception(&mp_type_TypeError));
+    }
+    int _size = mp_obj_get_int(size);
+    byte *buf = m_new(byte, _size);
+
+    self->last_result = httpcReceiveData(&self->context, buf, _size);
+
+    if (!R_SUCCEEDED(self->last_result)) {
+        m_del(byte, buf, _size);
+        return mp_const_none;
+    }
+
+    mp_obj_t ret = mp_obj_new_str_of_type(&mp_type_bytes, buf, _size);
+    m_del(byte, buf, _size);
+
+    return ret;
+}
+
+STATIC mp_obj_t mod_citrus_httpc_Request_get_response_header(size_t n_args, const mp_obj_t *args) {
+    SELF(args[0]);
+
+    const char *_name = mp_obj_get_type_str(args[1]);
+
+    int buffer_size = DEFAULT_HEADER_BUFFER_SIZE;
+    if (n_args == 3) {
+        buffer_size = mp_obj_get_int(args[2]);
+    }
+
+    char *value = m_new(char, buffer_size);
+    self->last_result = httpcGetResponseHeader(&self->context, (char *) _name, value, sizeof(value));
+
+    if (!R_SUCCEEDED(self->last_result)) {
+        return mp_const_none;
+    }
+
+    return mp_obj_new_str((const char *) value, strlen(value), false);
+}
+
+STATIC mp_obj_t mod_citrus_httpc_Request_download_data(mp_obj_t self_in, mp_obj_t size) {
+    SELF(self_in);
+
+    u32 _size = mp_obj_get_int(size);
+    u32 downloaded = 0;
+    byte *buf = m_new(byte, _size);
+
+    self->last_result = httpcDownloadData(&self->context, buf, _size, &downloaded);
+
+    if (!R_SUCCEEDED(self->last_result)) {
+        m_del(byte, buf, _size);
+        return mp_const_none;
+    }
+
+    mp_obj_t ret = mp_obj_new_str_of_type(&mp_type_bytes, buf, _size);
+    m_del(byte, buf, _size);
+
+    return ret;
+}
+
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_citrus_httpc_Request_close_obj, mod_citrus_httpc_Request_close);
+STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_citrus_httpc_Request_add_header_obj, mod_citrus_httpc_Request_add_header);
+STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_citrus_httpc_Request_add_post_string_obj, mod_citrus_httpc_Request_add_post_string);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_citrus_httpc_Request_add_post_bytes_obj, mod_citrus_httpc_Request_add_post_bytes);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_citrus_httpc_Request_begin_request_obj, mod_citrus_httpc_Request_begin_request);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_citrus_httpc_Request_receive_data_obj, mod_citrus_httpc_Request_receive_data);
+STATIC MP_DEFINE_CONST_FUN_OBJ_VAR(mod_citrus_httpc_Request_get_response_header_obj, 2, mod_citrus_httpc_Request_get_response_header);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_citrus_httpc_Request_download_data_obj, mod_citrus_httpc_Request_download_data);
+
 STATIC const mp_map_elem_t mod_citrus_httpc_Request_locals_dict_table[] = {
         // Methods
-        //{MP_OBJ_NEW_QSTR(MP_QSTR_), (mp_obj_t) &mod_citrus_httpc_Request_},
+        {MP_OBJ_NEW_QSTR(MP_QSTR___del__),             (mp_obj_t) &mod_citrus_httpc_Request_close_obj},
+        {MP_OBJ_NEW_QSTR(MP_QSTR_close),               (mp_obj_t) &mod_citrus_httpc_Request_close_obj},
+        {MP_OBJ_NEW_QSTR(MP_QSTR_add_header),          (mp_obj_t) &mod_citrus_httpc_Request_add_header_obj},
+        {MP_OBJ_NEW_QSTR(MP_QSTR_add_post_string),     (mp_obj_t) &mod_citrus_httpc_Request_add_post_string_obj},
+        {MP_OBJ_NEW_QSTR(MP_QSTR_add_post_bytes),      (mp_obj_t) &mod_citrus_httpc_Request_add_post_bytes_obj},
+        {MP_OBJ_NEW_QSTR(MP_QSTR_begin_request),       (mp_obj_t) &mod_citrus_httpc_Request_begin_request_obj},
+        {MP_OBJ_NEW_QSTR(MP_QSTR_receive_data),        (mp_obj_t) &mod_citrus_httpc_Request_receive_data_obj},
+        {MP_OBJ_NEW_QSTR(MP_QSTR_get_response_header), (mp_obj_t) &mod_citrus_httpc_Request_get_response_header_obj},
+        {MP_OBJ_NEW_QSTR(MP_QSTR_download_data),       (mp_obj_t) &mod_citrus_httpc_Request_download_data_obj},
+
+        // Attributes (all int's)
+        // request_state
+        // response_status_code
+        // last_result
+        // bytes_downloaded
+        // download_size
 };
 STATIC MP_DEFINE_CONST_DICT(mod_citrus_httpc_Request_locals_dict, mod_citrus_httpc_Request_locals_dict_table);
 

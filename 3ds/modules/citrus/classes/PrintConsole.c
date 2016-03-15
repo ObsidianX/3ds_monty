@@ -182,8 +182,8 @@ enum {
 STATIC mp_obj_t mod_citrus_console_PrintConsole_set_position(size_t n_args, const mp_obj_t *pos_args, mp_map_t *kw_args) {
     static const mp_arg_t allowed_args[] = {
             {MP_QSTR_self, MP_ARG_OBJ | MP_ARG_REQUIRED, {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
-            {MP_QSTR_x,    MP_ARG_KW_ONLY | MP_ARG_INT,  {.u_int = 0}},
-            {MP_QSTR_y,    MP_ARG_KW_ONLY | MP_ARG_INT,  {.u_int = 0}},
+            {MP_QSTR_x,    MP_ARG_INT,  {.u_int = 0}},
+            {MP_QSTR_y,    MP_ARG_INT,  {.u_int = 0}},
     };
 
     mp_arg_val_t args[SET_POS_ARG_COUNT];
@@ -229,6 +229,20 @@ STATIC const mp_map_elem_t mod_citrus_console_PrintConsole_locals_dict_table[] =
         {MP_OBJ_NEW_QSTR(MP_QSTR_set_color),    (mp_obj_t) &mod_citrus_console_PrintConsole_set_color_obj},
         {MP_OBJ_NEW_QSTR(MP_QSTR_set_position), (mp_obj_t) &mod_citrus_console_PrintConsole_set_position_obj},
         {MP_OBJ_NEW_QSTR(MP_QSTR_set_window),   (mp_obj_t) &mod_citrus_console_PrintConsole_set_window_obj},
+
+        // Attributes (all int's)
+        // cursor_x
+        // cursor_y
+        // width
+        // height
+        // window_x
+        // window_y
+        // window_width
+        // window_height
+        // fg
+        // bg
+        // flags
+        // tab_size
 };
 STATIC MP_DEFINE_CONST_DICT(mod_citrus_console_PrintConsole_locals_dict, mod_citrus_console_PrintConsole_locals_dict_table);
 

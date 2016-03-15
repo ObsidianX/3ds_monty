@@ -11,7 +11,9 @@
 #define ERR_MEMORY_ALLOC 2
 #define ERR_PARSE 3
 
-void initConsole() {
+extern bool net_load();
+
+static void initConsole() {
     gfxInitDefault();
     consoleInit(GFX_TOP, NULL);
 }
@@ -59,28 +61,44 @@ STATIC int do_file(const char *file) {
 }
 
 int main(int argc, char **argv) {
+    bool retry = true;
+
     mp_init();
-    int res = do_file("/test.py");
-    mp_deinit();
-
-    if (res) {
-        printf("\x1b[28;12H    Fatal Error: %d     ", res);
-        printf("\x1b[29;12H  Press Start to exit.  ");
-        while (aptMainLoop()) {
-            hidScanInput();
-
-            if (hidKeysDown() & KEY_START) {
-                break;
-            }
-
-            gfxFlushBuffers();
-            gfxSwapBuffers();
-
-            gspWaitForVBlank();
+    while (retry) {
+        int res = net_load();
+        if (!res) {
+            return 0;
+        } else if (res == 2) {
+            continue;
         }
 
-        gfxExit();
+        res = do_file("/tmp.py");
+
+        if (res) {
+            printf("\x1b[27;12H    Fatal Error: %d     ", res);
+            printf("\x1b[28;12HPress Select to restart.");
+            printf("\x1b[29;12H  Press Start to exit.  ");
+            while (aptMainLoop()) {
+                hidScanInput();
+
+                int down = hidKeysDown();
+                if (down & KEY_START) {
+                    retry = false;
+                    break;
+                } else if (down & KEY_SELECT) {
+                    break;
+                }
+
+                gfxFlushBuffers();
+                gfxSwapBuffers();
+
+                gspWaitForVBlank();
+            }
+
+            gfxExit();
+        }
     }
+    mp_deinit();
 
     return 0;
 }
