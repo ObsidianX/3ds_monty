@@ -1,15 +1,40 @@
+#include <malloc.h>
+
 #include <3ds.h>
 
 #include "py/runtime.h"
 
-STATIC mp_obj_t mod_citrus_soc_init(mp_obj_t context_addr, mp_obj_t context_size) {
-    nlr_raise(mp_obj_new_exception(&mp_type_NotImplementedError));
+#define SOC_BUFFER_ALIGNMENT 0x1000
+#define SOC_BUFFER_SIZE 0x100000
+
+static void *_mod_citrus_soc_buffer = NULL;
+
+STATIC mp_obj_t mod_citrus_soc_init(size_t n_args, const mp_obj_t *args_in) {
+    // don't init twice...
+    if (_mod_citrus_soc_buffer != NULL) {
+        return mp_const_none;
+    }
+
+    static const mp_arg_t allowed_args[] = {
+            {MP_QSTR_buffer_size, MP_ARG_INT, {.u_int = SOC_BUFFER_SIZE}},
+    };
+
+    mp_arg_val_t args[1];
+    mp_arg_parse_all_kw_array(n_args, n_kw, args_in, 1, allowed_args, args);
+
+    u32 size = args[0].u_int;
+
+    _mod_citrus_soc_buffer = memalign(SOC_BUFFER_ALIGNMENT, size);
+    Result res = socInit(_mod_citrus_soc_buffer, size);
+
+    return mp_obj_new_int(res);
 }
 
 STATIC mp_obj_t mod_citrus_soc_exit(void) {
-    socExit();
+    Result res = socExit();
+    free(_mod_citrus_soc_buffer);
 
-    return mp_const_none;
+    return mp_obj_new_int(res);
 }
 
 STATIC mp_obj_t mod_citrus_soc_get_host_id(void) {

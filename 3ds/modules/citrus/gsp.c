@@ -4,7 +4,7 @@
 
 #include "helpers.h"
 
-int _mod_citrus_gsp_get_framebuffer_format(mp_obj_t format) {
+GSPGPU_FramebufferFormats _mod_citrus_gsp_get_framebuffer_format(mp_obj_t format) {
     if (mp_obj_is_integer(format)) {
         int fmt = mp_obj_get_int(format);
         if (fmt >= GSP_RGBA8_OES && fmt <= GSP_RGBA4_OES) {
@@ -15,7 +15,7 @@ int _mod_citrus_gsp_get_framebuffer_format(mp_obj_t format) {
     nlr_raise(mp_obj_new_exception(&mp_type_TypeError));
 }
 
-int _mod_citrus_gsp_get_gpu_event(mp_obj_t event) {
+GSPGPU_Event _mod_citrus_gsp_get_gpu_event(mp_obj_t event) {
     if (mp_obj_is_integer(event)) {
         int evt = mp_obj_get_int(event);
         if (evt >= GSPGPU_EVENT_PSC0 && evt < GSPGPU_EVENT_MAX) {

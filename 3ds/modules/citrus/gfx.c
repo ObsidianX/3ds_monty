@@ -4,7 +4,7 @@
 
 #include "helpers.h"
 
-int _mod_citrus_gfx_get_gfx_screen(mp_obj_t screen) {
+gfxScreen_t _mod_citrus_gfx_get_gfx_screen(mp_obj_t screen) {
     if (mp_obj_is_integer(screen)) {
         int scr = mp_obj_get_int(screen);
         if (scr == GFX_TOP || scr == GFX_BOTTOM) {
@@ -15,9 +15,20 @@ int _mod_citrus_gfx_get_gfx_screen(mp_obj_t screen) {
     nlr_raise(mp_obj_new_exception(&mp_type_TypeError));
 }
 
-int _mod_citrus_gfx_is_gfx_screen(mp_int_t scr) {
+gfxScreen_t _mod_citrus_gfx_is_gfx_screen(mp_int_t scr) {
     if (scr == GFX_TOP || scr == GFX_BOTTOM) {
         return scr;
+    }
+
+    nlr_raise(mp_obj_new_exception(&mp_type_TypeError));
+}
+
+gfx3dSide_t _mod_citrus_gfx_get_gfx_3d_side(mp_obj_t side) {
+    if (mp_obj_is_integer(side)) {
+        int _side = mp_obj_get_int(side);
+        if (_side == GFX_LEFT || _side == GFX_RIGHT) {
+            return _side;
+        }
     }
 
     nlr_raise(mp_obj_new_exception(&mp_type_TypeError));
@@ -139,9 +150,9 @@ STATIC const mp_rom_map_elem_t mp_module_citrus_gfx_globals_table[] = {
         {MP_ROM_QSTR(MP_QSTR_SCREEN_TOP),           MP_ROM_INT(GFX_TOP)},
         {MP_ROM_QSTR(MP_QSTR_SCREEN_BOTTOM),        MP_ROM_INT(GFX_BOTTOM)},
 
-        // gfx3dSlide_t
-        {MP_ROM_QSTR(MP_QSTR_SLIDE_LEFT),        MP_ROM_INT(GFX_LEFT)},
-        {MP_ROM_QSTR(MP_QSTR_SLIDE_RIGHT),       MP_ROM_INT(GFX_RIGHT)},
+        // gfx3dSide_t
+        {MP_ROM_QSTR(MP_QSTR_SIDE_LEFT),            MP_ROM_INT(GFX_LEFT)},
+        {MP_ROM_QSTR(MP_QSTR_SIDE_RIGHT),           MP_ROM_INT(GFX_RIGHT)},
 };
 
 STATIC MP_DEFINE_CONST_DICT(mp_module_citrus_gfx_globals, mp_module_citrus_gfx_globals_table);

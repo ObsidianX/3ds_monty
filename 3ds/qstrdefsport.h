@@ -6,6 +6,7 @@ Q(hello)
 Q(self)
 Q(init)
 Q(exit)
+Q(last_result)
 
 // citrus.gfx
 Q(gfx)
@@ -21,8 +22,8 @@ Q(swap_buffers)
 Q(swap_buffers_gpu)
 Q(SCREEN_TOP)
 Q(SCREEN_BOTTOM)
-Q(SLIDE_LEFT)
-Q(SLIDE_RIGHT)
+Q(SIDE_LEFT)
+Q(SIDE_RIGHT)
 
 // citrus.gsp
 Q(gsp)
@@ -68,6 +69,12 @@ Q(GSP_EVENT_PPF)
 Q(GSP_EVENT_P3D)
 Q(GSP_EVENT_DMA)
 Q(GSP_EVENT_MAX)
+
+// citrus.gpu
+Q(gpu)
+Q(TEXUNIT_0)
+Q(TEXUNIT_1)
+Q(TEXUNIT_2)
 
 // citrus.console
 Q(console)
@@ -191,7 +198,7 @@ Q(HOOK_ONWAKEUP)
 Q(HOOK_ONEXIT)
 Q(HOOK_COUNT)
 
-// apt.Hook
+// citrus.apt.Hook
 Q(Hook)
 Q(callback)
 
@@ -247,14 +254,14 @@ Q(EVENT_GYRO)
 Q(EVENT_DEBUG_PAD)
 Q(EVENT_MAX)
 
-// soc
+// citrus.soc
 Q(soc)
 Q(get_host_id)
 
-// romfs
+// citrus.romfs
 Q(romfs)
 
-// os
+// citrus.os
 Q(os)
 Q(get_firm_version)
 Q(get_kernel_version)
@@ -265,7 +272,7 @@ Q(set_speedup_enable)
 Q(get_system_version_data)
 Q(get_system_version_data_string)
 
-// httpc
+// citrus.httpc
 Q(httpc)
 Q(METHOD_GET)
 Q(METHOD_POST)
@@ -275,12 +282,11 @@ Q(METHOD_DELETE)
 Q(STATUS_IN_PROGRESS)
 Q(STATUS_DOWNLOAD_READY)
 
-// httpc.Request
+// citrus.httpc.Request
 Q(Request)
 Q(url)
 Q(method)
 Q(use_proxy)
-Q(last_result)
 Q(close)
 Q(add_header)
 Q(add_post_string)
@@ -297,7 +303,7 @@ Q(response_status_code)
 Q(bytes_downloaded)
 Q(download_size)
 
-// socket
+// citrus.socket
 Q(accept)
 Q(bind)
 Q(connect)
@@ -336,3 +342,66 @@ Q(SO_LINGER)
 Q(SO_REUSEADDR)
 Q(SOL_DONTWAIT)
 Q(SOL_SOCKET)
+
+// citrus.news
+Q(news)
+Q(add_notification)
+
+// citrus.fs
+Q(fs)
+Q(MEDIATYPE_NAND)
+Q(MEDIATYPE_SD)
+Q(MEDIATYPE_GAME_CARD)
+
+// citrus.ns
+Q(ns)
+Q(launch_title)
+Q(reboot_to_title)
+Q(terminate_process_tid)
+
+// sf2d
+Q(sf2d)
+Q(init_advanced)
+Q(fini)
+Q(set_3d)
+Q(start_frame)
+Q(end_frame)
+Q(swapbuffers)
+Q(set_vblank_wait)
+Q(get_fps)
+Q(set_clear_color)
+Q(draw_line)
+Q(draw_rectangle)
+Q(draw_rectangle_rotate)
+Q(draw_fill_circle)
+Q(rgba8)
+Q(rgba8_get_r)
+Q(rgba8_get_g)
+Q(rgba8_get_b)
+Q(rgba8_get_a)
+Q(PLACE_RAM)
+Q(PLACE_VRAM)
+Q(PLACE_TEMP)
+Q(TEXFMT_RGBA8)
+Q(TEXFMT_RGB8)
+Q(TEXFMT_RGB5A1)
+Q(TEXFMT_RGB565)
+Q(TEXFMT_RGBA4)
+Q(TEXFMT_IA8)
+Q(TEXFMT_I8)
+Q(TEXFMT_A8)
+Q(TEXFMT_IA4)
+Q(TEXFMT_I4)
+Q(TEXFMT_A4)
+Q(TEXFMT_ETC1)
+Q(TEXFMT_ETC1A4)
+
+// sf2d.Texture
+Q(Texture)
+Q(place)
+Q(bind)
+Q(bind_color)
+Q(bind_parameters)
+Q(set_params)
+Q(get_params)
+Q(draw)

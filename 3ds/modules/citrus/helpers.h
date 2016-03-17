@@ -1,5 +1,5 @@
-#ifndef _HELPERS_H_
-#define _HELPERS_H_
+#ifndef _CITRUS_HELPERS_H_
+#define _CITRUS_HELPERS_H_
 
 #include "py/runtime.h"
 
@@ -11,14 +11,22 @@ mp_obj_t _mod_citrus_console_PrintConsole_new_default(void);
 mp_obj_t _mod_citrus_console_PrintConsole_new_from_c(PrintConsole *con);
 
 // GFX
-int _mod_citrus_gfx_get_gfx_screen(mp_obj_t screen);
+gfxScreen_t _mod_citrus_gfx_get_gfx_screen(mp_obj_t screen);
 
-int _mod_citrus_gfx_is_gfx_screen(mp_int_t screen);
+gfxScreen_t _mod_citrus_gfx_is_gfx_screen(mp_int_t screen);
+
+gfx3dSide_t _mod_citrus_gfx_get_gfx_3d_side(mp_obj_t side);
 
 // GSP
-int _mod_citrus_gsp_get_framebuffer_format(mp_obj_t format);
+GSPGPU_FramebufferFormats _mod_citrus_gsp_get_framebuffer_format(mp_obj_t format);
+
+// GPU
+GPU_TEXUNIT _mod_citrus_gpu_get_texunit(mp_obj_t unit);
 
 // HTTPC
-int _mod_citrus_httpc_get_request_method(int method);
+HTTPC_RequestMethod _mod_citrus_httpc_get_request_method(mp_int_t method);
 
-#endif // _HELPERS_H_
+// FS
+FS_MediaType _mod_citrus_fs_get_mediatype(mp_obj_t type);
+
+#endif // _CITRUS_HELPERS_H_
