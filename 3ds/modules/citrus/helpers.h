@@ -1,6 +1,8 @@
 #ifndef _CITRUS_HELPERS_H_
 #define _CITRUS_HELPERS_H_
 
+#include <3ds.h>
+
 #include "py/runtime.h"
 
 #include "../helpers.h"
@@ -28,5 +30,8 @@ HTTPC_RequestMethod _mod_citrus_httpc_get_request_method(mp_int_t method);
 
 // FS
 FS_MediaType _mod_citrus_fs_get_mediatype(mp_obj_t type);
+
+// SOC
+bool _mod_citrus_soc_is_init(void);
 
 #endif // _CITRUS_HELPERS_H_

@@ -256,6 +256,7 @@ Q(EVENT_MAX)
 
 // citrus.soc
 Q(soc)
+Q(buffer_size)
 Q(get_host_id)
 
 // citrus.romfs

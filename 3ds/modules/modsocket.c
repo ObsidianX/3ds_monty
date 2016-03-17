@@ -46,6 +46,7 @@
 #include "py/builtin.h"
 
 #include "helpers.h"
+#include "citrus/helpers.h"
 
 /*
   The idea of this module is to implement reasonable minimum of
@@ -314,6 +315,10 @@ STATIC mp_obj_t socket_makefile(size_t n_args, const mp_obj_t *args) {
 }
 
 STATIC mp_obj_t socket_make_new(const mp_obj_type_t *type_in, size_t n_args, size_t n_kw, const mp_obj_t *args) {
+    if (!_mod_citrus_soc_is_init()) {
+        nlr_raise(mp_obj_new_exception_msg(&mp_type_RuntimeError, "Must call socInit() BEFORE creating a socket object"));
+    }
+
     (void) type_in;
     (void) n_kw;
 

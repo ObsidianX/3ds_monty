@@ -9,7 +9,11 @@
 
 static void *_mod_citrus_soc_buffer = NULL;
 
-STATIC mp_obj_t mod_citrus_soc_init(size_t n_args, const mp_obj_t *args_in) {
+bool _mod_citrus_soc_is_init(void) {
+    return _mod_citrus_soc_buffer != NULL;
+}
+
+STATIC mp_obj_t mod_citrus_soc_init(size_t n_args, const mp_obj_t *pos_args, mp_map_t *kw_args) {
     // don't init twice...
     if (_mod_citrus_soc_buffer != NULL) {
         return mp_const_none;
@@ -20,7 +24,7 @@ STATIC mp_obj_t mod_citrus_soc_init(size_t n_args, const mp_obj_t *args_in) {
     };
 
     mp_arg_val_t args[1];
-    mp_arg_parse_all_kw_array(n_args, n_kw, args_in, 1, allowed_args, args);
+    mp_arg_parse_all((mp_uint_t) n_args, pos_args, kw_args, 1, allowed_args, args);
 
     u32 size = args[0].u_int;
 
@@ -33,6 +37,7 @@ STATIC mp_obj_t mod_citrus_soc_init(size_t n_args, const mp_obj_t *args_in) {
 STATIC mp_obj_t mod_citrus_soc_exit(void) {
     Result res = socExit();
     free(_mod_citrus_soc_buffer);
+    _mod_citrus_soc_buffer = NULL;
 
     return mp_obj_new_int(res);
 }
@@ -41,7 +46,7 @@ STATIC mp_obj_t mod_citrus_soc_get_host_id(void) {
     return mp_obj_new_int_from_ll(gethostid());
 }
 
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_citrus_soc_init_obj, mod_citrus_soc_init);
+STATIC MP_DEFINE_CONST_FUN_OBJ_KW(mod_citrus_soc_init_obj, 0, mod_citrus_soc_init);
 STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_soc_exit_obj, mod_citrus_soc_exit);
 STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_soc_get_host_id_obj, mod_citrus_soc_get_host_id);
 

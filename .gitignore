@@ -5,6 +5,7 @@
 *.elf
 *.bin
 *.map
+*.lst
 *.hex
 *.dis
 *.exe
