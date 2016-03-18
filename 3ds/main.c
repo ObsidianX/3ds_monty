@@ -63,7 +63,6 @@ STATIC int do_file(const char *file) {
 int main(int argc, char **argv) {
     bool retry = true;
 
-    mp_init();
     while (retry) {
         int res = net_load();
         if (!res) {
@@ -72,7 +71,9 @@ int main(int argc, char **argv) {
             continue;
         }
 
+        mp_init();
         res = do_file("/tmp.py");
+        mp_deinit();
 
         if (res) {
             printf("\x1b[27;12H    Fatal Error: %d     ", res);
@@ -98,7 +99,6 @@ int main(int argc, char **argv) {
             gfxExit();
         }
     }
-    mp_deinit();
 
     return 0;
 }

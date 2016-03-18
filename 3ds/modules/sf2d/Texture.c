@@ -133,14 +133,85 @@ STATIC mp_obj_t mod_sf2d_Texture_get_params(mp_obj_t self_in) {
     return mp_obj_new_int(sf2d_texture_get_params(self->tex));
 }
 
-STATIC mp_obj_t mod_sf2d_Texture_draw(mp_obj_t self_in, mp_obj_t x, mp_obj_t y) {
-    SELF(self_in);
+enum {
+    DRAW_ARG_SELF = 0,
+    DRAW_ARG_X,
+    DRAW_ARG_Y,
+    DRAW_ARG_COLOR,
+    DRAW_ARG_CENTER_X,
+    DRAW_ARG_CENTER_Y,
+    DRAW_ARG_ANGLE,
+    DRAW_ARG_SCALE_X,
+    DRAW_ARG_SCALE_Y,
+    DRAW_ARG_CLIP_X,
+    DRAW_ARG_CLIP_Y,
+    DRAW_ARG_CLIP_W,
+    DRAW_ARG_CLIP_H,
+    DRAW_ARG_CLIP_DEPTH,
+    DRAW_ARG_COUNT
+};
 
-    int _x = mp_obj_get_int(x);
-    int _y = mp_obj_get_int(y);
+STATIC mp_obj_t mod_sf2d_Texture_draw(size_t n_args, const mp_obj_t *pos_args, mp_map_t *kw_args) {
+    // args:
+    // positional: self, x, y
+    // keyword:
+    // - color
+    // - center_x
+    // - center_y
+    // - angle
+    // - scale_x
+    // - scale_y
+    // - clip_x
+    // - clip_y
+    // - clip_w
+    // - clip_h
+    // - depth
+    static const mp_arg_t allowed_args[] = {
+            {MP_QSTR_self,     MP_ARG_OBJ | MP_ARG_REQUIRED},
+            {MP_QSTR_x,        MP_ARG_INT | MP_ARG_REQUIRED},
+            {MP_QSTR_y,        MP_ARG_INT | MP_ARG_REQUIRED},
+            {MP_QSTR_color,    MP_ARG_INT | MP_ARG_KW_ONLY,  {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
+            {MP_QSTR_center_x, MP_ARG_INT | MP_ARG_KW_ONLY,  {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
+            {MP_QSTR_center_y, MP_ARG_INT | MP_ARG_KW_ONLY,  {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
+            {MP_QSTR_angle,    MP_ARG_OBJ | MP_ARG_KW_ONLY,  {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
+            {MP_QSTR_scale_x,  MP_ARG_OBJ | MP_ARG_KW_ONLY,  {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
+            {MP_QSTR_scale_y,  MP_ARG_OBJ | MP_ARG_KW_ONLY,  {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
+            {MP_QSTR_clip_x,   MP_ARG_INT | MP_ARG_KW_ONLY,  {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
+            {MP_QSTR_clip_y,   MP_ARG_INT | MP_ARG_KW_ONLY,  {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
+            {MP_QSTR_clip_w,   MP_ARG_INT | MP_ARG_KW_ONLY,  {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
+            {MP_QSTR_clip_h,   MP_ARG_INT | MP_ARG_KW_ONLY,  {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
+            {MP_QSTR_depth,    MP_ARG_INT | MP_ARG_KW_ONLY,  {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
+    };
 
-    sf2d_draw_texture(self->tex, _x, _y);
+    mp_arg_val_t args[DRAW_ARG_COUNT];
+    mp_arg_parse_all((mp_uint_t) n_args, pos_args, kw_args, DRAW_ARG_COUNT, allowed_args, args);
 
+    SELF(args[DRAW_ARG_SELF].u_obj);
+
+    int x = args[DRAW_ARG_X].u_int;
+    int y = args[DRAW_ARG_Y].u_int;
+
+    sf2d_draw_texture(self->tex, x, y);
+
+    return mp_const_none;
+}
+
+STATIC mp_obj_t mod_sf2d_Texture_draw_quad_uv(size_t n_args, const mp_obj_t *args) {
+    // self, l, t, r, b, u0, v0, u1, v1, params
+    return mp_const_none;
+}
+
+STATIC mp_obj_t mod_sf2d_Texture_set_pixel(size_t n_args, const mp_obj_t *args) {
+    // self, x, y, color
+    return mp_const_none;
+}
+
+STATIC mp_obj_t mod_sf2d_Texture_get_pixel(mp_obj_t self_in, mp_obj_t x, mp_obj_t y) {
+    // returns color
+    return mp_const_none;
+}
+
+STATIC mp_obj_t mod_sf2d_Texture_tile32(mp_obj_t self_in) {
     return mp_const_none;
 }
 
@@ -150,7 +221,11 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_sf2d_Texture_bind_color_obj, mod_sf2d_Textu
 STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_sf2d_Texture_bind_parameters_obj, mod_sf2d_Texture_bind_parameters);
 STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_sf2d_Texture_set_params_obj, mod_sf2d_Texture_set_params);
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_sf2d_Texture_get_params_obj, mod_sf2d_Texture_get_params);
-STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_sf2d_Texture_draw_obj, mod_sf2d_Texture_draw);
+STATIC MP_DEFINE_CONST_FUN_OBJ_KW(mod_sf2d_Texture_draw_obj, 3, mod_sf2d_Texture_draw);
+STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_sf2d_Texture_draw_quad_uv_obj, 10, 10, mod_sf2d_Texture_draw_quad_uv);
+STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_sf2d_Texture_set_pixel_obj, 4, 4, mod_sf2d_Texture_set_pixel);
+STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_sf2d_Texture_get_pixel_obj, mod_sf2d_Texture_get_pixel);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_sf2d_Texture_tile32_obj, mod_sf2d_Texture_tile32);
 
 STATIC const mp_map_elem_t mod_sf2d_Texture_locals_dict_table[] = {
         // Methods

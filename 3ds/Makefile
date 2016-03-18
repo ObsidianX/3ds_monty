@@ -22,7 +22,7 @@ INC += -I$(CTRULIB)/include
 INC += -I$(DEVKITPRO)/libsf2d/include
 
 CFLAGS_ARCH = -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft
-CFLAGS = -g -Wall -mword-relocations -fomit-frame-pointer -ffunction-sections $(CFLAGS_ARCH) $(INC)
+CFLAGS = -g -Wall -mword-relocations -fomit-frame-pointer -ffunction-sections $(CFLAGS_ARCH) $(INC) -Os
 CFLAGS += -DARM11 -D_3DS
 
 LDFLAGS = -specs=3dsx.specs -g $(CFLAGS_ARCH) -Wl,-Map,$(notdir $*.map) -L$(CTRULIB)/lib -L$(DEVKITPRO)/libsf2d/lib

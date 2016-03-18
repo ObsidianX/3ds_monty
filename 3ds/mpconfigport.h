@@ -43,6 +43,8 @@
 #define MICROPY_CPYTHON_COMPAT                  (0)
 #define MICROPY_LONGINT_IMPL                    (MICROPY_LONGINT_IMPL_LONGLONG)
 #define MICROPY_FLOAT_IMPL                      (MICROPY_FLOAT_IMPL_FLOAT)
+#define MICROPY_PY_UZLIB                        (1)
+#define MICROPY_PY_UJSON                        (1)
 
 // type definitions for the specific machine
 

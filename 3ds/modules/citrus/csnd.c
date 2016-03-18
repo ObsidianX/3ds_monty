@@ -76,14 +76,13 @@ STATIC const mp_rom_map_elem_t mp_module_citrus_csnd_globals_table[] = {
 
         // Classes
         {MP_ROM_QSTR(MP_QSTR_Sound),                MP_ROM_PTR(&mod_citrus_csnd_Sound_type)},
-        {MP_ROM_QSTR(MP_QSTR_Channel),              MP_ROM_PTR(&mod_citrus_csnd_Channel_type)},
 
         // Functions
         {MP_ROM_QSTR(MP_QSTR_init),                 MP_ROM_PTR(&mod_citrus_csnd_init_obj)},
         {MP_ROM_QSTR(MP_QSTR_exit),                 MP_ROM_PTR(&mod_citrus_csnd_exit_obj)},
         {MP_ROM_QSTR(MP_QSTR_set_channel_volume),   MP_ROM_PTR(&mod_citrus_csnd_set_channel_volume_obj)},
         {MP_ROM_QSTR(MP_QSTR_set_channel_looping),  MP_ROM_PTR(&mod_citrus_csnd_set_channel_looping_obj)},
-        {MP_ROM_QSTR(MP_QSTR_set_channel_encoding),  MP_ROM_PTR(&mod_citrus_csnd_set_channel_encoding_obj)},
+        {MP_ROM_QSTR(MP_QSTR_set_channel_encoding), MP_ROM_PTR(&mod_citrus_csnd_set_channel_encoding_obj)},
 
         // Encodings
         {MP_ROM_QSTR(MP_QSTR_ENCODING_PCM8),        MP_ROM_INT(CSND_ENCODING_PCM8)},
@@ -101,8 +100,8 @@ STATIC const mp_rom_map_elem_t mp_module_citrus_csnd_globals_table[] = {
         {MP_ROM_QSTR(MP_QSTR_FLAG_LINEAR_INTERP),   MP_ROM_INT(SOUND_LINEAR_INTERP)},
         {MP_ROM_QSTR(MP_QSTR_FLAG_REPEAT),          MP_ROM_INT(SOUND_REPEAT)},
         {MP_ROM_QSTR(MP_QSTR_FLAG_ONE_SHOT),        MP_ROM_INT(SOUND_ONE_SHOT)},
-        {MP_ROM_QSTR(MP_QSTR_FLAG_FORMAT_PCM8),     MP_ROM_INT(SOUND_FORMAT_8BIT)},
-        {MP_ROM_QSTR(MP_QSTR_FLAG_FORMAT_PCM16),    MP_ROM_INT(SOUND_FORMAT_16BIT)},
+        {MP_ROM_QSTR(MP_QSTR_FLAG_FORMAT_8BIT),     MP_ROM_INT(SOUND_FORMAT_8BIT)},
+        {MP_ROM_QSTR(MP_QSTR_FLAG_FORMAT_16BIT),    MP_ROM_INT(SOUND_FORMAT_16BIT)},
         {MP_ROM_QSTR(MP_QSTR_FLAG_FORMAT_ADPCM),    MP_ROM_INT(SOUND_FORMAT_ADPCM)},
         {MP_ROM_QSTR(MP_QSTR_FLAG_FORMAT_PSG),      MP_ROM_INT(SOUND_FORMAT_PSG)},
         {MP_ROM_QSTR(MP_QSTR_FLAG_ENABLE),          MP_ROM_INT(SOUND_ENABLE)},

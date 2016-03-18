@@ -11,5 +11,7 @@ include_directories(.)
 set(MOD_PY_ARRAY)
 set(MICROPY_PY_IO)
 set(MICROPY_PY_IO_FILEIO)
+set(MICROPY_PY_UZLIB)
+set(MICROPY_PY_UJSON)
 
 add_executable(micropython ${SOURCE_FILES})

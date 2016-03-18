@@ -187,6 +187,35 @@ STATIC mp_obj_t mod_sf2d_rgba8_get_a(mp_obj_t rgba8) {
     return mp_obj_new_int(RGBA8_GET_A(color));
 }
 
+enum {
+    SCISSOR_ARG_MODE = 0,
+    SCISSOR_ARG_X,
+    SCISSOR_ARG_Y,
+    SCISSOR_ARG_W,
+    SCISSOR_ARG_H
+};
+
+STATIC mp_obj_t mod_sf2d_set_scissor_test(size_t n_args, const mp_obj_t *args) {
+    // mode, x, y, w, h
+    int mode = mp_obj_get_int(args[SCISSOR_ARG_MODE]);
+    int x = mp_obj_get_int(args[SCISSOR_ARG_X]);
+    int y = mp_obj_get_int(args[SCISSOR_ARG_Y]);
+    int w = mp_obj_get_int(args[SCISSOR_ARG_W]);
+    int h = mp_obj_get_int(args[SCISSOR_ARG_H]);
+
+    sf2d_set_scissor_test(mode, x, y, w, h);
+
+    return mp_const_none;
+}
+
+STATIC mp_obj_t mod_sf2d_get_current_screen(void) {
+    return mp_obj_new_int(sf2d_get_current_screen());
+}
+
+STATIC mp_obj_t mod_sf2d_get_current_side(void) {
+    return mp_obj_new_int(sf2d_get_current_side());
+}
+
 STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_sf2d_init_obj, mod_sf2d_init);
 STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_sf2d_init_advanced_obj, mod_sf2d_init_advanced);
 STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_sf2d_fini_obj, mod_sf2d_fini);
@@ -206,6 +235,9 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_sf2d_rgba8_get_r_obj, mod_sf2d_rgba8_get_r)
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_sf2d_rgba8_get_g_obj, mod_sf2d_rgba8_get_g);
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_sf2d_rgba8_get_b_obj, mod_sf2d_rgba8_get_b);
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_sf2d_rgba8_get_a_obj, mod_sf2d_rgba8_get_a);
+STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_sf2d_set_scissor_test_obj, 5, 5, mod_sf2d_set_scissor_test);
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_sf2d_get_current_screen_obj, mod_sf2d_get_current_screen);
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_sf2d_get_current_side_obj, mod_sf2d_get_current_side);
 
 STATIC const mp_rom_map_elem_t mp_module_sf2d_globals_table[] = {
         // Package Info
@@ -231,6 +263,9 @@ STATIC const mp_rom_map_elem_t mp_module_sf2d_globals_table[] = {
         {MP_ROM_QSTR(MP_QSTR_rgba8_get_g),           MP_ROM_PTR(&mod_sf2d_rgba8_get_g_obj)},
         {MP_ROM_QSTR(MP_QSTR_rgba8_get_b),           MP_ROM_PTR(&mod_sf2d_rgba8_get_b_obj)},
         {MP_ROM_QSTR(MP_QSTR_rgba8_get_a),           MP_ROM_PTR(&mod_sf2d_rgba8_get_a_obj)},
+        {MP_ROM_QSTR(MP_QSTR_set_scissor_test),      MP_ROM_PTR(&mod_sf2d_set_scissor_test_obj)},
+        {MP_ROM_QSTR(MP_QSTR_get_current_screen),    MP_ROM_PTR(&mod_sf2d_get_current_screen_obj)},
+        {MP_ROM_QSTR(MP_QSTR_get_current_side),      MP_ROM_PTR(&mod_sf2d_get_current_side_obj)},
 
         // sf2d_texfmt
         {MP_ROM_QSTR(MP_QSTR_TEXFMT_RGBA8),          MP_ROM_INT(TEXFMT_RGBA8)},

@@ -4,6 +4,7 @@
 #include <3ds.h>
 
 #include "py/runtime.h"
+#include "py/objstr.h"
 
 #define SELF(src) mod_citrus_csnd_Sound_t *self = src
 
@@ -17,6 +18,7 @@
 
 const mp_obj_type_t mod_citrus_csnd_Sound_type;
 STATIC const mp_obj_fun_builtin_t mod_citrus_csnd_Sound___del___obj;
+STATIC const mp_obj_fun_builtin_t mod_citrus_csnd_Sound_play_obj;
 
 typedef struct {
     mp_obj_base_t base;
@@ -33,7 +35,7 @@ typedef struct {
 STATIC void _mod_citrus_csnd_Sound_data_from_string(mp_obj_t obj, mp_obj_t data) {
     SELF(obj);
 
-    if (MP_OBJ_IS_STR(data)) {
+    if (MP_OBJ_IS_STR_OR_BYTES(data)) {
         mp_buffer_info_t bufferinfo;
         mp_get_buffer_raise(data, &bufferinfo, MP_BUFFER_READ);
 
@@ -48,7 +50,7 @@ STATIC void _mod_citrus_csnd_Sound_data_from_string(mp_obj_t obj, mp_obj_t data)
         if (!self->data) {
             nlr_raise(mp_obj_new_exception_msg(&mp_type_MemoryError, "not enough memory to allocate sound buffer"));
         }
-        memcpy(bufferinfo.buf, self->data, bufferinfo.len);
+        memcpy(self->data, bufferinfo.buf, bufferinfo.len);
         self->size = bufferinfo.len;
     } else {
         self->data = NULL;
@@ -103,6 +105,7 @@ STATIC mp_obj_t mod_citrus_csnd_Sound_make_new(const mp_obj_type_t *type, size_t
     obj->sample_rate = args[NEW_ARG_SAMPLE_RATE].u_int;
     obj->volume = vol;
     obj->pan = pan;
+    obj->data = NULL;
 
     _mod_citrus_csnd_Sound_data_from_string(obj, data_obj);
 
@@ -121,6 +124,8 @@ STATIC void mod_citrus_csnd_Sound_attr(mp_obj_t self_in, qstr attr, mp_obj_t *de
     if (load) {
         if (!strcmp(name, qstr_str(MP_QSTR___del__))) {
             dest[0] = (mp_obj_t) &mod_citrus_csnd_Sound___del___obj;
+        } else if (!strcmp(name, qstr_str(MP_QSTR_play))) {
+            dest[0] = (mp_obj_t) &mod_citrus_csnd_Sound_play_obj;
         }
         if (dest[0] != MP_OBJ_NULL) {
             dest[1] = self_in;
