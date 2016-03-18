@@ -739,7 +739,7 @@ typedef double mp_float_t;
 
 // Whether to provide "io.FileIO" class
 #ifndef MICROPY_PY_IO_FILEIO
-#define MICROPY_PY_IO_FILEIO (0)
+#define MICROPY_PY_IO_FILEIO (1)
 #endif
 
 // Whether to provide "io.BytesIO" class

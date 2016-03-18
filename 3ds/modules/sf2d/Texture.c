@@ -7,7 +7,7 @@
 #include "helpers.h"
 #include "../citrus/helpers.h"
 
-#define SELF(src) mod_sf2d_Texture_t *self = src;
+#define SELF(src) mod_sf2d_Texture_t *self = src
 
 const mp_obj_type_t mod_sf2d_Texture_type;
 STATIC const mp_obj_fun_builtin_t mod_sf2d_Texture___del___obj;

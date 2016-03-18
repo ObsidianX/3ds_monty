@@ -4,7 +4,7 @@
 
 #include "py/runtime.h"
 
-#define SELF(src) mod_citrus_apt_Hook_t *self = src;
+#define SELF(src) mod_citrus_apt_Hook_t *self = src
 
 const mp_obj_type_t mod_citrus_apt_Hook_type;
 STATIC const mp_obj_fun_builtin_t mod_citrus_apt_Hook___del___obj;
@@ -31,7 +31,7 @@ STATIC mp_obj_t mod_citrus_apt_Hook_make_new(const mp_obj_type_t *type, size_t n
     mp_arg_check_num(n_args, n_kw, 1, NEW_ARG_COUNT, true);
 
     static const mp_arg_t allowed_args[] = {
-            {MP_QSTR_callback, MP_ARG_OBJ | MP_ARG_REQUIRED, {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
+            {MP_QSTR_callback, MP_ARG_OBJ | MP_ARG_REQUIRED, {}},
     };
 
     mp_arg_val_t args[NEW_ARG_COUNT];

@@ -40,7 +40,7 @@ STATIC mp_obj_t mod_citrus_httpc_Request_make_new(const mp_obj_type_t *type, siz
     mp_arg_check_num(n_args, n_kw, 1, NEW_ARG_COUNT, true);
 
     static const mp_arg_t allowed_args[] = {
-            {MP_QSTR_url,       MP_ARG_OBJ | MP_ARG_REQUIRED, {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
+            {MP_QSTR_url,       MP_ARG_OBJ | MP_ARG_REQUIRED, {}},
             {MP_QSTR_method,    MP_ARG_INT,                   {.u_int = HTTPC_METHOD_GET}},
             {MP_QSTR_use_proxy, MP_ARG_BOOL,                  {.u_bool = false}},
     };
