@@ -2,6 +2,14 @@
 
 #include "py/runtime.h"
 
+#define METHOD_OBJ_N(__args, __n) \
+    STATIC MP_DEFINE_CONST_FUN_OBJ_##__args(mod_citrus_apt_##__n##_obj, mod_citrus_apt_##__n)
+
+#define LOCAL_METHOD(__n) \
+    {MP_OBJ_NEW_QSTR(MP_QSTR_##__n), (mp_obj_t) &mod_citrus_apt_##__n##_obj}
+#define LOCAL_INT(__n, __v) \
+    {MP_ROM_QSTR(MP_QSTR_##__n), MP_ROM_INT(__v)}
+
 extern const mp_obj_type_t mod_citrus_apt_Hook_type;
 
 STATIC APT_AppStatus _mod_citrus_apt_get_app_status(mp_obj_t status) {
@@ -84,93 +92,93 @@ STATIC mp_obj_t mod_citrus_apt_main_loop(void) {
     return mp_obj_new_bool(aptMainLoop());
 }
 
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_init_obj, mod_citrus_apt_init);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_exit_obj, mod_citrus_apt_exit);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_open_session_obj, mod_citrus_apt_open_session);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_close_session_obj, mod_citrus_apt_close_session);
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_citrus_apt_set_status_obj, mod_citrus_apt_set_status);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_get_status_obj, mod_citrus_apt_get_status);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_get_status_power_obj, mod_citrus_apt_get_status_power);
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_citrus_apt_set_status_power_obj, mod_citrus_apt_set_status_power);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_return_to_menu_obj, mod_citrus_apt_return_to_menu);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_wait_status_event_obj, mod_citrus_apt_wait_status_event);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_signal_ready_for_sleep_obj, mod_citrus_apt_signal_ready_for_sleep);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_get_menu_app_id_obj, mod_citrus_apt_get_menu_app_id);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_apt_main_loop_obj, mod_citrus_apt_main_loop);
+METHOD_OBJ_N(0, init);
+METHOD_OBJ_N(0, exit);
+METHOD_OBJ_N(0, open_session);
+METHOD_OBJ_N(0, close_session);
+METHOD_OBJ_N(1, set_status);
+METHOD_OBJ_N(0, get_status);
+METHOD_OBJ_N(0, get_status_power);
+METHOD_OBJ_N(1, set_status_power);
+METHOD_OBJ_N(0, return_to_menu);
+METHOD_OBJ_N(0, wait_status_event);
+METHOD_OBJ_N(0, signal_ready_for_sleep);
+METHOD_OBJ_N(0, get_menu_app_id);
+METHOD_OBJ_N(0, main_loop);
 
 STATIC const mp_rom_map_elem_t mp_module_citrus_apt_globals_table[] = {
         // Package Info
-        {MP_ROM_QSTR(MP_QSTR___name__),                 MP_ROM_QSTR(MP_QSTR_apt)},
+        {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_apt)},
 
         // Classes
-        {MP_ROM_QSTR(MP_QSTR_Hook),                     MP_ROM_PTR(&mod_citrus_apt_Hook_type)},
+        {MP_ROM_QSTR(MP_QSTR_Hook), MP_ROM_PTR(&mod_citrus_apt_Hook_type)},
 
         // Functions
-        {MP_ROM_QSTR(MP_QSTR_init),                     MP_ROM_PTR(&mod_citrus_apt_init_obj)},
-        {MP_ROM_QSTR(MP_QSTR_exit),                     MP_ROM_PTR(&mod_citrus_apt_exit_obj)},
-        {MP_ROM_QSTR(MP_QSTR_open_session),             MP_ROM_PTR(&mod_citrus_apt_open_session_obj)},
-        {MP_ROM_QSTR(MP_QSTR_close_session),            MP_ROM_PTR(&mod_citrus_apt_close_session_obj)},
-        {MP_ROM_QSTR(MP_QSTR_set_status),               MP_ROM_PTR(&mod_citrus_apt_set_status_obj)},
-        {MP_ROM_QSTR(MP_QSTR_get_status),               MP_ROM_PTR(&mod_citrus_apt_get_status_obj)},
-        {MP_ROM_QSTR(MP_QSTR_get_status_power),         MP_ROM_PTR(&mod_citrus_apt_get_status_power_obj)},
-        {MP_ROM_QSTR(MP_QSTR_set_status_power),         MP_ROM_PTR(&mod_citrus_apt_set_status_power_obj)},
-        {MP_ROM_QSTR(MP_QSTR_return_to_menu),           MP_ROM_PTR(&mod_citrus_apt_return_to_menu_obj)},
-        {MP_ROM_QSTR(MP_QSTR_wait_status_event),        MP_ROM_PTR(&mod_citrus_apt_wait_status_event_obj)},
-        {MP_ROM_QSTR(MP_QSTR_signal_ready_for_sleep),   MP_ROM_PTR(&mod_citrus_apt_signal_ready_for_sleep_obj)},
-        {MP_ROM_QSTR(MP_QSTR_get_menu_app_id),          MP_ROM_PTR(&mod_citrus_apt_get_menu_app_id_obj)},
-        {MP_ROM_QSTR(MP_QSTR_main_loop),                MP_ROM_PTR(&mod_citrus_apt_main_loop_obj)},
+        LOCAL_METHOD(init),
+        LOCAL_METHOD(exit),
+        LOCAL_METHOD(open_session),
+        LOCAL_METHOD(close_session),
+        LOCAL_METHOD(set_status),
+        LOCAL_METHOD(get_status),
+        LOCAL_METHOD(get_status_power),
+        LOCAL_METHOD(set_status_power),
+        LOCAL_METHOD(return_to_menu),
+        LOCAL_METHOD(wait_status_event),
+        LOCAL_METHOD(signal_ready_for_sleep),
+        LOCAL_METHOD(get_menu_app_id),
+        LOCAL_METHOD(main_loop),
 
         // NS_APPID
-        {MP_ROM_QSTR(MP_QSTR_APPID_HOMEMENU),           MP_ROM_INT(APPID_HOMEMENU)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_CAMERA),             MP_ROM_INT(APPID_CAMERA)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_FRIENDS_LIST),       MP_ROM_INT(APPID_FRIENDS_LIST)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_GAME_NOTES),         MP_ROM_INT(APPID_GAME_NOTES)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_WEB),                MP_ROM_INT(APPID_WEB)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_INSTRUCTION_MANUAL), MP_ROM_INT(APPID_INSTRUCTION_MANUAL)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_NOTIFICATIONS),      MP_ROM_INT(APPID_NOTIFICATIONS)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_MIIVERSE),           MP_ROM_INT(APPID_MIIVERSE)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_MIIVERSE_POSTING),   MP_ROM_INT(APPID_MIIVERSE_POSTING)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_AMIIBO_SETTINGS),    MP_ROM_INT(APPID_AMIIBO_SETTINGS)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_APPLICATION),        MP_ROM_INT(APPID_APPLICATION)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_ESHOP),              MP_ROM_INT(APPID_ESHOP)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_SOFTWARE_KEYBOARD),  MP_ROM_INT(APPID_SOFTWARE_KEYBOARD)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_APPLETED),           MP_ROM_INT(APPID_APPLETED)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_PNOTE_AP),           MP_ROM_INT(APPID_PNOTE_AP)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_SNOTE_AP),           MP_ROM_INT(APPID_SNOTE_AP)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_ERROR),              MP_ROM_INT(APPID_ERROR)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_MINT),               MP_ROM_INT(APPID_MINT)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_EXTRAPAD),           MP_ROM_INT(APPID_EXTRAPAD)},
-        {MP_ROM_QSTR(MP_QSTR_APPID_MEMOLIB),            MP_ROM_INT(APPID_MEMOLIB)},
+        LOCAL_INT(APPID_HOMEMENU, APPID_HOMEMENU),
+        LOCAL_INT(APPID_CAMERA, APPID_CAMERA),
+        LOCAL_INT(APPID_FRIENDS_LIST, APPID_FRIENDS_LIST),
+        LOCAL_INT(APPID_GAME_NOTES, APPID_GAME_NOTES),
+        LOCAL_INT(APPID_WEB, APPID_WEB),
+        LOCAL_INT(APPID_INSTRUCTION_MANUAL, APPID_INSTRUCTION_MANUAL),
+        LOCAL_INT(APPID_NOTIFICATIONS, APPID_NOTIFICATIONS),
+        LOCAL_INT(APPID_MIIVERSE, APPID_MIIVERSE),
+        LOCAL_INT(APPID_MIIVERSE_POSTING, APPID_MIIVERSE_POSTING),
+        LOCAL_INT(APPID_AMIIBO_SETTINGS, APPID_AMIIBO_SETTINGS),
+        LOCAL_INT(APPID_APPLICATION, APPID_APPLICATION),
+        LOCAL_INT(APPID_ESHOP, APPID_ESHOP),
+        LOCAL_INT(APPID_SOFTWARE_KEYBOARD, APPID_SOFTWARE_KEYBOARD),
+        LOCAL_INT(APPID_APPLETED, APPID_APPLETED),
+        LOCAL_INT(APPID_PNOTE_AP, APPID_PNOTE_AP),
+        LOCAL_INT(APPID_SNOTE_AP, APPID_SNOTE_AP),
+        LOCAL_INT(APPID_ERROR, APPID_ERROR),
+        LOCAL_INT(APPID_MINT, APPID_MINT),
+        LOCAL_INT(APPID_EXTRAPAD, APPID_EXTRAPAD),
+        LOCAL_INT(APPID_MEMOLIB, APPID_MEMOLIB),
 
         // APT_AppStatus
-        {MP_ROM_QSTR(MP_QSTR_STATUS_NOTINITIALIZED),    MP_ROM_INT(APP_NOTINITIALIZED)},
-        {MP_ROM_QSTR(MP_QSTR_STATUS_RUNNING),           MP_ROM_INT(APP_RUNNING)},
-        {MP_ROM_QSTR(MP_QSTR_STATUS_SUSPENDED),         MP_ROM_INT(APP_SUSPENDED)},
-        {MP_ROM_QSTR(MP_QSTR_STATUS_EXITING),           MP_ROM_INT(APP_EXITING)},
-        {MP_ROM_QSTR(MP_QSTR_STATUS_SUSPENDING),        MP_ROM_INT(APP_SUSPENDING)},
-        {MP_ROM_QSTR(MP_QSTR_STATUS_SLEEPMODE),         MP_ROM_INT(APP_SLEEPMODE)},
-        {MP_ROM_QSTR(MP_QSTR_STATUS_PREPARE_SLEEPMODE), MP_ROM_INT(APP_PREPARE_SLEEPMODE)},
-        {MP_ROM_QSTR(MP_QSTR_STATUS_APPLETSTARTED),     MP_ROM_INT(APP_APPLETSTARTED)},
-        {MP_ROM_QSTR(MP_QSTR_STATUS_APPLETCLOSED),      MP_ROM_INT(APP_APPLETCLOSED)},
+        LOCAL_INT(STATUS_NOTINITIALIZED, APP_NOTINITIALIZED),
+        LOCAL_INT(STATUS_RUNNING, APP_RUNNING),
+        LOCAL_INT(STATUS_SUSPENDED, APP_SUSPENDED),
+        LOCAL_INT(STATUS_EXITING, APP_EXITING),
+        LOCAL_INT(STATUS_SUSPENDING, APP_SUSPENDING),
+        LOCAL_INT(STATUS_SLEEPMODE, APP_SLEEPMODE),
+        LOCAL_INT(STATUS_PREPARE_SLEEPMODE, APP_PREPARE_SLEEPMODE),
+        LOCAL_INT(STATUS_APPLETSTARTED, APP_APPLETSTARTED),
+        LOCAL_INT(STATUS_APPLETCLOSED, APP_APPLETCLOSED),
 
         // APT_Signal
-        {MP_ROM_QSTR(MP_QSTR_SIGNAL_HOMEBUTTON),        MP_ROM_INT(APTSIGNAL_HOMEBUTTON)},
-        {MP_ROM_QSTR(MP_QSTR_SIGNAL_PREPARESLEEP),      MP_ROM_INT(APTSIGNAL_PREPARESLEEP)},
-        {MP_ROM_QSTR(MP_QSTR_SIGNAL_ENTERSLEEP),        MP_ROM_INT(APTSIGNAL_ENTERSLEEP)},
-        {MP_ROM_QSTR(MP_QSTR_SIGNAL_WAKEUP),            MP_ROM_INT(APTSIGNAL_WAKEUP)},
-        {MP_ROM_QSTR(MP_QSTR_SIGNAL_ENABLE),            MP_ROM_INT(APTSIGNAL_ENABLE)},
-        {MP_ROM_QSTR(MP_QSTR_SIGNAL_POWERBUTTON),       MP_ROM_INT(APTSIGNAL_POWERBUTTON)},
-        {MP_ROM_QSTR(MP_QSTR_SIGNAL_UTILITY),           MP_ROM_INT(APTSIGNAL_UTILITY)},
-        {MP_ROM_QSTR(MP_QSTR_SIGNAL_SLEEPSYSTEM),       MP_ROM_INT(APTSIGNAL_SLEEPSYSTEM)},
-        {MP_ROM_QSTR(MP_QSTR_SIGNAL_ERROR),             MP_ROM_INT(APTSIGNAL_ERROR)},
+        LOCAL_INT(SIGNAL_HOMEBUTTON, APTSIGNAL_HOMEBUTTON),
+        LOCAL_INT(SIGNAL_PREPARESLEEP, APTSIGNAL_PREPARESLEEP),
+        LOCAL_INT(SIGNAL_ENTERSLEEP, APTSIGNAL_ENTERSLEEP),
+        LOCAL_INT(SIGNAL_WAKEUP, APTSIGNAL_WAKEUP),
+        LOCAL_INT(SIGNAL_ENABLE, APTSIGNAL_ENABLE),
+        LOCAL_INT(SIGNAL_POWERBUTTON, APTSIGNAL_POWERBUTTON),
+        LOCAL_INT(SIGNAL_UTILITY, APTSIGNAL_UTILITY),
+        LOCAL_INT(SIGNAL_SLEEPSYSTEM, APTSIGNAL_SLEEPSYSTEM),
+        LOCAL_INT(SIGNAL_ERROR, APTSIGNAL_ERROR),
 
         // APT_HookType
-        {MP_ROM_QSTR(MP_QSTR_HOOK_ONSUSPEND),           MP_ROM_INT(APTHOOK_ONSUSPEND)},
-        {MP_ROM_QSTR(MP_QSTR_HOOK_ONRESTORE),           MP_ROM_INT(APTHOOK_ONRESTORE)},
-        {MP_ROM_QSTR(MP_QSTR_HOOK_ONSLEEP),             MP_ROM_INT(APTHOOK_ONSLEEP)},
-        {MP_ROM_QSTR(MP_QSTR_HOOK_ONWAKEUP),            MP_ROM_INT(APTHOOK_ONWAKEUP)},
-        {MP_ROM_QSTR(MP_QSTR_HOOK_ONEXIT),              MP_ROM_INT(APTHOOK_ONEXIT)},
-        {MP_ROM_QSTR(MP_QSTR_HOOK_COUNT),               MP_ROM_INT(APTHOOK_COUNT)},
+        LOCAL_INT(HOOK_ONSUSPEND, APTHOOK_ONSUSPEND),
+        LOCAL_INT(HOOK_ONRESTORE, APTHOOK_ONRESTORE),
+        LOCAL_INT(HOOK_ONSLEEP, APTHOOK_ONSLEEP),
+        LOCAL_INT(HOOK_ONWAKEUP, APTHOOK_ONWAKEUP),
+        LOCAL_INT(HOOK_ONEXIT, APTHOOK_ONEXIT),
+        LOCAL_INT(HOOK_COUNT, APTHOOK_COUNT),
 };
 
 STATIC MP_DEFINE_CONST_DICT(mp_module_citrus_apt_globals, mp_module_citrus_apt_globals_table);

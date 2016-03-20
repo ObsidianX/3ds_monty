@@ -4,6 +4,21 @@
 
 #include "citrus/helpers.h"
 
+#define METHOD_OBJ_N(__args, __n) \
+    STATIC MP_DEFINE_CONST_FUN_OBJ_##__args(mod_sf2d_##__n##_obj, mod_sf2d_##__n)
+#define METHOD_OBJ_VAR_N(__num, __n) \
+    STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_sf2d_##__n##_obj, __num, __num, mod_sf2d_##__n)
+
+#define LOCAL_CLASS(__n) \
+    {MP_ROM_QSTR(MP_QSTR_##__n), MP_ROM_PTR(&mod_sf2d_##__n##_type)}
+#define LOCAL_METHOD(__n) \
+    {MP_ROM_QSTR(MP_QSTR_##__n), (mp_obj_t) &mod_sf2d_##__n##_obj}
+#define LOCAL_INT(__n, __v) \
+    {MP_ROM_QSTR(MP_QSTR_##__n), MP_ROM_INT(__v)}
+
+extern const mp_obj_type_t mod_sf2d_Texture_type;
+extern const mp_obj_type_t mod_sf2d_RenderTarget_type;
+
 sf2d_texfmt _mod_sf2d_get_texfmt(mp_int_t format) {
     if (format >= TEXFMT_RGBA8 && format <= TEXFMT_ETC1A4) {
         return format;
@@ -56,7 +71,7 @@ STATIC mp_obj_t mod_sf2d_end_frame(void) {
     return mp_const_none;
 }
 
-STATIC mp_obj_t mod_sf2d_swapbuffers(void) {
+STATIC mp_obj_t mod_sf2d_swap_buffers(void) {
     sf2d_swapbuffers();
 
     return mp_const_none;
@@ -216,76 +231,80 @@ STATIC mp_obj_t mod_sf2d_get_current_side(void) {
     return mp_obj_new_int(sf2d_get_current_side());
 }
 
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_sf2d_init_obj, mod_sf2d_init);
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_sf2d_init_advanced_obj, mod_sf2d_init_advanced);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_sf2d_fini_obj, mod_sf2d_fini);
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_sf2d_set_3d_obj, mod_sf2d_set_3d);
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_sf2d_start_frame_obj, mod_sf2d_start_frame);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_sf2d_end_frame_obj, mod_sf2d_end_frame);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_sf2d_swapbuffers_obj, mod_sf2d_swapbuffers);
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_sf2d_set_vblank_wait_obj, mod_sf2d_set_vblank_wait);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_sf2d_get_fps_obj, mod_sf2d_get_fps);
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_sf2d_set_clear_color_obj, mod_sf2d_set_clear_color);
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_sf2d_draw_line_obj, 6, 6, mod_sf2d_draw_line);
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_sf2d_draw_rectangle_obj, 5, 5, mod_sf2d_draw_rectangle);
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_sf2d_draw_rectangle_rotate_obj, 6, 6, mod_sf2d_draw_rectangle_rotate);
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_sf2d_draw_fill_circle_obj, 4, 4, mod_sf2d_draw_fill_circle);
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_sf2d_rgba8_obj, 4, 4, mod_sf2d_rgba8);
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_sf2d_rgba8_get_r_obj, mod_sf2d_rgba8_get_r);
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_sf2d_rgba8_get_g_obj, mod_sf2d_rgba8_get_g);
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_sf2d_rgba8_get_b_obj, mod_sf2d_rgba8_get_b);
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_sf2d_rgba8_get_a_obj, mod_sf2d_rgba8_get_a);
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_sf2d_set_scissor_test_obj, 5, 5, mod_sf2d_set_scissor_test);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_sf2d_get_current_screen_obj, mod_sf2d_get_current_screen);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_sf2d_get_current_side_obj, mod_sf2d_get_current_side);
+METHOD_OBJ_N(0, init);
+METHOD_OBJ_N(2, init_advanced);
+METHOD_OBJ_N(0, fini);
+METHOD_OBJ_N(1, set_3d);
+METHOD_OBJ_N(2, start_frame);
+METHOD_OBJ_N(0, end_frame);
+METHOD_OBJ_N(0, swap_buffers);
+METHOD_OBJ_N(1, set_vblank_wait);
+METHOD_OBJ_N(0, get_fps);
+METHOD_OBJ_N(1, set_clear_color);
+METHOD_OBJ_VAR_N(6, draw_line);
+METHOD_OBJ_VAR_N(5, draw_rectangle);
+METHOD_OBJ_VAR_N(6, draw_rectangle_rotate);
+METHOD_OBJ_VAR_N(4, draw_fill_circle);
+METHOD_OBJ_VAR_N(4, rgba8);
+METHOD_OBJ_N(1, rgba8_get_r);
+METHOD_OBJ_N(1, rgba8_get_g);
+METHOD_OBJ_N(1, rgba8_get_b);
+METHOD_OBJ_N(1, rgba8_get_a);
+METHOD_OBJ_VAR_N(5, set_scissor_test);
+METHOD_OBJ_N(0, get_current_screen);
+METHOD_OBJ_N(0, get_current_side);
 
 STATIC const mp_rom_map_elem_t mp_module_sf2d_globals_table[] = {
         // Package Info
-        {MP_ROM_QSTR(MP_QSTR___name__),              MP_ROM_QSTR(MP_QSTR_sf2d)},
+        {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_sf2d)},
+
+        // Classes
+        LOCAL_CLASS(Texture),
+        LOCAL_CLASS(RenderTarget),
 
         // Functions
-        {MP_ROM_QSTR(MP_QSTR_init),                  MP_ROM_PTR(&mod_sf2d_init_obj)},
-        {MP_ROM_QSTR(MP_QSTR_init_advanced),         MP_ROM_PTR(&mod_sf2d_init_advanced_obj)},
-        {MP_ROM_QSTR(MP_QSTR_fini),                  MP_ROM_PTR(&mod_sf2d_fini_obj)},
-        {MP_ROM_QSTR(MP_QSTR_set_3d),                MP_ROM_PTR(&mod_sf2d_set_3d_obj)},
-        {MP_ROM_QSTR(MP_QSTR_start_frame),           MP_ROM_PTR(&mod_sf2d_start_frame_obj)},
-        {MP_ROM_QSTR(MP_QSTR_end_frame),             MP_ROM_PTR(&mod_sf2d_end_frame_obj)},
-        {MP_ROM_QSTR(MP_QSTR_swapbuffers),           MP_ROM_PTR(&mod_sf2d_swapbuffers_obj)},
-        {MP_ROM_QSTR(MP_QSTR_set_vblank_wait),       MP_ROM_PTR(&mod_sf2d_set_vblank_wait_obj)},
-        {MP_ROM_QSTR(MP_QSTR_get_fps),               MP_ROM_PTR(&mod_sf2d_get_fps_obj)},
-        {MP_ROM_QSTR(MP_QSTR_set_clear_color),       MP_ROM_PTR(&mod_sf2d_set_clear_color_obj)},
-        {MP_ROM_QSTR(MP_QSTR_draw_line),             MP_ROM_PTR(&mod_sf2d_draw_line_obj)},
-        {MP_ROM_QSTR(MP_QSTR_draw_rectangle),        MP_ROM_PTR(&mod_sf2d_draw_rectangle_obj)},
-        {MP_ROM_QSTR(MP_QSTR_draw_rectangle_rotate), MP_ROM_PTR(&mod_sf2d_draw_rectangle_rotate_obj)},
-        {MP_ROM_QSTR(MP_QSTR_draw_fill_circle),      MP_ROM_PTR(&mod_sf2d_draw_fill_circle_obj)},
-        {MP_ROM_QSTR(MP_QSTR_rgba8),                 MP_ROM_PTR(&mod_sf2d_rgba8_obj)},
-        {MP_ROM_QSTR(MP_QSTR_rgba8_get_r),           MP_ROM_PTR(&mod_sf2d_rgba8_get_r_obj)},
-        {MP_ROM_QSTR(MP_QSTR_rgba8_get_g),           MP_ROM_PTR(&mod_sf2d_rgba8_get_g_obj)},
-        {MP_ROM_QSTR(MP_QSTR_rgba8_get_b),           MP_ROM_PTR(&mod_sf2d_rgba8_get_b_obj)},
-        {MP_ROM_QSTR(MP_QSTR_rgba8_get_a),           MP_ROM_PTR(&mod_sf2d_rgba8_get_a_obj)},
-        {MP_ROM_QSTR(MP_QSTR_set_scissor_test),      MP_ROM_PTR(&mod_sf2d_set_scissor_test_obj)},
-        {MP_ROM_QSTR(MP_QSTR_get_current_screen),    MP_ROM_PTR(&mod_sf2d_get_current_screen_obj)},
-        {MP_ROM_QSTR(MP_QSTR_get_current_side),      MP_ROM_PTR(&mod_sf2d_get_current_side_obj)},
+        LOCAL_METHOD(init),
+        LOCAL_METHOD(init_advanced),
+        LOCAL_METHOD(fini),
+        LOCAL_METHOD(set_3d),
+        LOCAL_METHOD(start_frame),
+        LOCAL_METHOD(end_frame),
+        LOCAL_METHOD(swap_buffers),
+        LOCAL_METHOD(set_vblank_wait),
+        LOCAL_METHOD(get_fps),
+        LOCAL_METHOD(set_clear_color),
+        LOCAL_METHOD(draw_line),
+        LOCAL_METHOD(draw_rectangle),
+        LOCAL_METHOD(draw_rectangle_rotate),
+        LOCAL_METHOD(draw_fill_circle),
+        LOCAL_METHOD(rgba8),
+        LOCAL_METHOD(rgba8_get_r),
+        LOCAL_METHOD(rgba8_get_g),
+        LOCAL_METHOD(rgba8_get_b),
+        LOCAL_METHOD(rgba8_get_a),
+        LOCAL_METHOD(set_scissor_test),
+        LOCAL_METHOD(get_current_screen),
+        LOCAL_METHOD(get_current_side),
 
         // sf2d_texfmt
-        {MP_ROM_QSTR(MP_QSTR_TEXFMT_RGBA8),          MP_ROM_INT(TEXFMT_RGBA8)},
-        {MP_ROM_QSTR(MP_QSTR_TEXFMT_RGB8),           MP_ROM_INT(TEXFMT_RGB8)},
-        {MP_ROM_QSTR(MP_QSTR_TEXFMT_RGB5A1),         MP_ROM_INT(TEXFMT_RGB5A1)},
-        {MP_ROM_QSTR(MP_QSTR_TEXFMT_RGB565),         MP_ROM_INT(TEXFMT_RGB565)},
-        {MP_ROM_QSTR(MP_QSTR_TEXFMT_RGBA4),          MP_ROM_INT(TEXFMT_RGBA4)},
-        {MP_ROM_QSTR(MP_QSTR_TEXFMT_IA8),            MP_ROM_INT(TEXFMT_IA8)},
-        {MP_ROM_QSTR(MP_QSTR_TEXFMT_I8),             MP_ROM_INT(TEXFMT_I8)},
-        {MP_ROM_QSTR(MP_QSTR_TEXFMT_A8),             MP_ROM_INT(TEXFMT_A8)},
-        {MP_ROM_QSTR(MP_QSTR_TEXFMT_IA4),            MP_ROM_INT(TEXFMT_IA4)},
-        {MP_ROM_QSTR(MP_QSTR_TEXFMT_I4),             MP_ROM_INT(TEXFMT_I4)},
-        {MP_ROM_QSTR(MP_QSTR_TEXFMT_A4),             MP_ROM_INT(TEXFMT_A4)},
-        {MP_ROM_QSTR(MP_QSTR_TEXFMT_ETC1),           MP_ROM_INT(TEXFMT_ETC1)},
-        {MP_ROM_QSTR(MP_QSTR_TEXFMT_ETC1A4),         MP_ROM_INT(TEXFMT_ETC1A4)},
+        LOCAL_INT(TEXFMT_RGBA8, TEXFMT_RGBA8),
+        LOCAL_INT(TEXFMT_RGB8, TEXFMT_RGB8),
+        LOCAL_INT(TEXFMT_RGB5A1, TEXFMT_RGB5A1),
+        LOCAL_INT(TEXFMT_RGB565, TEXFMT_RGB565),
+        LOCAL_INT(TEXFMT_RGBA4, TEXFMT_RGBA4),
+        LOCAL_INT(TEXFMT_IA8, TEXFMT_IA8),
+        LOCAL_INT(TEXFMT_I8, TEXFMT_I8),
+        LOCAL_INT(TEXFMT_A8, TEXFMT_A8),
+        LOCAL_INT(TEXFMT_IA4, TEXFMT_IA4),
+        LOCAL_INT(TEXFMT_I4, TEXFMT_I4),
+        LOCAL_INT(TEXFMT_A4, TEXFMT_A4),
+        LOCAL_INT(TEXFMT_ETC1, TEXFMT_ETC1),
+        LOCAL_INT(TEXFMT_ETC1A4, TEXFMT_ETC1A4),
 
         // sf2d_place
-        {MP_ROM_QSTR(MP_QSTR_PLACE_RAM),             MP_ROM_INT(SF2D_PLACE_RAM)},
-        {MP_ROM_QSTR(MP_QSTR_PLACE_VRAM),            MP_ROM_INT(SF2D_PLACE_VRAM)},
-        {MP_ROM_QSTR(MP_QSTR_PLACE_TEMP),            MP_ROM_INT(SF2D_PLACE_TEMP)},
+        LOCAL_INT(PLACE_RAM, SF2D_PLACE_RAM),
+        LOCAL_INT(PLACE_VRAM, SF2D_PLACE_VRAM),
+        LOCAL_INT(PLACE_TEMP, SF2D_PLACE_TEMP),
 };
 
 STATIC MP_DEFINE_CONST_DICT(mp_module_sf2d_globals, mp_module_sf2d_globals_table);

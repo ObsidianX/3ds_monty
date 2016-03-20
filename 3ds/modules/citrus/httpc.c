@@ -5,6 +5,16 @@
 // 8kb
 #define DEFAULT_SHAREDMEM_SIZE 8192
 
+#define METHOD_OBJ_N(__args, __n) \
+    STATIC MP_DEFINE_CONST_FUN_OBJ_##__args(mod_citrus_httpc_##__n##_obj, mod_citrus_httpc_##__n)
+#define METHOD_OBJ_KW(__min, __n) \
+    STATIC MP_DEFINE_CONST_FUN_OBJ_KW(mod_citrus_httpc_##__n##_obj, __min, mod_citrus_httpc_##__n)
+
+#define LOCAL_METHOD(__n) \
+    {MP_OBJ_NEW_QSTR(MP_QSTR_##__n), (mp_obj_t) &mod_citrus_httpc_##__n##_obj}
+#define LOCAL_INT(__n, __v) \
+    {MP_ROM_QSTR(MP_QSTR_##__n), MP_ROM_INT(__v)}
+
 extern const mp_obj_type_t mod_citrus_httpc_Request_type;
 
 int _mod_citrus_httpc_get_request_method(int method) {
@@ -37,30 +47,30 @@ STATIC mp_obj_t mod_citrus_httpc_exit(void) {
     return mp_const_none;
 }
 
-STATIC MP_DEFINE_CONST_FUN_OBJ_KW(mod_citrus_httpc_init_obj, 0, mod_citrus_httpc_init);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_httpc_exit_obj, mod_citrus_httpc_exit);
+METHOD_OBJ_KW(0, init);
+METHOD_OBJ_N(0, exit);
 
 STATIC const mp_rom_map_elem_t mp_module_citrus_httpc_globals_table[] = {
         // Package Info
-        {MP_ROM_QSTR(MP_QSTR___name__),              MP_ROM_QSTR(MP_QSTR_httpc)},
+        {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_httpc)},
 
         // Classes
-        {MP_ROM_QSTR(MP_QSTR_Request),               MP_ROM_PTR(&mod_citrus_httpc_Request_type)},
+        {MP_ROM_QSTR(MP_QSTR_Request), MP_ROM_PTR(&mod_citrus_httpc_Request_type)},
 
         // Functions
-        {MP_ROM_QSTR(MP_QSTR_init),                  MP_ROM_PTR(&mod_citrus_httpc_init_obj)},
-        {MP_ROM_QSTR(MP_QSTR_exit),                  MP_ROM_PTR(&mod_citrus_httpc_exit_obj)},
+        LOCAL_METHOD(init),
+        LOCAL_METHOD(exit),
 
         // HTTPC_RequestMethod
-        {MP_ROM_QSTR(MP_QSTR_METHOD_GET),            MP_ROM_INT(HTTPC_METHOD_GET)},
-        {MP_ROM_QSTR(MP_QSTR_METHOD_POST),           MP_ROM_INT(HTTPC_METHOD_POST)},
-        {MP_ROM_QSTR(MP_QSTR_METHOD_HEAD),           MP_ROM_INT(HTTPC_METHOD_HEAD)},
-        {MP_ROM_QSTR(MP_QSTR_METHOD_PUT),            MP_ROM_INT(HTTPC_METHOD_PUT)},
-        {MP_ROM_QSTR(MP_QSTR_METHOD_DELETE),         MP_ROM_INT(HTTPC_METHOD_DELETE)},
+        LOCAL_INT(METHOD_GET, HTTPC_METHOD_GET),
+        LOCAL_INT(METHOD_POST, HTTPC_METHOD_POST),
+        LOCAL_INT(METHOD_HEAD, HTTPC_METHOD_HEAD),
+        LOCAL_INT(METHOD_PUT, HTTPC_METHOD_PUT),
+        LOCAL_INT(METHOD_DELETE, HTTPC_METHOD_DELETE),
 
         // HTTPC_RequestStatus
-        {MP_ROM_QSTR(MP_QSTR_STATUS_IN_PROGRESS),    MP_ROM_INT(HTTPC_STATUS_REQUEST_IN_PROGRESS)},
-        {MP_ROM_QSTR(MP_QSTR_STATUS_DOWNLOAD_READY), MP_ROM_INT(HTTPC_STATUS_DOWNLOAD_READY)},
+        LOCAL_INT(STATUS_IN_PROGRESS, HTTPC_STATUS_REQUEST_IN_PROGRESS),
+        LOCAL_INT(STATUS_DOWNLOAD_READY, HTTPC_STATUS_DOWNLOAD_READY),
 };
 
 STATIC MP_DEFINE_CONST_DICT(mp_module_citrus_httpc_globals, mp_module_citrus_httpc_globals_table);

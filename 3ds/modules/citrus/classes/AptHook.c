@@ -6,8 +6,12 @@
 
 #define SELF(src) mod_citrus_apt_Hook_t *self = src
 
+#define ATTR_METHOD(__n) \
+    if(!strcmp(name, qstr_str(MP_QSTR_##__n))) { \
+        dest[0] = (mp_obj_t) &mod_citrus_apt_Hook_##__n##_obj; \
+    }
+
 const mp_obj_type_t mod_citrus_apt_Hook_type;
-STATIC const mp_obj_fun_builtin_t mod_citrus_apt_Hook___del___obj;
 
 typedef struct {
     mp_obj_base_t base;
@@ -50,25 +54,6 @@ STATIC mp_obj_t mod_citrus_apt_Hook_make_new(const mp_obj_type_t *type, size_t n
     return obj;
 }
 
-STATIC void mod_citrus_apt_Hook_attr(mp_obj_t self_in, qstr attr, mp_obj_t *dest) {
-    const char *name = qstr_str(attr);
-    bool load = dest[0] == MP_OBJ_NULL;
-
-    // attributes are read-only
-    if (!load) {
-        return;
-    }
-
-    // Methods
-    if (!strcmp(name, qstr_str(MP_QSTR___del__))) {
-        dest[0] = (mp_obj_t) &mod_citrus_apt_Hook___del___obj;
-    }
-    if (dest[0] != MP_OBJ_NULL) {
-        dest[1] = self_in;
-        return;
-    }
-}
-
 STATIC void mod_citrus_apt_Hook_print(const mp_print_t *print, mp_obj_t self_in, mp_print_kind_t kind) {
     SELF(self_in);
 
@@ -84,6 +69,24 @@ STATIC mp_obj_t mod_citrus_apt_Hook___del__(mp_obj_t self_in) {
 }
 
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_citrus_apt_Hook___del___obj, mod_citrus_apt_Hook___del__);
+
+STATIC void mod_citrus_apt_Hook_attr(mp_obj_t self_in, qstr attr, mp_obj_t *dest) {
+    const char *name = qstr_str(attr);
+    bool load = dest[0] == MP_OBJ_NULL;
+
+    // attributes are read-only
+    if (!load) {
+        return;
+    }
+
+    // Methods
+    ATTR_METHOD(__del__)
+
+    if (dest[0] != MP_OBJ_NULL) {
+        dest[1] = self_in;
+        return;
+    }
+}
 
 STATIC const mp_map_elem_t mod_citrus_apt_Hook_locals_dict_table[] = {
         // Methods

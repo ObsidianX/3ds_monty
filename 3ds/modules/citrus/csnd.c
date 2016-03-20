@@ -2,6 +2,14 @@
 
 #include "py/runtime.h"
 
+#define METHOD_OBJ_N(__args, __n) \
+    STATIC MP_DEFINE_CONST_FUN_OBJ_##__args(mod_citrus_csnd_##__n##_obj, mod_citrus_csnd_##__n)
+
+#define LOCAL_METHOD(__n) \
+    {MP_OBJ_NEW_QSTR(MP_QSTR_##__n), (mp_obj_t) &mod_citrus_csnd_##__n##_obj}
+#define LOCAL_INT(__n, __v) \
+    {MP_ROM_QSTR(MP_QSTR_##__n), MP_ROM_INT(__v)}
+
 extern const mp_obj_type_t mod_citrus_csnd_Sound_type;
 extern const mp_obj_type_t mod_citrus_csnd_Channel_type;
 
@@ -64,54 +72,54 @@ STATIC mp_obj_t mod_citrus_csnd_set_channel_encoding(mp_obj_t channel, mp_obj_t 
     return mp_const_none;
 }
 
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_csnd_init_obj, mod_citrus_csnd_init);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_csnd_exit_obj, mod_citrus_csnd_exit);
-STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_citrus_csnd_set_channel_volume_obj, mod_citrus_csnd_set_channel_volume);
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_citrus_csnd_set_channel_looping_obj, mod_citrus_csnd_set_channel_looping);
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_citrus_csnd_set_channel_encoding_obj, mod_citrus_csnd_set_channel_encoding);
+METHOD_OBJ_N(0, init);
+METHOD_OBJ_N(0, exit);
+METHOD_OBJ_N(3, set_channel_volume);
+METHOD_OBJ_N(2, set_channel_looping);
+METHOD_OBJ_N(2, set_channel_encoding);
 
 STATIC const mp_rom_map_elem_t mp_module_citrus_csnd_globals_table[] = {
         // Package Info
-        {MP_ROM_QSTR(MP_QSTR___name__),             MP_ROM_QSTR(MP_QSTR_csnd)},
+        {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_csnd)},
 
         // Classes
-        {MP_ROM_QSTR(MP_QSTR_Sound),                MP_ROM_PTR(&mod_citrus_csnd_Sound_type)},
+        {MP_ROM_QSTR(MP_QSTR_Sound), MP_ROM_PTR(&mod_citrus_csnd_Sound_type)},
 
         // Functions
-        {MP_ROM_QSTR(MP_QSTR_init),                 MP_ROM_PTR(&mod_citrus_csnd_init_obj)},
-        {MP_ROM_QSTR(MP_QSTR_exit),                 MP_ROM_PTR(&mod_citrus_csnd_exit_obj)},
-        {MP_ROM_QSTR(MP_QSTR_set_channel_volume),   MP_ROM_PTR(&mod_citrus_csnd_set_channel_volume_obj)},
-        {MP_ROM_QSTR(MP_QSTR_set_channel_looping),  MP_ROM_PTR(&mod_citrus_csnd_set_channel_looping_obj)},
-        {MP_ROM_QSTR(MP_QSTR_set_channel_encoding), MP_ROM_PTR(&mod_citrus_csnd_set_channel_encoding_obj)},
+        LOCAL_METHOD(init),
+        LOCAL_METHOD(exit),
+        LOCAL_METHOD(set_channel_volume),
+        LOCAL_METHOD(set_channel_looping),
+        LOCAL_METHOD(set_channel_encoding),
 
         // Encodings
-        {MP_ROM_QSTR(MP_QSTR_ENCODING_PCM8),        MP_ROM_INT(CSND_ENCODING_PCM8)},
-        {MP_ROM_QSTR(MP_QSTR_ENCODING_PCM16),       MP_ROM_INT(CSND_ENCODING_PCM16)},
-        {MP_ROM_QSTR(MP_QSTR_ENCODING_ADPCM),       MP_ROM_INT(CSND_ENCODING_ADPCM)},
-        {MP_ROM_QSTR(MP_QSTR_ENCODING_PSG),         MP_ROM_INT(CSND_ENCODING_PSG)},
+        LOCAL_INT(ENCODING_PCM8, CSND_ENCODING_PCM8),
+        LOCAL_INT(ENCODING_PCM16, CSND_ENCODING_PCM16),
+        LOCAL_INT(ENCODING_ADPCM, CSND_ENCODING_ADPCM),
+        LOCAL_INT(ENCODING_PSG, CSND_ENCODING_PSG),
 
         // Loop Modes
-        {MP_ROM_QSTR(MP_QSTR_LOOP_MANUAL),          MP_ROM_INT(CSND_LOOPMODE_MANUAL)},
-        {MP_ROM_QSTR(MP_QSTR_LOOP_NORMAL),          MP_ROM_INT(CSND_LOOPMODE_NORMAL)},
-        {MP_ROM_QSTR(MP_QSTR_LOOP_ONESHOT),         MP_ROM_INT(CSND_LOOPMODE_ONESHOT)},
-        {MP_ROM_QSTR(MP_QSTR_LOOP_NORELOAD),        MP_ROM_INT(CSND_LOOPMODE_NORELOAD)},
+        LOCAL_INT(LOOP_MANUAL, CSND_LOOPMODE_MANUAL),
+        LOCAL_INT(LOOP_NORMAL, CSND_LOOPMODE_NORMAL),
+        LOCAL_INT(LOOP_ONESHOT, CSND_LOOPMODE_ONESHOT),
+        LOCAL_INT(LOOP_NORELOAD, CSND_LOOPMODE_NORELOAD),
 
         // Flags
-        {MP_ROM_QSTR(MP_QSTR_FLAG_LINEAR_INTERP),   MP_ROM_INT(SOUND_LINEAR_INTERP)},
-        {MP_ROM_QSTR(MP_QSTR_FLAG_REPEAT),          MP_ROM_INT(SOUND_REPEAT)},
-        {MP_ROM_QSTR(MP_QSTR_FLAG_ONE_SHOT),        MP_ROM_INT(SOUND_ONE_SHOT)},
-        {MP_ROM_QSTR(MP_QSTR_FLAG_FORMAT_8BIT),     MP_ROM_INT(SOUND_FORMAT_8BIT)},
-        {MP_ROM_QSTR(MP_QSTR_FLAG_FORMAT_16BIT),    MP_ROM_INT(SOUND_FORMAT_16BIT)},
-        {MP_ROM_QSTR(MP_QSTR_FLAG_FORMAT_ADPCM),    MP_ROM_INT(SOUND_FORMAT_ADPCM)},
-        {MP_ROM_QSTR(MP_QSTR_FLAG_FORMAT_PSG),      MP_ROM_INT(SOUND_FORMAT_PSG)},
-        {MP_ROM_QSTR(MP_QSTR_FLAG_ENABLE),          MP_ROM_INT(SOUND_ENABLE)},
+        LOCAL_INT(FLAG_LINEAR_INTERP, SOUND_LINEAR_INTERP),
+        LOCAL_INT(FLAG_REPEAT, SOUND_REPEAT),
+        LOCAL_INT(FLAG_ONE_SHOT, SOUND_ONE_SHOT),
+        LOCAL_INT(FLAG_FORMAT_8BIT, SOUND_FORMAT_8BIT),
+        LOCAL_INT(FLAG_FORMAT_16BIT, SOUND_FORMAT_16BIT),
+        LOCAL_INT(FLAG_FORMAT_ADPCM, SOUND_FORMAT_ADPCM),
+        LOCAL_INT(FLAG_FORMAT_PSG, SOUND_FORMAT_PSG),
+        LOCAL_INT(FLAG_ENABLE, SOUND_ENABLE),
 
         // Capture
-        {MP_ROM_QSTR(MP_QSTR_CAPTURE_REPEAT),       MP_ROM_INT(CAPTURE_REPEAT)},
-        {MP_ROM_QSTR(MP_QSTR_CAPTURE_ONE_SHOT),     MP_ROM_INT(CAPTURE_ONE_SHOT)},
-        {MP_ROM_QSTR(MP_QSTR_CAPTURE_FORMAT_16BIT), MP_ROM_INT(CAPTURE_FORMAT_16BIT)},
-        {MP_ROM_QSTR(MP_QSTR_CAPTURE_FORMAT_8BIT),  MP_ROM_INT(CAPTURE_FORMAT_8BIT)},
-        {MP_ROM_QSTR(MP_QSTR_CAPTURE_ENABLE),       MP_ROM_INT(CAPTURE_ENABLE)},
+        LOCAL_INT(CAPTURE_REPEAT, CAPTURE_REPEAT),
+        LOCAL_INT(CAPTURE_ONE_SHOT, CAPTURE_ONE_SHOT),
+        LOCAL_INT(CAPTURE_FORMAT_16BIT, CAPTURE_FORMAT_16BIT),
+        LOCAL_INT(CAPTURE_FORMAT_8BIT, CAPTURE_FORMAT_8BIT),
+        LOCAL_INT(CAPTURE_ENABLE, CAPTURE_ENABLE),
 };
 
 STATIC MP_DEFINE_CONST_DICT(mp_module_citrus_csnd_globals, mp_module_citrus_csnd_globals_table);

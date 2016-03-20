@@ -2,6 +2,14 @@
 
 #include "py/runtime.h"
 
+#define METHOD_OBJ_N(__args, __n) \
+    STATIC MP_DEFINE_CONST_FUN_OBJ_##__args(mod_citrus_hid_##__n##_obj, mod_citrus_hid_##__n)
+
+#define LOCAL_METHOD(__n) \
+    {MP_OBJ_NEW_QSTR(MP_QSTR_##__n), (mp_obj_t) &mod_citrus_hid_##__n##_obj}
+#define LOCAL_INT(__n, __v) \
+    {MP_ROM_QSTR(MP_QSTR_##__n), MP_ROM_INT(__v)}
+
 STATIC mp_obj_t mod_citrus_hid_init(void) {
     return mp_obj_new_int(hidInit());
 }
@@ -137,85 +145,84 @@ STATIC mp_obj_t mod_citrus_hid_user_get_sound_volume(void) {
     return ret;
 }
 
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_hid_init_obj, mod_citrus_hid_init);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_hid_exit_obj, mod_citrus_hid_exit);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_hid_scan_input_obj, mod_citrus_hid_scan_input);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_hid_keys_held_obj, mod_citrus_hid_keys_held);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_hid_keys_down_obj, mod_citrus_hid_keys_down);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_hid_keys_up_obj, mod_citrus_hid_keys_up);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_hid_touch_read_obj, mod_citrus_hid_touch_read);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_hid_circle_read_obj, mod_citrus_hid_circle_read);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_hid_accel_read_obj, mod_citrus_hid_accel_read);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_hid_gyro_read_obj, mod_citrus_hid_gyro_read);
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_citrus_hid_wait_for_event_obj, mod_citrus_hid_wait_for_event);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_hid_user_get_handles_obj, mod_citrus_hid_user_get_handles);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_hid_user_enable_accelerometer_obj, mod_citrus_hid_user_enable_accelerometer);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_hid_user_disable_accelerometer_obj, mod_citrus_hid_user_disable_accelerometer);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_hid_user_enable_gyroscope_obj, mod_citrus_hid_user_enable_gyroscope);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_hid_user_disable_gyroscope_obj, mod_citrus_hid_user_disable_gyroscope);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_hid_user_get_gyroscope_raw_to_dps_coefficient_obj, mod_citrus_hid_user_get_gyroscope_raw_to_dps_coefficient);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_hid_user_get_sound_volume_obj, mod_citrus_hid_user_get_sound_volume);
+METHOD_OBJ_N(0, init);
+METHOD_OBJ_N(0, exit);
+METHOD_OBJ_N(0, scan_input);
+METHOD_OBJ_N(0, keys_held);
+METHOD_OBJ_N(0, keys_down);
+METHOD_OBJ_N(0, keys_up);
+METHOD_OBJ_N(0, touch_read);
+METHOD_OBJ_N(0, circle_read);
+METHOD_OBJ_N(0, accel_read);
+METHOD_OBJ_N(0, gyro_read);
+METHOD_OBJ_N(2, wait_for_event);
+METHOD_OBJ_N(0, user_get_handles);
+METHOD_OBJ_N(0, user_enable_accelerometer);
+METHOD_OBJ_N(0, user_disable_accelerometer);
+METHOD_OBJ_N(0, user_enable_gyroscope);
+METHOD_OBJ_N(0, user_disable_gyroscope);
+METHOD_OBJ_N(0, user_get_gyroscope_raw_to_dps_coefficient);
+METHOD_OBJ_N(0, user_get_sound_volume);
 
 STATIC const mp_rom_map_elem_t mp_module_citrus_hid_globals_table[] = {
         // Package Info
-        {MP_ROM_QSTR(MP_QSTR___name__),                                  MP_ROM_QSTR(MP_QSTR_hid)},
+        {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_hid)},
 
         // Functions
-        {MP_ROM_QSTR(MP_QSTR_init),                                      MP_ROM_PTR(&mod_citrus_hid_init_obj)},
-        {MP_ROM_QSTR(MP_QSTR_exit),                                      MP_ROM_PTR(&mod_citrus_hid_exit_obj)},
-        {MP_ROM_QSTR(MP_QSTR_scan_input),                                MP_ROM_PTR(&mod_citrus_hid_scan_input_obj)},
-        {MP_ROM_QSTR(MP_QSTR_keys_held),                                 MP_ROM_PTR(&mod_citrus_hid_keys_held_obj)},
-        {MP_ROM_QSTR(MP_QSTR_keys_down),                                 MP_ROM_PTR(&mod_citrus_hid_keys_down_obj)},
-        {MP_ROM_QSTR(MP_QSTR_keys_up),                                   MP_ROM_PTR(&mod_citrus_hid_keys_up_obj)},
-        {MP_ROM_QSTR(MP_QSTR_touch_read),                                MP_ROM_PTR(&mod_citrus_hid_touch_read_obj)},
-        {MP_ROM_QSTR(MP_QSTR_circle_read),                               MP_ROM_PTR(&mod_citrus_hid_circle_read_obj)},
-        {MP_ROM_QSTR(MP_QSTR_accel_read),                                MP_ROM_PTR(&mod_citrus_hid_accel_read_obj)},
-        {MP_ROM_QSTR(MP_QSTR_gyro_read),                                 MP_ROM_PTR(&mod_citrus_hid_gyro_read_obj)},
-        {MP_ROM_QSTR(MP_QSTR_wait_for_event),                            MP_ROM_PTR(&mod_citrus_hid_wait_for_event_obj)},
-        {MP_ROM_QSTR(MP_QSTR_user_get_handles),                          MP_ROM_PTR(&mod_citrus_hid_user_get_handles_obj)},
-        {MP_ROM_QSTR(MP_QSTR_user_enable_accelerometer),                 MP_ROM_PTR(&mod_citrus_hid_user_enable_accelerometer_obj)},
-        {MP_ROM_QSTR(MP_QSTR_user_disable_accelerometer),                MP_ROM_PTR(&mod_citrus_hid_user_disable_accelerometer_obj)},
-        {MP_ROM_QSTR(MP_QSTR_user_enable_gyroscope),                     MP_ROM_PTR(&mod_citrus_hid_user_enable_gyroscope_obj)},
-        {MP_ROM_QSTR(MP_QSTR_user_disable_gyroscope),                    MP_ROM_PTR(&mod_citrus_hid_user_disable_gyroscope_obj)},
-        {MP_ROM_QSTR(MP_QSTR_user_get_gyroscope_raw_to_dps_coefficient), MP_ROM_PTR(&mod_citrus_hid_user_get_gyroscope_raw_to_dps_coefficient_obj)},
-        {MP_ROM_QSTR(MP_QSTR_user_get_sound_volume),                     MP_ROM_PTR(&mod_citrus_hid_user_get_sound_volume_obj)},
+        LOCAL_METHOD(init),
+        LOCAL_METHOD(exit),
+        LOCAL_METHOD(scan_input),
+        LOCAL_METHOD(keys_held),
+        LOCAL_METHOD(keys_down),
+        LOCAL_METHOD(keys_up),
+        LOCAL_METHOD(touch_read),
+        LOCAL_METHOD(circle_read),
+        LOCAL_METHOD(accel_read),
+        LOCAL_METHOD(gyro_read),
+        LOCAL_METHOD(wait_for_event),
+        LOCAL_METHOD(user_enable_accelerometer),
+        LOCAL_METHOD(user_disable_accelerometer),
+        LOCAL_METHOD(user_enable_gyroscope),
+        LOCAL_METHOD(user_disable_gyroscope),
+        LOCAL_METHOD(user_get_gyroscope_raw_to_dps_coefficient),
+        LOCAL_METHOD(user_get_sound_volume),
 
         // Keys
-        {MP_ROM_QSTR(MP_QSTR_KEY_A),                                     MP_ROM_INT(KEY_A)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_B),                                     MP_ROM_INT(KEY_B)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_SELECT),                                MP_ROM_INT(KEY_SELECT)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_START),                                 MP_ROM_INT(KEY_START)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_DPAD_RIGHT),                            MP_ROM_INT(KEY_DRIGHT)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_DPAD_LEFT),                             MP_ROM_INT(KEY_DLEFT)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_DPAD_UP),                               MP_ROM_INT(KEY_DUP)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_DPAD_DOWN),                             MP_ROM_INT(KEY_DDOWN)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_R),                                     MP_ROM_INT(KEY_R)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_L),                                     MP_ROM_INT(KEY_L)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_X),                                     MP_ROM_INT(KEY_X)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_Y),                                     MP_ROM_INT(KEY_Y)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_ZL),                                    MP_ROM_INT(KEY_ZL)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_ZR),                                    MP_ROM_INT(KEY_ZR)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_TOUCH),                                 MP_ROM_INT(KEY_TOUCH)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_CSTICK_RIGHT),                          MP_ROM_INT(KEY_CSTICK_RIGHT)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_CSTICK_LEFT),                           MP_ROM_INT(KEY_CSTICK_LEFT)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_CSTICK_UP),                             MP_ROM_INT(KEY_CSTICK_UP)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_CSTICK_DOWN),                           MP_ROM_INT(KEY_CSTICK_DOWN)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_CPAD_RIGHT),                            MP_ROM_INT(KEY_CPAD_RIGHT)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_CPAD_LEFT),                             MP_ROM_INT(KEY_CPAD_LEFT)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_CPAD_UP),                               MP_ROM_INT(KEY_CPAD_UP)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_CPAD_DOWN),                             MP_ROM_INT(KEY_CPAD_DOWN)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_UP),                                    MP_ROM_INT(KEY_UP)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_DOWN),                                  MP_ROM_INT(KEY_DOWN)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_LEFT),                                  MP_ROM_INT(KEY_LEFT)},
-        {MP_ROM_QSTR(MP_QSTR_KEY_RIGHT),                                 MP_ROM_INT(KEY_RIGHT)},
+        LOCAL_INT(KEY_A, KEY_A),
+        LOCAL_INT(KEY_B, KEY_B),
+        LOCAL_INT(KEY_SELECT, KEY_SELECT),
+        LOCAL_INT(KEY_START, KEY_START),
+        LOCAL_INT(KEY_DPAD_RIGHT, KEY_DRIGHT),
+        LOCAL_INT(KEY_DPAD_LEFT, KEY_DLEFT),
+        LOCAL_INT(KEY_DPAD_UP, KEY_DUP),
+        LOCAL_INT(KEY_DPAD_DOWN, KEY_DDOWN),
+        LOCAL_INT(KEY_R, KEY_R),
+        LOCAL_INT(KEY_L, KEY_L),
+        LOCAL_INT(KEY_X, KEY_X),
+        LOCAL_INT(KEY_Y, KEY_Y),
+        LOCAL_INT(KEY_ZL, KEY_ZL),
+        LOCAL_INT(KEY_ZR, KEY_ZR),
+        LOCAL_INT(KEY_TOUCH, KEY_TOUCH),
+        LOCAL_INT(KEY_CSTICK_RIGHT, KEY_CSTICK_RIGHT),
+        LOCAL_INT(KEY_CSTICK_LEFT, KEY_CSTICK_LEFT),
+        LOCAL_INT(KEY_CSTICK_UP, KEY_CSTICK_UP),
+        LOCAL_INT(KEY_CSTICK_DOWN, KEY_CSTICK_DOWN),
+        LOCAL_INT(KEY_CPAD_RIGHT, KEY_CPAD_RIGHT),
+        LOCAL_INT(KEY_CPAD_LEFT, KEY_CPAD_LEFT),
+        LOCAL_INT(KEY_CPAD_UP, KEY_CPAD_UP),
+        LOCAL_INT(KEY_CPAD_DOWN, KEY_CPAD_DOWN),
+        LOCAL_INT(KEY_UP, KEY_UP),
+        LOCAL_INT(KEY_DOWN, KEY_DOWN),
+        LOCAL_INT(KEY_LEFT, KEY_LEFT),
+        LOCAL_INT(KEY_RIGHT, KEY_RIGHT),
 
         // HID_Event
-        {MP_ROM_QSTR(MP_QSTR_EVENT_PAD0),                                MP_ROM_INT(HIDEVENT_PAD0)},
-        {MP_ROM_QSTR(MP_QSTR_EVENT_PAD1),                                MP_ROM_INT(HIDEVENT_PAD1)},
-        {MP_ROM_QSTR(MP_QSTR_EVENT_ACCEL),                               MP_ROM_INT(HIDEVENT_Accel)},
-        {MP_ROM_QSTR(MP_QSTR_EVENT_GYRO),                                MP_ROM_INT(HIDEVENT_Gyro)},
-        {MP_ROM_QSTR(MP_QSTR_EVENT_DEBUG_PAD),                           MP_ROM_INT(HIDEVENT_DebugPad)},
-        {MP_ROM_QSTR(MP_QSTR_EVENT_MAX),                                 MP_ROM_INT(HIDEVENT_MAX)},
+        LOCAL_INT(EVENT_PAD0, HIDEVENT_PAD0),
+        LOCAL_INT(EVENT_PAD1, HIDEVENT_PAD1),
+        LOCAL_INT(EVENT_ACCEL, HIDEVENT_Accel),
+        LOCAL_INT(EVENT_GYRO, HIDEVENT_Gyro),
+        LOCAL_INT(EVENT_DEBUG_PAD, HIDEVENT_DebugPad),
+        LOCAL_INT(EVENT_MAX, HIDEVENT_MAX),
 };
 
 STATIC MP_DEFINE_CONST_DICT(mp_module_citrus_hid_globals, mp_module_citrus_hid_globals_table);

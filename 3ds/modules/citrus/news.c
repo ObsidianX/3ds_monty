@@ -5,6 +5,14 @@
 
 #include "py/runtime.h"
 
+#define METHOD_OBJ_N(__args, __n) \
+    STATIC MP_DEFINE_CONST_FUN_OBJ_##__args(mod_citrus_news_##__n##_obj, mod_citrus_news_##__n)
+#define METHOD_OBJ_VAR_N(__num, __n) \
+    STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_citrus_news_##__n##_obj, __num, __num, mod_citrus_news_##__n)
+
+#define LOCAL_METHOD(__n) \
+    {MP_OBJ_NEW_QSTR(MP_QSTR_##__n), (mp_obj_t) &mod_citrus_news_##__n##_obj}
+
 static Result _news_last_result;
 
 STATIC mp_obj_t mod_citrus_news_init(void) {
@@ -61,20 +69,20 @@ STATIC mp_obj_t mod_citrus_news_add_notification(size_t n_args, const mp_obj_t *
     return mod_citrus_news_last_result();
 }
 
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_news_init_obj, mod_citrus_news_init);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_news_exit_obj, mod_citrus_news_exit);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_news_last_result_obj, mod_citrus_news_last_result);
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_citrus_news_add_notification_obj, 4, 4, mod_citrus_news_add_notification);
+METHOD_OBJ_N(0, init);
+METHOD_OBJ_N(0, exit);
+METHOD_OBJ_N(0, last_result);
+METHOD_OBJ_VAR_N(4, add_notification);
 
 STATIC const mp_rom_map_elem_t mp_module_citrus_news_globals_table[] = {
         // Package Info
-        {MP_ROM_QSTR(MP_QSTR___name__),         MP_ROM_QSTR(MP_QSTR_news)},
+        {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_news)},
 
         // Functions
-        {MP_ROM_QSTR(MP_QSTR_init),             MP_ROM_PTR(&mod_citrus_news_init_obj)},
-        {MP_ROM_QSTR(MP_QSTR_exit),             MP_ROM_PTR(&mod_citrus_news_exit_obj)},
-        {MP_ROM_QSTR(MP_QSTR_last_result),      MP_ROM_PTR(&mod_citrus_news_last_result_obj)},
-        {MP_ROM_QSTR(MP_QSTR_add_notification), MP_ROM_PTR(&mod_citrus_news_add_notification_obj)},
+        LOCAL_METHOD(init),
+        LOCAL_METHOD(exit),
+        LOCAL_METHOD(last_result),
+        LOCAL_METHOD(add_notification),
 };
 
 STATIC MP_DEFINE_CONST_DICT(mp_module_citrus_news_globals, mp_module_citrus_news_globals_table);

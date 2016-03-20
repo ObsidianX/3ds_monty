@@ -39,10 +39,7 @@
 
 #if MICROPY_PY_IO
 
-typedef struct _mp_obj_fdfile_t {
-    mp_obj_base_t base;
-    int fd;
-} mp_obj_fdfile_t;
+#include "file.h"
 
 #ifdef MICROPY_CPYTHON_COMPAT
 
@@ -55,9 +52,6 @@ STATIC void check_fd_is_open(const mp_obj_fdfile_t *o) {
 #else
 #define check_fd_is_open(o)
 #endif
-
-extern const mp_obj_type_t mp_type_fileio;
-extern const mp_obj_type_t mp_type_textio;
 
 STATIC void fdfile_print(const mp_print_t *print, mp_obj_t self_in, mp_print_kind_t kind) {
     (void) kind;

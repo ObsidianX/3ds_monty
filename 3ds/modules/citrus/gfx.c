@@ -4,6 +4,14 @@
 
 #include "helpers.h"
 
+#define METHOD_OBJ_N(__args, __n) \
+    STATIC MP_DEFINE_CONST_FUN_OBJ_##__args(mod_citrus_gfx_##__n##_obj, mod_citrus_gfx_##__n)
+
+#define LOCAL_METHOD(__n) \
+    {MP_OBJ_NEW_QSTR(MP_QSTR_##__n), (mp_obj_t) &mod_citrus_gfx_##__n##_obj}
+#define LOCAL_INT(__n, __v) \
+    {MP_ROM_QSTR(MP_QSTR_##__n), MP_ROM_INT(__v)}
+
 gfxScreen_t _mod_citrus_gfx_get_gfx_screen(mp_obj_t screen) {
     if (mp_obj_is_integer(screen)) {
         int scr = mp_obj_get_int(screen);
@@ -115,44 +123,44 @@ STATIC mp_obj_t mod_citrus_gfx_swap_buffers_gpu(void) {
     return mp_const_none;
 }
 
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_gfx_init_default_obj, mod_citrus_gfx_init_default);
-STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_citrus_gfx_init_obj, mod_citrus_gfx_init);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_gfx_exit_obj, mod_citrus_gfx_exit);
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_citrus_gfx_set_3d_obj, mod_citrus_gfx_set_3d);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_gfx_is_3d_obj, mod_citrus_gfx_is_3d);
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_citrus_gfx_set_screen_format_obj, mod_citrus_gfx_set_screen_format);
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_citrus_gfx_get_screen_format_obj, mod_citrus_gfx_get_screen_format);
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_citrus_gfx_set_double_buffering_obj, mod_citrus_gfx_set_double_buffering);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_gfx_flush_buffers_obj, mod_citrus_gfx_flush_buffers);
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_citrus_gfx_config_screen_obj, mod_citrus_gfx_config_screen);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_gfx_swap_buffers_obj, mod_citrus_gfx_swap_buffers);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_gfx_swap_buffers_gpu_obj, mod_citrus_gfx_swap_buffers_gpu);
+METHOD_OBJ_N(0, init_default);
+METHOD_OBJ_N(3, init);
+METHOD_OBJ_N(0, exit);
+METHOD_OBJ_N(1, set_3d);
+METHOD_OBJ_N(0, is_3d);
+METHOD_OBJ_N(2, set_screen_format);
+METHOD_OBJ_N(1, get_screen_format);
+METHOD_OBJ_N(2, set_double_buffering);
+METHOD_OBJ_N(0, flush_buffers);
+METHOD_OBJ_N(2, config_screen);
+METHOD_OBJ_N(0, swap_buffers);
+METHOD_OBJ_N(0, swap_buffers_gpu);
 
 STATIC const mp_rom_map_elem_t mp_module_citrus_gfx_globals_table[] = {
         // Module info
-        {MP_ROM_QSTR(MP_QSTR___name__),             MP_ROM_QSTR(MP_QSTR_gfx)},
+        {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_gfx)},
 
         // Functions
-        {MP_ROM_QSTR(MP_QSTR_init_default),         MP_ROM_PTR(&mod_citrus_gfx_init_default_obj)},
-        {MP_ROM_QSTR(MP_QSTR_init),                 MP_ROM_PTR(&mod_citrus_gfx_init_obj)},
-        {MP_ROM_QSTR(MP_QSTR_exit),                 MP_ROM_PTR(&mod_citrus_gfx_exit_obj)},
-        {MP_ROM_QSTR(MP_QSTR_set_3d),               MP_ROM_PTR(&mod_citrus_gfx_set_3d_obj)},
-        {MP_ROM_QSTR(MP_QSTR_is_3d),                MP_ROM_PTR(&mod_citrus_gfx_is_3d_obj)},
-        {MP_ROM_QSTR(MP_QSTR_set_screen_format),    MP_ROM_PTR(&mod_citrus_gfx_set_screen_format_obj)},
-        {MP_ROM_QSTR(MP_QSTR_get_screen_format),    MP_ROM_PTR(&mod_citrus_gfx_get_screen_format_obj)},
-        {MP_ROM_QSTR(MP_QSTR_set_double_buffering), MP_ROM_PTR(&mod_citrus_gfx_set_double_buffering_obj)},
-        {MP_ROM_QSTR(MP_QSTR_flush_buffers),        MP_ROM_PTR(&mod_citrus_gfx_flush_buffers_obj)},
-        {MP_ROM_QSTR(MP_QSTR_config_screen),        MP_ROM_PTR(&mod_citrus_gfx_config_screen_obj)},
-        {MP_ROM_QSTR(MP_QSTR_swap_buffers),         MP_ROM_PTR(&mod_citrus_gfx_swap_buffers_obj)},
-        {MP_ROM_QSTR(MP_QSTR_swap_buffers_gpu),     MP_ROM_PTR(&mod_citrus_gfx_swap_buffers_gpu_obj)},
+        LOCAL_METHOD(init_default),
+        LOCAL_METHOD(init),
+        LOCAL_METHOD(exit),
+        LOCAL_METHOD(set_3d),
+        LOCAL_METHOD(is_3d),
+        LOCAL_METHOD(set_screen_format),
+        LOCAL_METHOD(get_screen_format),
+        LOCAL_METHOD(set_double_buffering),
+        LOCAL_METHOD(flush_buffers),
+        LOCAL_METHOD(config_screen),
+        LOCAL_METHOD(swap_buffers),
+        LOCAL_METHOD(swap_buffers_gpu),
 
         // gfxScreen_t
-        {MP_ROM_QSTR(MP_QSTR_SCREEN_TOP),           MP_ROM_INT(GFX_TOP)},
-        {MP_ROM_QSTR(MP_QSTR_SCREEN_BOTTOM),        MP_ROM_INT(GFX_BOTTOM)},
+        LOCAL_INT(SCREEN_TOP, GFX_TOP),
+        LOCAL_INT(SCREEN_BOTTOM, GFX_BOTTOM),
 
         // gfx3dSide_t
-        {MP_ROM_QSTR(MP_QSTR_SIDE_LEFT),            MP_ROM_INT(GFX_LEFT)},
-        {MP_ROM_QSTR(MP_QSTR_SIDE_RIGHT),           MP_ROM_INT(GFX_RIGHT)},
+        LOCAL_INT(SIDE_LEFT, GFX_LEFT),
+        LOCAL_INT(SIDE_RIGHT, GFX_RIGHT),
 };
 
 STATIC MP_DEFINE_CONST_DICT(mp_module_citrus_gfx_globals, mp_module_citrus_gfx_globals_table);

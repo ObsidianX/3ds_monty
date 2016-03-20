@@ -4,6 +4,12 @@
 
 #include "helpers.h"
 
+#define METHOD_OBJ_N(__args, __n) \
+    STATIC MP_DEFINE_CONST_FUN_OBJ_##__args(mod_citrus_ns_##__n##_obj, mod_citrus_ns_##__n)
+
+#define LOCAL_METHOD(__n) \
+    {MP_OBJ_NEW_QSTR(MP_QSTR_##__n), (mp_obj_t) &mod_citrus_ns_##__n##_obj}
+
 static Result _ns_last_result;
 
 STATIC mp_obj_t mod_citrus_ns_init(void) {
@@ -45,22 +51,22 @@ STATIC mp_obj_t mod_citrus_ns_terminate_process_tid(mp_obj_t title_id) {
     return mp_const_none;
 }
 
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_ns_init_obj, mod_citrus_ns_init);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_ns_exit_obj, mod_citrus_ns_exit);
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_citrus_ns_launch_title_obj, mod_citrus_ns_launch_title);
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_citrus_ns_reboot_to_title_obj, mod_citrus_ns_reboot_to_title);
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_citrus_ns_terminate_process_tid_obj, mod_citrus_ns_terminate_process_tid);
+METHOD_OBJ_N(0, init);
+METHOD_OBJ_N(0, exit);
+METHOD_OBJ_N(2, launch_title);
+METHOD_OBJ_N(2, reboot_to_title);
+METHOD_OBJ_N(1, terminate_process_tid);
 
 STATIC const mp_rom_map_elem_t mp_module_citrus_ns_globals_table[] = {
         // Package Info
-        {MP_ROM_QSTR(MP_QSTR___name__),              MP_ROM_QSTR(MP_QSTR_ns)},
+        {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_ns)},
 
         // Functions
-        {MP_ROM_QSTR(MP_QSTR_init),                  MP_ROM_PTR(&mod_citrus_ns_init_obj)},
-        {MP_ROM_QSTR(MP_QSTR_exit),                  MP_ROM_PTR(&mod_citrus_ns_exit_obj)},
-        {MP_ROM_QSTR(MP_QSTR_launch_title),          MP_ROM_PTR(&mod_citrus_ns_launch_title_obj)},
-        {MP_ROM_QSTR(MP_QSTR_reboot_to_title),       MP_ROM_PTR(&mod_citrus_ns_reboot_to_title_obj)},
-        {MP_ROM_QSTR(MP_QSTR_terminate_process_tid), MP_ROM_PTR(&mod_citrus_ns_terminate_process_tid_obj)},
+        LOCAL_METHOD(init),
+        LOCAL_METHOD(exit),
+        LOCAL_METHOD(launch_title),
+        LOCAL_METHOD(reboot_to_title),
+        LOCAL_METHOD(terminate_process_tid),
 };
 
 STATIC MP_DEFINE_CONST_DICT(mp_module_citrus_ns_globals, mp_module_citrus_ns_globals_table);

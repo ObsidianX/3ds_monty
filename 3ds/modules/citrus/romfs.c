@@ -2,6 +2,12 @@
 
 #include "py/runtime.h"
 
+#define METHOD_OBJ_N(__args, __n) \
+    STATIC MP_DEFINE_CONST_FUN_OBJ_##__args(mod_citrus_romfs_##__n##_obj, mod_citrus_romfs_##__n)
+
+#define LOCAL_METHOD(__n) \
+    {MP_OBJ_NEW_QSTR(MP_QSTR_##__n), (mp_obj_t) &mod_citrus_romfs_##__n##_obj}
+
 STATIC mp_obj_t mod_citrus_romfs_init(void) {
     romfsInit();
 
@@ -14,16 +20,16 @@ STATIC mp_obj_t mod_citrus_romfs_exit(void) {
     return mp_const_none;
 }
 
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_romfs_init_obj, mod_citrus_romfs_init);
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_citrus_romfs_exit_obj, mod_citrus_romfs_exit);
+METHOD_OBJ_N(0, init);
+METHOD_OBJ_N(0, exit);
 
 STATIC const mp_rom_map_elem_t mp_module_citrus_romfs_globals_table[] = {
         // Package Info
         {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_romfs)},
 
         // Functions
-        {MP_ROM_QSTR(MP_QSTR_init),     MP_ROM_PTR(&mod_citrus_romfs_init_obj)},
-        {MP_ROM_QSTR(MP_QSTR_exit),     MP_ROM_PTR(&mod_citrus_romfs_exit_obj)},
+        LOCAL_METHOD(init),
+        LOCAL_METHOD(exit),
 };
 
 STATIC MP_DEFINE_CONST_DICT(mp_module_citrus_romfs_globals, mp_module_citrus_romfs_globals_table);

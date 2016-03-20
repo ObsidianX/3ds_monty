@@ -20,13 +20,18 @@ INC += -I$(BUILD)
 INC += -I$(DEVKITARM)/include
 INC += -I$(CTRULIB)/include
 INC += -I$(DEVKITPRO)/libsf2d/include
+INC += -I$(DEVKITPRO)/portlibs/armv6k/include
+
+L_INC = -L$(CTRULIB)/lib
+L_INC += -L$(DEVKITPRO)/libsf2d/lib
+L_INC += -L$(DEVKITPRO)/portlibs/armv6k/lib
 
 CFLAGS_ARCH = -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft
 CFLAGS = -g -Wall -mword-relocations -fomit-frame-pointer -ffunction-sections $(CFLAGS_ARCH) $(INC) -Os
 CFLAGS += -DARM11 -D_3DS
 
-LDFLAGS = -specs=3dsx.specs -g $(CFLAGS_ARCH) -Wl,-Map,$(notdir $*.map) -L$(CTRULIB)/lib -L$(DEVKITPRO)/libsf2d/lib
-LIBS = -lsf2d -lctru -lm 
+LDFLAGS = -specs=3dsx.specs -g $(CFLAGS_ARCH) -Wl,-Map,$(notdir $*.map) $(L_INC)
+LIBS = -lsf2d -lctru -lpng -lz -lm
 
 SRC_C = $(shell find -type f -name '*.c')
 

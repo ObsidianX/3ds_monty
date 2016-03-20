@@ -16,9 +16,13 @@
         dest[0] = MP_OBJ_NULL; \
     }
 
+#define METHOD_OBJ_N(__args, __n) \
+    STATIC MP_DEFINE_CONST_FUN_OBJ_##__args(mod_citrus_csnd_Sound_##__n##_obj, mod_citrus_csnd_Sound_##__n)
+
+#define LOCAL_METHOD(__n) \
+    {MP_OBJ_NEW_QSTR(MP_QSTR_##__n), (mp_obj_t) &mod_citrus_csnd_Sound_##__n##_obj}
+
 const mp_obj_type_t mod_citrus_csnd_Sound_type;
-STATIC const mp_obj_fun_builtin_t mod_citrus_csnd_Sound___del___obj;
-STATIC const mp_obj_fun_builtin_t mod_citrus_csnd_Sound_play_obj;
 
 typedef struct {
     mp_obj_base_t base;
@@ -112,6 +116,33 @@ STATIC mp_obj_t mod_citrus_csnd_Sound_make_new(const mp_obj_type_t *type, size_t
     return obj;
 }
 
+STATIC void mod_citrus_csnd_Sound_print(const mp_print_t *print, mp_obj_t self_in, mp_print_kind_t kind) {
+    SELF(self_in);
+
+    mp_printf(print, "<Sound channel=%d flags=0x%x sample_rate=%d volume=%f pan=%f data=%p>",
+              self->channel, self->flags, self->sample_rate, self->volume, self->pan, self->data);
+}
+
+STATIC mp_obj_t mod_citrus_csnd_Sound___del__(mp_obj_t self_in) {
+    SELF(self_in);
+
+    if (self->data != NULL) {
+        free(self->data);
+    }
+
+    return mp_const_none;
+}
+
+STATIC mp_obj_t mod_citrus_csnd_Sound_play(mp_obj_t self_in) {
+    SELF(self_in);
+
+    Result res = csndPlaySound(self->channel, self->flags, self->sample_rate, self->volume, self->pan, self->data, self->data, self->size);
+    return mp_obj_new_int(res);
+}
+
+METHOD_OBJ_N(1, __del__);
+METHOD_OBJ_N(1, play);
+
 STATIC void mod_citrus_csnd_Sound_attr(mp_obj_t self_in, qstr attr, mp_obj_t *dest) {
     const char *name = qstr_str(attr);
     if (dest[0] == MP_OBJ_SENTINEL && dest[1] == MP_OBJ_NULL) {
@@ -152,37 +183,10 @@ STATIC void mod_citrus_csnd_Sound_attr(mp_obj_t self_in, qstr attr, mp_obj_t *de
     }
 }
 
-STATIC void mod_citrus_csnd_Sound_print(const mp_print_t *print, mp_obj_t self_in, mp_print_kind_t kind) {
-    SELF(self_in);
-
-    mp_printf(print, "<Sound channel=%d flags=0x%x sample_rate=%d volume=%f pan=%f data=%p>",
-              self->channel, self->flags, self->sample_rate, self->volume, self->pan, self->data);
-}
-
-STATIC mp_obj_t mod_citrus_csnd_Sound___del__(mp_obj_t self_in) {
-    SELF(self_in);
-
-    if (self->data != NULL) {
-        free(self->data);
-    }
-
-    return mp_const_none;
-}
-
-STATIC mp_obj_t mod_citrus_csnd_Sound_play(mp_obj_t self_in) {
-    SELF(self_in);
-
-    Result res = csndPlaySound(self->channel, self->flags, self->sample_rate, self->volume, self->pan, self->data, self->data, self->size);
-    return mp_obj_new_int(res);
-}
-
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_citrus_csnd_Sound___del___obj, mod_citrus_csnd_Sound___del__);
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_citrus_csnd_Sound_play_obj, mod_citrus_csnd_Sound_play);
-
 STATIC const mp_map_elem_t mod_citrus_csnd_Sound_locals_dict_table[] = {
         // Methods
-        {MP_OBJ_NEW_QSTR(MP_QSTR___del__), (mp_obj_t) &mod_citrus_csnd_Sound___del___obj},
-        {MP_OBJ_NEW_QSTR(MP_QSTR_play),    (mp_obj_t) &mod_citrus_csnd_Sound_play_obj},
+        LOCAL_METHOD(__del__),
+        LOCAL_METHOD(play),
 };
 STATIC MP_DEFINE_CONST_DICT(mod_citrus_csnd_Sound_locals_dict, mod_citrus_csnd_Sound_locals_dict_table);
 
