@@ -31,15 +31,14 @@ STATIC void _mod_img_mem_file_read(png_structp png, png_bytep output, png_size_t
 }
 
 STATIC mp_obj_t mod_img_load_png(mp_obj_t data) {
-    mp_obj_t _data;
-
+    mp_obj_t _data = data;
     mem_file file;
+    bool cleanup = false;
 
-    if (MP_OBJ_IS_TYPE(data, &mp_type_fileio)) {
+    if (MP_OBJ_IS_TYPE(_data, &mp_type_fileio)) {
         // utilize stream.readall()
-        _data = mp_stream_readall_obj.fun._1(data);
-    } else {
-        _data = data;
+        _data = mp_stream_readall_obj.fun._1(_data);
+        cleanup = true;
     }
 
     if (MP_OBJ_IS_STR_OR_BYTES(_data)) {
@@ -49,7 +48,6 @@ STATIC mp_obj_t mod_img_load_png(mp_obj_t data) {
         file.buffer = buf_info.buf;
         file.length = buf_info.len;
         file.cursor = 0;
-
     } else {
         nlr_raise(mp_obj_new_exception_msg(&mp_type_TypeError, "expected str/bytes/fileio type"));
     }
@@ -107,6 +105,10 @@ STATIC mp_obj_t mod_img_load_png(mp_obj_t data) {
 
     free(rows);
     free(img);
+
+    if (cleanup) {
+        m_del_obj(mp_obj_get_type(_data), _data);
+    }
 
     return tuple;
 }

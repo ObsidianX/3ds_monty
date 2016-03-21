@@ -9,13 +9,13 @@
 // submodules
 IMPORT_SUBMODULE(apt);
 IMPORT_SUBMODULE(console);
-IMPORT_SUBMODULE(csnd);
 IMPORT_SUBMODULE(fs);
 IMPORT_SUBMODULE(gfx);
 IMPORT_SUBMODULE(gpu);
 IMPORT_SUBMODULE(gsp);
 IMPORT_SUBMODULE(hid);
 IMPORT_SUBMODULE(httpc);
+IMPORT_SUBMODULE(ndsp);
 IMPORT_SUBMODULE(news);
 IMPORT_SUBMODULE(ns);
 IMPORT_SUBMODULE(os);
@@ -29,13 +29,13 @@ STATIC const mp_rom_map_elem_t mp_module_citrus_globals_table[] = {
         // Sub-modules
         SUBMODULE(apt),
         SUBMODULE(console),
-        SUBMODULE(csnd),
         SUBMODULE(fs),
         SUBMODULE(gfx),
         SUBMODULE(gpu),
         SUBMODULE(gsp),
         SUBMODULE(hid),
         SUBMODULE(httpc),
+        SUBMODULE(ndsp),
         SUBMODULE(news),
         SUBMODULE(ns),
         SUBMODULE(os),

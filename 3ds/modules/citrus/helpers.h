@@ -34,4 +34,21 @@ FS_MediaType _mod_citrus_fs_get_mediatype(mp_obj_t type);
 // SOC
 bool _mod_citrus_soc_is_init(void);
 
+// NDSP
+const mp_obj_type_t mod_citrus_ndsp_Sound_type;
+
+typedef struct {
+    mp_obj_base_t base;
+
+    ndspWaveBuf wave;
+    void *data;
+    size_t data_size;
+
+    u16 format;
+    u32 sample_rate;
+} mod_citrus_ndsp_Sound_t;
+
+ndspInterpType _mod_citrus_ndsp_get_interp_type(mp_obj_t type);
+
+
 #endif // _CITRUS_HELPERS_H_

@@ -55,7 +55,7 @@ STATIC mp_obj_t mod_citrus_news_add_notification(size_t n_args, const mp_obj_t *
     size_t image_len = 0;
     bool is_jpeg = mp_obj_is_true(args[ADD_ARG_IS_JPEG]);
 
-    mp_obj_type_t *type = mp_obj_get_type(args[3]);
+    mp_obj_type_t *type = mp_obj_get_type(args[ADD_ARG_IMAGE]);
     if (type != &mp_type_NoneType) {
         // load...
         // image_len from byte array

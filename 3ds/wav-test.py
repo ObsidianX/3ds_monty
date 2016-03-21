@@ -3,22 +3,20 @@ from citrus import *
 gfx.init_default()
 console.init(gfx.SCREEN_TOP)
 print('init sound\n')
-csnd.init()
+ndsp.init()
 
-wav1 = open('/coin.wave', 'rb').read()
-wav2 = open('/1up.wave', 'rb').read()
+ndsp.set_output_mode(ndsp.OUTPUT_MONO)
+ndsp.set_output_count(2)
 
-flags = csnd.FLAG_ONE_SHOT | csnd.FLAG_FORMAT_16BIT
-rate = 22050
+bobomb = ndsp.Sound(open('/hello.wav', 'rb'))
+goal = ndsp.Sound(open('/goal.wav', 'rb'))
+channel1 = ndsp.Channel(0)
+channel1.set_interpolation(ndsp.INTERP_POLYPHASE)
+channel2 = ndsp.Channel(1)
+channel2.set_interpolation(ndsp.INTERP_POLYPHASE)
 
-coin = csnd.Sound(channel=8, flags=flags, sample_rate=rate, data=wav1)
-oneup = csnd.Sound(channel=9, flags=flags, sample_rate=rate, data=wav2)
-
-del wav1
-del wav2
-
-print('X: 1-up')
-print('Y: coin')
+print('X: goal')
+print('Y: bobomb')
 print('Start: exit')
 
 while apt.main_loop():
@@ -30,16 +28,16 @@ while apt.main_loop():
         break
 
     if down & hid.KEY_Y:
-        print('\x1b[20;1HPlay: coin.wave')
-        coin.play()
+        print('\x1b[20;1HPlay: bobomb.wav')
+        channel1.play(bobomb)
     if down & hid.KEY_X:
-        print('\x1b[20;1HPlay: 1up.wave ')
-        oneup.play()
+        print('\x1b[20;1HPlay: goal.wav  ')
+        channel2.play(goal)
 
     gfx.flush_buffers()
     gfx.swap_buffers()
 
     gsp.wait_for_vblank()
 
-csnd.exit()
+ndsp.exit()
 gfx.exit()
