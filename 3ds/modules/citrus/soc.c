@@ -4,6 +4,8 @@
 
 #include "py/runtime.h"
 
+#include "../init_helper.h"
+
 #define METHOD_OBJ_N(__args, __n) \
     STATIC MP_DEFINE_CONST_FUN_OBJ_##__args(mod_citrus_soc_##__n##_obj, mod_citrus_soc_##__n)
 #define METHOD_OBJ_KW(__min, __n) \
@@ -16,16 +18,14 @@
 #define SOC_BUFFER_SIZE 0x100000
 
 static void *_mod_citrus_soc_buffer = NULL;
+static int _mod_citrus_soc_is_setup = 0;
 
 bool _mod_citrus_soc_is_init(void) {
     return _mod_citrus_soc_buffer != NULL;
 }
 
 STATIC mp_obj_t mod_citrus_soc_init(size_t n_args, const mp_obj_t *pos_args, mp_map_t *kw_args) {
-    // don't init twice...
-    if (_mod_citrus_soc_buffer != NULL) {
-        return mp_const_none;
-    }
+    INIT_ONCE(_mod_citrus_soc_is_setup);
 
     static const mp_arg_t allowed_args[] = {
             {MP_QSTR_buffer_size, MP_ARG_INT, {.u_int = SOC_BUFFER_SIZE}},
@@ -42,7 +42,9 @@ STATIC mp_obj_t mod_citrus_soc_init(size_t n_args, const mp_obj_t *pos_args, mp_
     return mp_obj_new_int(res);
 }
 
-STATIC mp_obj_t mod_citrus_soc_exit(void) {
+mp_obj_t mod_citrus_soc_exit(void) {
+    EXIT_ONCE(_mod_citrus_soc_is_setup);
+
     Result res = socExit();
     free(_mod_citrus_soc_buffer);
     _mod_citrus_soc_buffer = NULL;

@@ -1,10 +1,5 @@
-def c():
-    raise Exception
+from citrus import *
 
-def b():
-    c()
+soc.init()
 
-def a():
-    b()
-
-a()
+raise Exception()

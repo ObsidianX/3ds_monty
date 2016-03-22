@@ -3,6 +3,7 @@
 #include "py/runtime.h"
 
 #include "helpers.h"
+#include "../init_helper.h"
 
 #define METHOD_OBJ_N(__args, __n) \
     STATIC MP_DEFINE_CONST_FUN_OBJ_##__args(mod_citrus_gfx_##__n##_obj, mod_citrus_gfx_##__n)
@@ -11,6 +12,8 @@
     {MP_OBJ_NEW_QSTR(MP_QSTR_##__n), (mp_obj_t) &mod_citrus_gfx_##__n##_obj}
 #define LOCAL_INT(__n, __v) \
     {MP_ROM_QSTR(MP_QSTR_##__n), MP_ROM_INT(__v)}
+
+static int _mod_citrus_gfx_is_init = 0;
 
 gfxScreen_t _mod_citrus_gfx_get_gfx_screen(mp_obj_t screen) {
     if (mp_obj_is_integer(screen)) {
@@ -43,12 +46,16 @@ gfx3dSide_t _mod_citrus_gfx_get_gfx_3d_side(mp_obj_t side) {
 }
 
 STATIC mp_obj_t mod_citrus_gfx_init_default(void) {
+    INIT_ONCE(_mod_citrus_gfx_is_init);
+
     gfxInitDefault();
 
     return mp_const_none;
 }
 
 STATIC mp_obj_t mod_citrus_gfx_init(mp_obj_t top_format, mp_obj_t bottom_format, mp_obj_t vram_buffers) {
+    INIT_ONCE(_mod_citrus_gfx_is_init);
+
     int top = _mod_citrus_gsp_get_framebuffer_format(top_format);
     int bot = _mod_citrus_gsp_get_framebuffer_format(bottom_format);
 
@@ -57,7 +64,9 @@ STATIC mp_obj_t mod_citrus_gfx_init(mp_obj_t top_format, mp_obj_t bottom_format,
     return mp_const_none;
 }
 
-STATIC mp_obj_t mod_citrus_gfx_exit(void) {
+mp_obj_t mod_citrus_gfx_exit(void) {
+    EXIT_ONCE(_mod_citrus_gfx_is_init);
+
     gfxExit();
 
     return mp_const_none;

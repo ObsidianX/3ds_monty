@@ -3,6 +3,7 @@
 #include "py/runtime.h"
 
 #include "helpers.h"
+#include "../init_helper.h"
 
 #define METHOD_OBJ_N(__args, __n) \
     STATIC MP_DEFINE_CONST_FUN_OBJ_##__args(mod_citrus_ns_##__n##_obj, mod_citrus_ns_##__n)
@@ -11,14 +12,19 @@
     {MP_OBJ_NEW_QSTR(MP_QSTR_##__n), (mp_obj_t) &mod_citrus_ns_##__n##_obj}
 
 static Result _ns_last_result;
+static int _mod_citrus_ns_is_init = 0;
 
 STATIC mp_obj_t mod_citrus_ns_init(void) {
+    INIT_ONCE(_mod_citrus_ns_is_init);
+
     _ns_last_result = nsInit();
 
     return mp_const_none;
 }
 
-STATIC mp_obj_t mod_citrus_ns_exit(void) {
+mp_obj_t mod_citrus_ns_exit(void) {
+    EXIT_ONCE(_mod_citrus_ns_is_init);
+
     nsExit();
 
     return mp_const_none;

@@ -12,6 +12,7 @@
 #define ERR_PARSE 3
 
 extern bool net_load();
+extern void mod_citrus_exit_all(void);
 
 static void initConsole() {
     gfxInitDefault();
@@ -39,8 +40,15 @@ STATIC int execute_from_lexer(mp_lexer_t *lex, mp_parse_input_kind_t kind) {
         }
 
         nlr_pop();
+
+        // ensure all modules are unloaded to be a good citizen
+        mod_citrus_exit_all();
+
         return 0;
     } else {
+        // ensure all modules are unloaded to be a good citizen
+        mod_citrus_exit_all();
+
         initConsole();
         mp_obj_print_exception(&mp_plat_print, MP_OBJ_FROM_PTR(nlr.ret_val));
         return ERR_PARSE;

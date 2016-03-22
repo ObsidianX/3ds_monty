@@ -2,6 +2,8 @@
 
 #include "py/runtime.h"
 
+#include "../init_helper.h"
+
 #define METHOD_OBJ_N(__args, __n) \
     STATIC MP_DEFINE_CONST_FUN_OBJ_##__args(mod_citrus_apt_##__n##_obj, mod_citrus_apt_##__n)
 
@@ -11,6 +13,8 @@
     {MP_ROM_QSTR(MP_QSTR_##__n), MP_ROM_INT(__v)}
 
 extern const mp_obj_type_t mod_citrus_apt_Hook_type;
+
+static int _mod_citrus_apt_is_init = 0;
 
 STATIC APT_AppStatus _mod_citrus_apt_get_app_status(mp_obj_t status) {
     if (mp_obj_is_integer(status)) {
@@ -23,10 +27,14 @@ STATIC APT_AppStatus _mod_citrus_apt_get_app_status(mp_obj_t status) {
 }
 
 STATIC mp_obj_t mod_citrus_apt_init(void) {
+    INIT_ONCE(_mod_citrus_apt_is_init);
+
     return mp_obj_new_int(aptInit());
 }
 
-STATIC mp_obj_t mod_citrus_apt_exit(void) {
+mp_obj_t mod_citrus_apt_exit(void) {
+    EXIT_ONCE(_mod_citrus_apt_is_init);
+
     aptExit();
 
     return mp_const_none;

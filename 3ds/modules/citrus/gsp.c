@@ -3,6 +3,7 @@
 #include "py/runtime.h"
 
 #include "helpers.h"
+#include "../init_helper.h"
 
 #define METHOD_OBJ_N(__args, __n) \
     STATIC MP_DEFINE_CONST_FUN_OBJ_##__args(mod_citrus_gsp_##__n##_obj, mod_citrus_gsp_##__n)
@@ -13,6 +14,8 @@
     {MP_OBJ_NEW_QSTR(MP_QSTR_##__n), (mp_obj_t) &mod_citrus_gsp_##__n##_obj}
 #define LOCAL_INT(__n, __v) \
     {MP_ROM_QSTR(MP_QSTR_##__n), MP_ROM_INT(__v)}
+
+static int _mod_citrus_gsp_is_init = 0;
 
 GSPGPU_FramebufferFormats _mod_citrus_gsp_get_framebuffer_format(mp_obj_t format) {
     if (mp_obj_is_integer(format)) {
@@ -37,12 +40,16 @@ GSPGPU_Event _mod_citrus_gsp_get_gpu_event(mp_obj_t event) {
 }
 
 STATIC mp_obj_t mod_citrus_gsp_init(void) {
+    INIT_ONCE(_mod_citrus_gsp_is_init);
+
     gspInit();
 
     return mp_const_none;
 }
 
-STATIC mp_obj_t mod_citrus_gsp_exit(void) {
+mp_obj_t mod_citrus_gsp_exit(void) {
+    EXIT_ONCE(_mod_citrus_gsp_is_init);
+
     gspExit();
 
     return mp_const_none;

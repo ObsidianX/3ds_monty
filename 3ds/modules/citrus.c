@@ -1,5 +1,7 @@
 #include "py/runtime.h"
 
+#include "citrus/exits.h"
+
 #define IMPORT_SUBMODULE(__n) \
     extern const mp_obj_module_t mp_module_citrus_##__n;
 
@@ -21,6 +23,19 @@ IMPORT_SUBMODULE(ns);
 IMPORT_SUBMODULE(os);
 IMPORT_SUBMODULE(romfs);
 IMPORT_SUBMODULE(soc);
+
+void mod_citrus_exit_all(void) {
+    mod_citrus_apt_exit();
+    mod_citrus_gfx_exit();
+    mod_citrus_gsp_exit();
+    mod_citrus_hid_exit();
+    mod_citrus_httpc_exit();
+    mod_citrus_ndsp_exit();
+    mod_citrus_news_exit();
+    mod_citrus_ns_exit();
+    mod_citrus_romfs_exit();
+    mod_citrus_soc_exit();
+}
 
 STATIC const mp_rom_map_elem_t mp_module_citrus_globals_table[] = {
         // Package Info

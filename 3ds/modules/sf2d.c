@@ -3,6 +3,7 @@
 #include "py/runtime.h"
 
 #include "citrus/helpers.h"
+#include "init_helper.h"
 
 #define METHOD_OBJ_N(__args, __n) \
     STATIC MP_DEFINE_CONST_FUN_OBJ_##__args(mod_sf2d_##__n##_obj, mod_sf2d_##__n)
@@ -18,6 +19,8 @@
 
 extern const mp_obj_type_t mod_sf2d_Texture_type;
 extern const mp_obj_type_t mod_sf2d_RenderTarget_type;
+
+static int _mod_sf2d_is_init = 0;
 
 sf2d_texfmt _mod_sf2d_get_texfmt(mp_int_t format) {
     if (format >= TEXFMT_RGBA8 && format <= TEXFMT_ETC1A4) {
@@ -36,10 +39,14 @@ sf2d_place _mod_sf2d_get_place(mp_int_t place) {
 }
 
 STATIC mp_obj_t mod_sf2d_init(void) {
+    INIT_ONCE(_mod_sf2d_is_init);
+
     return mp_obj_new_int(sf2d_init());
 }
 
 STATIC mp_obj_t mod_sf2d_init_advanced(mp_obj_t gpucmd_size, mp_obj_t temppool_size) {
+    INIT_ONCE(_mod_sf2d_is_init);
+
     int gpu = mp_obj_get_int(gpucmd_size);
     int pool = mp_obj_get_int(temppool_size);
 
@@ -47,6 +54,8 @@ STATIC mp_obj_t mod_sf2d_init_advanced(mp_obj_t gpucmd_size, mp_obj_t temppool_s
 }
 
 STATIC mp_obj_t mod_sf2d_fini(void) {
+    EXIT_ONCE(_mod_sf2d_is_init);
+
     return mp_obj_new_int(sf2d_fini());
 }
 

@@ -2,6 +2,8 @@
 
 #include "py/runtime.h"
 
+#include "../init_helper.h"
+
 // 8kb
 #define DEFAULT_SHAREDMEM_SIZE 8192
 
@@ -17,6 +19,8 @@
 
 extern const mp_obj_type_t mod_citrus_httpc_Request_type;
 
+static int _mod_citrus_httpc_is_init = 0;
+
 int _mod_citrus_httpc_get_request_method(int method) {
     if (method >= HTTPC_METHOD_GET && method <= HTTPC_METHOD_DELETE) {
         return method;
@@ -31,6 +35,8 @@ enum {
 };
 
 STATIC mp_obj_t mod_citrus_httpc_init(size_t n_args, const mp_obj_t *pos_args, mp_map_t *kw_args) {
+    INIT_ONCE(_mod_citrus_httpc_is_init);
+
     static const mp_arg_t allowed_args[] = {
             {MP_QSTR_sharedmem_size, MP_ARG_KW_ONLY | MP_ARG_INT, {.u_int = DEFAULT_SHAREDMEM_SIZE}},
     };
@@ -41,7 +47,9 @@ STATIC mp_obj_t mod_citrus_httpc_init(size_t n_args, const mp_obj_t *pos_args, m
     return mp_obj_new_int(httpcInit(args[INIT_ARG_SHAREDMEM_SIZE].u_int));
 }
 
-STATIC mp_obj_t mod_citrus_httpc_exit(void) {
+mp_obj_t mod_citrus_httpc_exit(void) {
+    EXIT_ONCE(_mod_citrus_httpc_is_init);
+
     httpcExit();
 
     return mp_const_none;
