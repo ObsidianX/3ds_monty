@@ -68,6 +68,7 @@ typedef long mp_off_t;
 #include <stdio.h>
 
 extern void plat_print_3ds(const char *, size_t);
+
 #define MP_PLAT_PRINT_STRN(str, len) plat_print_3ds(str, len)
 
 // extra built in names to add to the global namespace

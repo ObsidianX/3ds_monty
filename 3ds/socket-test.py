@@ -9,20 +9,18 @@ print('')
 
 soc.init()
 s = socket.socket()
-
 s.setblocking(False)
-ai = socket.getaddrinfo('', 4000)
-print(ai)
-s.bind(ai[0][4])
-s.listen(1)
+s.bind(('', 4000))
+s.listen(5)
 
 bottom.select()
 
 print('Socket created')
-print('Listening on port 4000')
+print('Listening on %s:4000' % socket.gethostid())
 print('\x1b[29;10HPress Start to exit')
 
 client = None
+last_error = None
 
 top.select()
 while apt.main_loop():
@@ -33,20 +31,26 @@ while apt.main_loop():
 
     if client is None:
         try:
-            for i in range(10):
-                client, addr = s.accept()
-            client.settimeout(0.001)
+            client, addr = s.accept()
             client.setblocking(False)
-        except OSError as e:
-            print(e)
 
+            print('\x1b[2;2H                          ')
+            print('\x1b[4;2Hnew connection:', addr)
+        except socket.error as e:
+            if e.args != last_error:
+                last_error = e.args
+                print(e.args)
     else:
         try:
-            for i in range(10):
-                d = client.recv(1024)
-            print('IN: %s' % d)
-        except OSError as e:
-            print(e)
+            data = client.recv(1024)
+            client.send('pong')
+            print('\x1b[6;2HIN: %s' % data)
+        except socket.error as e:
+            if e.args[0] == 104:
+                print('\x1b[10;2HClient disconnected')
+                client = None
+            else:
+                print('\x1b[2;3H%s' % e)
 
     gfx.flush_buffers()
     gfx.swap_buffers()
