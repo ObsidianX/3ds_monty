@@ -52,6 +52,7 @@ mp_obj_t _mod_citrus_console_PrintConsole_new_from_c(PrintConsole *con) {
 
 enum {
     NEW_ARG_SCREEN = 0,
+    NEW_ARG_WINDOW,
     NEW_ARG_WINDOW_X,
     NEW_ARG_WINDOW_Y,
     NEW_ARG_WINDOW_WIDTH,
@@ -65,6 +66,7 @@ STATIC mp_obj_t mod_citrus_console_PrintConsole_make_new(const mp_obj_type_t *ty
 
     static const mp_arg_t allowed_args[] = {
             {MP_QSTR_screen,        MP_ARG_INT | MP_ARG_REQUIRED, {.u_int = GFX_TOP}},
+            {MP_QSTR_window,        MP_ARG_KW_ONLY | MP_ARG_OBJ,  {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
             {MP_QSTR_window_x,      MP_ARG_KW_ONLY | MP_ARG_INT,  {.u_int = -1}},
             {MP_QSTR_window_y,      MP_ARG_KW_ONLY | MP_ARG_INT,  {.u_int = -1}},
             {MP_QSTR_window_width,  MP_ARG_KW_ONLY | MP_ARG_INT,  {.u_int = -1}},
@@ -81,10 +83,22 @@ STATIC mp_obj_t mod_citrus_console_PrintConsole_make_new(const mp_obj_type_t *ty
     int _screen = _mod_citrus_gfx_is_gfx_screen(args[NEW_ARG_SCREEN].u_int);
     consoleInit(_screen, &obj->console);
 
-    IGNORE_DEFAULT(obj->console.windowX, args[NEW_ARG_WINDOW_X].u_int, -1);
-    IGNORE_DEFAULT(obj->console.windowY, args[NEW_ARG_WINDOW_Y].u_int, -1);
-    IGNORE_DEFAULT(obj->console.windowWidth, args[NEW_ARG_WINDOW_WIDTH].u_int, -1);
-    IGNORE_DEFAULT(obj->console.windowHeight, args[NEW_ARG_WINDOW_WIDTH].u_int, -1);
+    if (args[NEW_ARG_WINDOW].u_rom_obj != &mp_const_none_obj) {
+        mp_obj_tuple_t *window_tuple = MP_OBJ_TO_PTR(args[NEW_ARG_WINDOW].u_obj);
+        if (window_tuple->len != 4) {
+            nlr_raise(mp_obj_new_exception_msg(&mp_type_ValueError, "window tuple must be (x, y, width, height)"));
+        }
+
+        obj->console.windowX = mp_obj_get_int(window_tuple->items[0]);
+        obj->console.windowY = mp_obj_get_int(window_tuple->items[1]);
+        obj->console.windowWidth = mp_obj_get_int(window_tuple->items[2]);
+        obj->console.windowHeight = mp_obj_get_int(window_tuple->items[3]);
+    } else {
+        IGNORE_DEFAULT(obj->console.windowX, args[NEW_ARG_WINDOW_X].u_int, -1);
+        IGNORE_DEFAULT(obj->console.windowY, args[NEW_ARG_WINDOW_Y].u_int, -1);
+        IGNORE_DEFAULT(obj->console.windowWidth, args[NEW_ARG_WINDOW_WIDTH].u_int, -1);
+        IGNORE_DEFAULT(obj->console.windowHeight, args[NEW_ARG_WINDOW_WIDTH].u_int, -1);
+    }
     IGNORE_DEFAULT(obj->console.tabSize, args[NEW_ARG_TAB_SIZE].u_int, -1);
 
     return obj;
@@ -142,7 +156,7 @@ enum {
 
 STATIC mp_obj_t mod_citrus_console_PrintConsole_set_position(size_t n_args, const mp_obj_t *pos_args, mp_map_t *kw_args) {
     static const mp_arg_t allowed_args[] = {
-            {MP_QSTR_self, MP_ARG_OBJ | MP_ARG_REQUIRED, {.u_rom_obj = MP_ROM_PTR(&mp_const_none_obj)}},
+            {MP_QSTR_self, MP_ARG_OBJ | MP_ARG_REQUIRED, {}},
             {MP_QSTR_x,    MP_ARG_INT,                   {.u_int = 0}},
             {MP_QSTR_y,    MP_ARG_INT,                   {.u_int = 0}},
     };
@@ -218,6 +232,15 @@ STATIC void mod_citrus_console_PrintConsole_attr(mp_obj_t self_in, qstr attr, mp
     else ATTR_FIELD(bg, bg)
     else ATTR_FIELD(flags, flags)
     else ATTR_FIELD(tab_size, tabSize)
+    else if (!strcmp(name, qstr_str(MP_QSTR_window))) {
+        mp_obj_tuple_t *tuple = mp_obj_new_tuple(4, NULL);
+        tuple->items[0] = mp_obj_new_int(self->console.windowX);
+        tuple->items[1] = mp_obj_new_int(self->console.windowY);
+        tuple->items[2] = mp_obj_new_int(self->console.windowWidth);
+        tuple->items[3] = mp_obj_new_int(self->console.windowHeight);
+
+        dest[0] = tuple;
+    }
 }
 
 STATIC const mp_map_elem_t mod_citrus_console_PrintConsole_locals_dict_table[] = {

@@ -17,6 +17,13 @@
 #define LOCAL_INT(__n, __v) \
     {MP_ROM_QSTR(MP_QSTR_##__n), MP_ROM_INT(__v)}
 
+enum {
+    SCREEN_TOP_WIDTH = 400,
+    SCREEN_TOP_HEIGHT = 240,
+    SCREEN_BOTTOM_WIDTH = 320,
+    SCREEN_BOTTOM_HEIGHT = 240,
+};
+
 extern const mp_obj_type_t mod_sf2d_Texture_type;
 extern const mp_obj_type_t mod_sf2d_RenderTarget_type;
 
@@ -263,9 +270,30 @@ METHOD_OBJ_VAR_N(5, set_scissor_test);
 METHOD_OBJ_N(0, get_current_screen);
 METHOD_OBJ_N(0, get_current_side);
 
+STATIC const mp_rom_map_elem_t mod_sf2d_top_screen_metrics[] = {
+        {MP_ROM_QSTR(MP_QSTR_width),  MP_ROM_INT(SCREEN_TOP_WIDTH)},
+        {MP_ROM_QSTR(MP_QSTR_height), MP_ROM_INT(SCREEN_TOP_HEIGHT)},
+};
+
+STATIC const mp_rom_map_elem_t mod_sf2d_bottom_screen_metrics[] = {
+        {MP_ROM_QSTR(MP_QSTR_width),  MP_ROM_INT(SCREEN_BOTTOM_WIDTH)},
+        {MP_ROM_QSTR(MP_QSTR_height), MP_ROM_INT(SCREEN_BOTTOM_HEIGHT)},
+};
+
+MP_DEFINE_CONST_DICT(mod_sf2d_top_screen_metrics_dict, mod_sf2d_top_screen_metrics);
+MP_DEFINE_CONST_DICT(mod_sf2d_bottom_screen_metrics_dict, mod_sf2d_bottom_screen_metrics);
+
+STATIC const mp_rom_map_elem_t mod_sf2d_screen_metrics[] = {
+        {MP_ROM_QSTR(MP_QSTR_top),    MP_ROM_PTR(&mod_sf2d_top_screen_metrics_dict)},
+        {MP_ROM_QSTR(MP_QSTR_bottom), MP_ROM_PTR(&mod_sf2d_bottom_screen_metrics_dict)},
+};
+
+MP_DEFINE_CONST_DICT(mod_sf2d_screen_metrics_dict, mod_sf2d_screen_metrics);
+
 STATIC const mp_rom_map_elem_t mp_module_sf2d_globals_table[] = {
         // Package Info
         {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_sf2d)},
+        {MP_ROM_QSTR(MP_QSTR_screen), MP_ROM_PTR(&mod_sf2d_screen_metrics_dict)},
 
         // Classes
         LOCAL_CLASS(Texture),

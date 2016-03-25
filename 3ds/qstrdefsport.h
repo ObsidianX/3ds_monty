@@ -133,6 +133,7 @@ Q(select)
 Q(screen)
 Q(cursor_x)
 Q(cursor_y)
+Q(window)
 Q(window_x)
 Q(window_y)
 Q(window_width)
@@ -490,6 +491,8 @@ Q(loop)
 
 // sf2d
 Q(sf2d)
+Q(top)
+Q(bottom)
 Q(init_advanced)
 Q(fini)
 Q(set_3d)
@@ -560,6 +563,7 @@ Q(fileno)
 // img
 Q(img)
 Q(load_png)
+Q(load_jpeg)
 
 // socket
 Q(socket)
