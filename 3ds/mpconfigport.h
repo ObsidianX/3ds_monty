@@ -49,6 +49,7 @@
 #define MICROPY_ENABLE_EMERGENCY_EXCEPTION_BUF  (1)
 #define MICROPY_EMERGENCY_EXCEPTION_BUF_SIZE    (256)
 #define MICROPY_NLR_SETJMP                      (1)
+#define MICROPY_MODULE_NO_DIRSTAT               (1)
 
 // type definitions for the specific machine
 
@@ -89,4 +90,4 @@ extern const struct _mp_obj_module_t mp_module_img;
     { MP_OBJ_NEW_QSTR(MP_QSTR_citrus), (mp_obj_t)&mp_module_citrus }, \
     { MP_OBJ_NEW_QSTR(MP_QSTR_sf2d),   (mp_obj_t)&mp_module_sf2d   }, \
     { MP_OBJ_NEW_QSTR(MP_QSTR_socket), (mp_obj_t)&mp_module_socket }, \
-    { MP_OBJ_NEW_QSTR(MP_QSTR_img),    (mp_obj_t)&mp_module_img    },
+    { MP_OBJ_NEW_QSTR(MP_QSTR__img),    (mp_obj_t)&mp_module_img    },

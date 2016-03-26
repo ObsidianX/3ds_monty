@@ -8,11 +8,15 @@ include ../py/py.mk
 
 include $(DEVKITARM)/3ds_rules
 
+APP_TITLE = Python3DS
+APP_DESCRIPTION = MicroPython for the 3DS
+APP_AUTHOR = ObsidianX
+APP_ICON = python.png
 CROSS_COMPILE = arm-none-eabi-
 BUILD_VERBOSE=1
 V=1
-NO_SMDH = 1
 LD = $(CC)
+export _3DSXFLAGS += --smdh=$(BUILD)/python.smdh --romfs=$(CURDIR)/romfs
 
 INC += -I.
 INC += -I..
@@ -47,6 +51,8 @@ DATA = data
 all: $(BUILD)/python.3dsx
 
 $(OFILES): | $(HEADER_BUILD)/qstrdefs.generated.h $(HEADER_BUILD)/mpversion.h
+
+$(BUILD)/python.smdh:
 
 ifeq ($(strip $(NO_SMDH)),)
 $(BUILD)/python.3dsx: $(BUILD)/python.elf $(BUILD)/python.smdh

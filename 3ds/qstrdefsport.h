@@ -564,6 +564,11 @@ Q(fileno)
 Q(img)
 Q(load_png)
 Q(load_jpeg)
+Q(_img)
+Q(_PngLoader)
+Q(_JpegLoader)
+Q(load_chunk)
+Q(finish)
 
 // socket
 Q(socket)

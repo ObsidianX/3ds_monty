@@ -67,6 +67,15 @@ STATIC mp_import_stat_t stat_dir_or_file(vstr_t *path) {
         return stat;
     }
 
+    #if MICROPY_MODULE_NO_DIRSTAT
+    vstr_add_str(path, "/__init__.py");
+    stat = mp_import_stat(vstr_null_terminated_str(path));
+    if(stat == MP_IMPORT_STAT_FILE) {
+        return MP_IMPORT_STAT_DIR;
+    }
+    vstr_cut_tail_bytes(path, sizeof("/__init__.py") - 1); // cut off /__init__.py
+    #endif
+
     vstr_add_str(path, ".py");
     stat = mp_import_stat(vstr_null_terminated_str(path));
     if (stat == MP_IMPORT_STAT_FILE) {
@@ -396,7 +405,7 @@ mp_obj_t mp_builtin___import__(size_t n_args, const mp_obj_t *args) {
                     no_exist:
                 #else
                 {
-                #endif
+                #endif // MICROPY_MODULE_WEAK_LINKS
                     // couldn't find the file, so fail
                     if (MICROPY_ERROR_REPORTING == MICROPY_ERROR_REPORTING_TERSE) {
                         nlr_raise(mp_obj_new_exception_msg(&mp_type_ImportError, "module not found"));

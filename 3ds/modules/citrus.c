@@ -21,7 +21,6 @@ IMPORT_SUBMODULE(ndsp);
 IMPORT_SUBMODULE(news);
 IMPORT_SUBMODULE(ns);
 IMPORT_SUBMODULE(os);
-IMPORT_SUBMODULE(romfs);
 IMPORT_SUBMODULE(soc);
 
 void mod_citrus_exit_all(void) {
@@ -33,7 +32,6 @@ void mod_citrus_exit_all(void) {
     mod_citrus_ndsp_exit();
     mod_citrus_news_exit();
     mod_citrus_ns_exit();
-    mod_citrus_romfs_exit();
     mod_citrus_soc_exit();
 }
 
@@ -54,7 +52,6 @@ STATIC const mp_rom_map_elem_t mp_module_citrus_globals_table[] = {
         SUBMODULE(news),
         SUBMODULE(ns),
         SUBMODULE(os),
-        SUBMODULE(romfs),
         SUBMODULE(soc),
 };
 

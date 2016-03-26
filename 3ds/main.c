@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <3ds.h>
 
@@ -12,6 +13,7 @@
 #define ERR_PARSE 3
 
 extern bool net_load();
+
 extern void mod_citrus_exit_all(void);
 
 static void initConsole() {
@@ -71,6 +73,8 @@ STATIC int do_file(const char *file) {
 int main(int argc, char **argv) {
     bool retry = true;
 
+    romfsInit();
+
     while (retry) {
         int res = net_load();
         if (!res) {
@@ -80,6 +84,20 @@ int main(int argc, char **argv) {
         }
 
         mp_init();
+
+        mp_obj_list_init(mp_sys_path, 0);
+        // ROMFS:
+        mp_obj_list_append(mp_sys_path, mp_obj_new_str("romfs:", 6, true));
+        mp_obj_list_append(mp_sys_path, mp_obj_new_str("romfs:/lib", 10, true));
+        // SDMC:
+        mp_obj_list_append(mp_sys_path, mp_obj_new_str("/", 1, true));
+        mp_obj_list_append(mp_sys_path, mp_obj_new_str("/python", 7, true));
+
+        mp_obj_list_init(mp_sys_argv, 0);
+        for (int i = 0; i < argc; i++) {
+            mp_obj_list_append(mp_sys_argv, mp_obj_new_str(argv[i], strlen(argv[i]), true));
+        }
+
         res = do_file("/tmp.py");
         mp_deinit();
 
@@ -107,6 +125,8 @@ int main(int argc, char **argv) {
             gfxExit();
         }
     }
+
+    romfsExit();
 
     return 0;
 }
