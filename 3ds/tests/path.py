@@ -13,8 +13,10 @@ while apt.main_loop():
         break
     elif hid.keys_down() & hid.KEY_X:
         try:
-            import img
-            print(img.locals)
+            import _img
+            print(_img)
+            print(_img._PngLoader)
+            print(_img._JpegLoader)
         except ImportError as e:
             print(e)
 

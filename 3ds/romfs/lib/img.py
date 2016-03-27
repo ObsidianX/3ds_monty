@@ -1,25 +1,21 @@
-from _img import *
+import _img
 
 
-def load_png(_file):
-    png = _PngLoader(_file)
+def load_png(_file, background=False):
+    png = _img._PngLoader(_file)
 
-    while png.load_chunk():
-        yield None
+    if background:
+        png.load_in_background()
+        return png
 
-    p = png.finish()
-    del png
-
-    yield p
+    return png.load_all()
 
 
-def load_jpeg(_file):
-    jpeg = _JpegLoader(_file)
+def load_jpeg(_file, background=False):
+    jpeg = _img._JpegLoader(_file)
 
-    while jpeg.load_chunk():
-        yield None
+    if background:
+        jpeg.load_in_background()
+        return jpeg
 
-    j = jpeg.finish()
-    del jpeg
-
-    yield j
+    return jpeg.load_all()

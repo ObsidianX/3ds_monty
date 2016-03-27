@@ -2,6 +2,7 @@
 #include <string.h>
 #include <unistd.h>
 
+#include <3ds.h>
 #include <png.h>
 
 #include "py/runtime.h"
@@ -19,7 +20,11 @@
 #define LOCAL_METHOD(__n) \
     {MP_OBJ_NEW_QSTR(MP_QSTR_##__n), (mp_obj_t) &mod__img__PngLoader_##__n##_obj}
 
+#define BG_THREAD_STACK_SIZE (2 * 1024)
+
 const mp_obj_type_t mod__img__PngLoader_type;
+
+STATIC mp_obj_t mod__img__PngLoader_load_all(mp_obj_t self_in);
 
 typedef struct {
     mp_obj_base_t base;
@@ -39,6 +44,10 @@ typedef struct {
 
     size_t row_len;
     size_t img_len;
+
+    Thread bg_thread;
+    bool bg_complete;
+    bool bg_finished;
 } mod__img__PngLoader_t;
 
 STATIC void _mod_img_mem_file_read(png_structp png, png_bytep output, png_size_t size) {
@@ -55,10 +64,14 @@ STATIC void _mod_img_mem_file_read(png_structp png, png_bytep output, png_size_t
     file->cursor += _size;
 }
 
-STATIC void _mod_img_file_read(png_structp png, png_bytep output, png_size_t size) {
-    int fd = *(int *) png_get_io_ptr(png);
+STATIC void _mod__img__PngLoader_bg_thread(void *self_in) {
+    SELF(self_in);
 
-    read(fd, output, size);
+    mod__img__PngLoader_load_all(self_in);
+
+    self->bg_complete = true;
+
+    threadExit(0);
 }
 
 STATIC void _mod__img__PngLoader_setup(mp_obj_t self_in, bool from_memory) {
@@ -68,7 +81,7 @@ STATIC void _mod__img__PngLoader_setup(mp_obj_t self_in, bool from_memory) {
     if (from_memory) {
         _mod_img_mem_file_read(self->png, signature, sizeof(signature));
     } else {
-        _mod_img_file_read(self->png, signature, sizeof(signature));
+        fread(signature, sizeof(signature), 1, self->file);
     }
 
     if (png_sig_cmp(signature, 0, 8)) {
@@ -108,10 +121,6 @@ STATIC void _mod__img__PngLoader_setup(mp_obj_t self_in, bool from_memory) {
     for (int y = 0; y < self->height; y++) {
         self->rows[y] = &self->img[y * self->row_len];
     }
-
-    if (setjmp(png_jmpbuf(self->png))) {
-        nlr_raise(mp_obj_new_exception_msg(&mp_type_RuntimeError, "couldn't read png"));
-    }
 }
 
 enum {
@@ -150,7 +159,7 @@ STATIC mp_obj_t mod__img__PngLoader_make_new(const mp_obj_type_t *type, size_t n
         nlr_raise(mp_obj_new_exception_msg(&mp_type_TypeError, "expected str/bytes/fileio type"));
     }
 
-    _mod__img__PngLoader_setup(obj, obj->file != NULL);
+    _mod__img__PngLoader_setup(obj, obj->file == NULL);
 
     return obj;
 }
@@ -172,6 +181,10 @@ STATIC mp_obj_t mod__img__PngLoader___del__(mp_obj_t self_in) {
 
 STATIC mp_obj_t mod__img__PngLoader_load_chunk(mp_obj_t self_in) {
     SELF(self_in);
+
+    if (setjmp(png_jmpbuf(self->png))) {
+        nlr_raise(mp_obj_new_exception_msg(&mp_type_RuntimeError, "couldn't read png"));
+    }
 
     png_read_row(self->png, self->rows[png_get_current_row_number(self->png)], NULL);
 
@@ -197,21 +210,62 @@ STATIC mp_obj_t mod__img__PngLoader_finish(mp_obj_t self_in) {
     return tuple;
 }
 
+STATIC mp_obj_t mod__img__PngLoader_load_all(mp_obj_t self_in) {
+    SELF(self_in);
+
+    png_read_image(self->png, self->rows);
+
+    return mod__img__PngLoader_finish(self_in);
+}
+
+STATIC mp_obj_t mod__img__PngLoader_load_in_background(mp_obj_t self_in) {
+    SELF(self_in);
+
+    s32 prio = 0;
+    svcGetThreadPriority(&prio, CUR_THREAD_HANDLE);
+    Thread thread = threadCreate(_mod__img__PngLoader_bg_thread, self_in, BG_THREAD_STACK_SIZE, prio - 1, -2, true);
+    self->bg_thread = thread;
+    self->bg_complete = false;
+    self->bg_finished = false;
+
+    return mp_const_none;
+}
+
+STATIC mp_obj_t mod__img__PngLoader_get_image(mp_obj_t self_in) {
+    SELF(self_in);
+
+    if (!self->bg_complete) {
+        return mp_const_none;
+    } else if (self->bg_finished) {
+        nlr_raise(mp_obj_new_exception_msg(&mp_type_RuntimeError, "cannot call get_image() twice once the image has been loaded"));
+    }
+
+    self->bg_finished = true;
+
+    return mod__img__PngLoader_finish(self_in);
+}
+
 METHOD_OBJ_N(1, __del__);
 METHOD_OBJ_N(1, load_chunk);
 METHOD_OBJ_N(1, finish);
+METHOD_OBJ_N(1, load_all);
+METHOD_OBJ_N(1, load_in_background);
+METHOD_OBJ_N(1, get_image);
 
 STATIC const mp_map_elem_t mod__img__PngLoader_locals_dict_table[] = {
         // Methods
         LOCAL_METHOD(__del__),
         LOCAL_METHOD(load_chunk),
         LOCAL_METHOD(finish),
+        LOCAL_METHOD(load_all),
+        LOCAL_METHOD(load_in_background),
+        LOCAL_METHOD(get_image),
 };
 STATIC MP_DEFINE_CONST_DICT(mod__img__PngLoader_locals_dict, mod__img__PngLoader_locals_dict_table);
 
 const mp_obj_type_t mod__img__PngLoader_type = {
         {&mp_type_type},
-        .name = MP_QSTR_Texture,
+        .name = MP_QSTR__PngLoader,
         .print = mod__img__PngLoader_print,
         .make_new = mod__img__PngLoader_make_new,
         .locals_dict = (mp_obj_t) &mod__img__PngLoader_locals_dict,

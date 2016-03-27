@@ -1,6 +1,5 @@
 from citrus import *
 import sf2d
-import math
 import img
 
 sf2d.init()

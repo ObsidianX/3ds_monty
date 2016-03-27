@@ -193,7 +193,7 @@ STATIC mp_obj_t fdfile_open(const mp_obj_type_t *type, mp_arg_val_t *args) {
     const char *fname = mp_obj_str_get_str(fid);
     int fd = open(fname, mode_x | mode_rw, 0644);
     if (fd == -1) {
-        nlr_raise(mp_obj_new_exception_msg_varg(&mp_type_OSError, "errno: %d", MP_OBJ_NEW_SMALL_INT(errno)));
+        nlr_raise(mp_obj_new_exception_msg_varg(&mp_type_OSError, "failed to open file: %s\nerrno: %d", fname, MP_OBJ_NEW_SMALL_INT(errno)));
     }
     o->fd = fd;
     return MP_OBJ_FROM_PTR(o);

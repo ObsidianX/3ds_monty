@@ -569,6 +569,9 @@ Q(_PngLoader)
 Q(_JpegLoader)
 Q(load_chunk)
 Q(finish)
+Q(load_all)
+Q(load_in_background)
+Q(get_image)
 
 // socket
 Q(socket)
