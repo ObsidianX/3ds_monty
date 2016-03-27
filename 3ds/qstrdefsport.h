@@ -556,6 +556,16 @@ Q(RenderTarget)
 Q(clear_color)
 Q(texture)
 
+// sftd
+Q(sftd)
+Q(Font)
+Q(filename)
+Q(size)
+Q(line_width)
+Q(draw_text)
+Q(get_text_width)
+Q(calc_bounding_box)
+
 // file
 Q(flush)
 Q(fileno)

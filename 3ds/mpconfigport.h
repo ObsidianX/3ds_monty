@@ -83,11 +83,13 @@ extern const struct _mp_obj_fun_builtin_t mp_builtin_open_obj;
 
 extern const struct _mp_obj_module_t mp_module_citrus;
 extern const struct _mp_obj_module_t mp_module_sf2d;
+extern const struct _mp_obj_module_t mp_module_sftd;
 extern const struct _mp_obj_module_t mp_module_socket;
 extern const struct _mp_obj_module_t mp_module_img;
 
 #define MICROPY_PORT_BUILTIN_MODULES \
     { MP_OBJ_NEW_QSTR(MP_QSTR_citrus), (mp_obj_t)&mp_module_citrus }, \
     { MP_OBJ_NEW_QSTR(MP_QSTR_sf2d),   (mp_obj_t)&mp_module_sf2d   }, \
+    { MP_OBJ_NEW_QSTR(MP_QSTR_sftd),   (mp_obj_t)&mp_module_sftd   }, \
     { MP_OBJ_NEW_QSTR(MP_QSTR_socket), (mp_obj_t)&mp_module_socket }, \
-    { MP_OBJ_NEW_QSTR(MP_QSTR__img),    (mp_obj_t)&mp_module_img    },
+    { MP_OBJ_NEW_QSTR(MP_QSTR__img),   (mp_obj_t)&mp_module_img    },

@@ -76,12 +76,12 @@ int main(int argc, char **argv) {
     romfsInit();
 
     while (retry) {
-        /*int res = net_load();
+        int res = net_load();
         if (!res) {
             return 0;
         } else if (res == 2) {
             continue;
-        }*/
+        }
 
         mp_init();
 
@@ -98,7 +98,7 @@ int main(int argc, char **argv) {
             mp_obj_list_append(mp_sys_argv, mp_obj_new_str(argv[i], strlen(argv[i]), true));
         }
 
-        int res = do_file("romfs:/bg-load-test.py");
+        res = do_file("/tmp.py");
         mp_deinit();
 
         if (res) {
@@ -109,7 +109,6 @@ int main(int argc, char **argv) {
                 hidScanInput();
 
                 int down = hidKeysDown();
-                retry = false;
                 if (down & KEY_START) {
                     retry = false;
                     break;

@@ -35,7 +35,7 @@ CFLAGS = -g -Wall -mword-relocations -fomit-frame-pointer -ffunction-sections $(
 CFLAGS += -DARM11 -D_3DS
 
 LDFLAGS = -specs=3dsx.specs -g $(CFLAGS_ARCH) -Wl,-Map,$(notdir $*.map) $(L_INC)
-LIBS = -lsf2d -lctru -lpng -ljpeg -lz -lm
+LIBS = -lsftd -lsf2d -lctru -lfreetype -lpng -ljpeg -lz -lm
 
 SRC_C = $(shell find -type f -name '*.c')
 
