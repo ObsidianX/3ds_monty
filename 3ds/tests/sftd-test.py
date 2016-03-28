@@ -11,7 +11,7 @@ sf2d.swap_buffers()
 
 console.init(gfx.SCREEN_BOTTOM)
 
-font = sftd.Font('/Custard.ttf', 40, color=sf2d.rgba8(255, 255, 255, 255), line_width=100)
+font = sftd.Font('/Custard.ttf', 100, color=sf2d.rgba8(255, 255, 255, 255), line_width=100)
 box = font.calc_bounding_box('Hello, world!')
 
 print(box)
