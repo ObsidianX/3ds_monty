@@ -4,6 +4,7 @@
 #include <3ds.h>
 
 #include "py/runtime.h"
+#include "py/objstr.h"
 
 #include "../init_helper.h"
 
@@ -15,7 +16,6 @@
 #define LOCAL_METHOD(__n) \
     {MP_OBJ_NEW_QSTR(MP_QSTR_##__n), (mp_obj_t) &mod_citrus_news_##__n##_obj}
 
-static Result _news_last_result;
 static int _mod_citrus_news_is_init = 0;
 
 STATIC mp_obj_t mod_citrus_news_init(void) {
@@ -32,10 +32,6 @@ mp_obj_t mod_citrus_news_exit(void) {
     newsExit();
 
     return mp_const_none;
-}
-
-STATIC mp_obj_t mod_citrus_news_last_result(void) {
-    return mp_obj_new_int(_news_last_result);
 }
 
 enum {
@@ -61,24 +57,27 @@ STATIC mp_obj_t mod_citrus_news_add_notification(size_t n_args, const mp_obj_t *
     void *image = NULL;
     size_t image_len = 0;
     bool is_jpeg = mp_obj_is_true(args[ADD_ARG_IS_JPEG]);
+    mp_obj_t image_obj = args[ADD_ARG_IMAGE];
 
-    mp_obj_type_t *type = mp_obj_get_type(args[ADD_ARG_IMAGE]);
-    if (type != &mp_type_NoneType) {
-        // load...
-        // image_len from byte array
+    if (MP_OBJ_IS_STR_OR_BYTES(args[ADD_ARG_IMAGE])) {
+        mp_buffer_info_t buf_info;
+        mp_get_buffer(image_obj, &buf_info, MP_BUFFER_READ);
+
+        image = buf_info.buf;
+    } else if (!MP_OBJ_IS_TYPE(image_obj, &mp_type_NoneType)) {
+        nlr_raise(mp_obj_new_exception(&mp_type_TypeError));
     }
 
-    _news_last_result = NEWS_AddNotification(title16, title_len, message16, message_len, image, image_len, is_jpeg);
+    Result res = NEWS_AddNotification(title16, title_len, message16, message_len, image, image_len, is_jpeg);
 
     m_del(uint16_t, title16, title16_len);
     m_del(uint16_t, message16, message16_len);
 
-    return mod_citrus_news_last_result();
+    return mp_obj_new_int(res);
 }
 
 METHOD_OBJ_N(0, init);
 METHOD_OBJ_N(0, exit);
-METHOD_OBJ_N(0, last_result);
 METHOD_OBJ_VAR_N(4, add_notification);
 
 STATIC const mp_rom_map_elem_t mp_module_citrus_news_globals_table[] = {
@@ -88,7 +87,6 @@ STATIC const mp_rom_map_elem_t mp_module_citrus_news_globals_table[] = {
         // Functions
         LOCAL_METHOD(init),
         LOCAL_METHOD(exit),
-        LOCAL_METHOD(last_result),
         LOCAL_METHOD(add_notification),
 };
 

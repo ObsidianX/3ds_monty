@@ -489,6 +489,102 @@ Q(aux2_back)
 Q(Sound)
 Q(loop)
 
+// citrus.env
+Q(env)
+Q(is_homebrew)
+Q(get_app_id)
+Q(get_heap_size)
+Q(get_linear_heap_size)
+Q(get_system_arg_list)
+Q(get_system_run_flags)
+
+// citrus.sslc
+Q(sslc)
+
+// citrus.qtm
+Q(qtm)
+Q(check_initialized)
+
+// citrus.qtm.HeadTracking
+Q(HeadTracking)
+Q(val)
+Q(is_head_fully_detected)
+Q(convert_coord_to_screen)
+Q(padding)
+Q(coordinates)
+
+// citrus.ptmu
+Q(ptmu)
+Q(is_shell_closed)
+Q(get_battery_level)
+Q(is_charging)
+Q(is_pedometer_counting)
+Q(get_step_count)
+
+// citrus.ptmsysm
+Q(ptmsysm)
+Q(configure_new3ds_cpu)
+
+// citrus.nfc
+Q(nfc)
+Q(start_communication)
+Q(stop_communication)
+Q(start_tag_scan)
+Q(stop_tag_scan)
+Q(load_amiibo_data)
+Q(reset_tag_scan)
+Q(get_tag_state)
+Q(TAG_UNINITIALIZED)
+Q(TAG_INITIALIZED)
+Q(TAG_SCANNING)
+Q(TAG_IN_RANGE)
+Q(TAG_OUT_OF_RANGE)
+Q(TAG_DATA_LOADED)
+
+// citrus.ir
+Q(ir)
+Q(set_bit_rate)
+Q(get_bit_rate)
+Q(set_led_state)
+Q(get_led_state)
+
+// citrus.cfg
+Q(cfg)
+Q(get_region)
+Q(is_canada_or_usa)
+Q(get_model)
+Q(is_2ds)
+Q(get_language)
+Q(REGION_JPN)
+Q(REGION_USA)
+Q(REGION_EUR)
+Q(REGION_AUS)
+Q(REGION_CHN)
+Q(REGION_KOR)
+Q(REGION_TWN)
+Q(LANGUAGE_JP)
+Q(LANGUAGE_EN)
+Q(LANGUAGE_FR)
+Q(LANGUAGE_DE)
+Q(LANGUAGE_IT)
+Q(LANGUAGE_ES)
+Q(LANGUAGE_ZH)
+Q(LANGUAGE_KO)
+Q(LANGUAGE_NL)
+Q(LANGUAGE_PT)
+Q(LANGUAGE_RU)
+Q(LANGUAGE_TW)
+Q(MODEL_O3DS)
+Q(MODEL_O3DSXL)
+Q(MODEL_N3DS)
+Q(MODEL_2DS)
+Q(MODEL_N3DSXL)
+
+// citrus.ac
+Q(ac)
+Q(wait_for_internet)
+Q(get_wifi_status)
+
 // sf2d
 Q(sf2d)
 Q(top)
