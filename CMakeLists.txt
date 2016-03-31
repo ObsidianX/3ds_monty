@@ -14,5 +14,6 @@ set(MICROPY_PY_IO)
 set(MICROPY_PY_IO_FILEIO)
 set(MICROPY_PY_UZLIB)
 set(MICROPY_PY_UJSON)
+set(MICROPY_HELPER_REPL)
 
 add_executable(micropython ${SOURCE_FILES})

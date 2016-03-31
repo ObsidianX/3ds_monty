@@ -415,7 +415,7 @@
 
 // Whether to include REPL helper function
 #ifndef MICROPY_HELPER_REPL
-#define MICROPY_HELPER_REPL (0)
+#define MICROPY_HELPER_REPL (1)
 #endif
 
 // Whether to include emacs-style readline behavior in REPL

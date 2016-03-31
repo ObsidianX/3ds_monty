@@ -1,24 +1,16 @@
-#include <string.h>
-#include <stdio.h>
-#include <unistd.h>
+#include <arpa/inet.h>
 #include <errno.h>
 #include <fcntl.h>
-#include <arpa/inet.h>
+#include <malloc.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
 
 #include <3ds.h>
-#include <malloc.h>
 
-#define NET_BUFFER_SIZE 32768
-
-#define SOC_BUFFER_ALIGNMENT 0x1000
-#define SOC_BUFFER_SIZE 0x100000
-
-static void *soc_buffer;
-
-static void initConsole() {
-    gfxInitDefault();
-    consoleInit(GFX_TOP, NULL);
-}
+#include "basic_console.h"
+#include "netload.h"
+#include "netcommon.h"
 
 static int recvwait(int sockfd, void *buf, size_t len, int flags) {
     errno = 0;
@@ -32,10 +24,10 @@ static int recvwait(int sockfd, void *buf, size_t len, int flags) {
     return ret < 0 ? ret : (int) read;
 }
 
-static int sendwait(int sockfd, void *buf, size_t len, int flags) {
+static ssize_t sendwait(int sockfd, void *buf, size_t len, int flags) {
     errno = 0;
 
-    int ret = 0;
+    ssize_t ret = 0;
     size_t written = 0;
     while (((ret = send(sockfd, buf + written, len - written, flags)) >= 0 && (written += ret) < len) || errno == EAGAIN) {
         errno = 0;
@@ -44,78 +36,16 @@ static int sendwait(int sockfd, void *buf, size_t len, int flags) {
     return ret < 0 ? ret : (int) read;
 }
 
-static int show_net_error(const char *error) {
-    free(soc_buffer);
-    socExit();
-
-    initConsole();
-
-    printf(error);
-    printf("\nerrno: %d\n\n", errno);
-    printf("Press Start to exit\n");
-    printf("Press Select to retry\n");
-
-    int ret = 0;
-
-    while (aptMainLoop()) {
-        hidScanInput();
-
-        int down = hidKeysDown();
-        if (down) {
-            if(down & KEY_SELECT) {
-                ret = 2;
-            }
-            break;
-        }
-
-        gfxFlushBuffers();
-        gfxSwapBuffers();
-
-        gspWaitForVBlank();
-    }
-
-    gfxExit();
-
-    return ret;
-}
-
 int net_load() {
-    soc_buffer = memalign(SOC_BUFFER_ALIGNMENT, SOC_BUFFER_SIZE);
-    if (soc_buffer == NULL) {
-        errno = ENOMEM;
-        return 0;
-    }
-    socInit(soc_buffer, SOC_BUFFER_SIZE);
+    int sock = net_server_init(5000);
 
     int result = 1;
 
-    int sock = socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
-    if (sock < 0) {
-        return show_net_error("Failed to init socket");
-    }
-
-    fcntl(sock, F_SETFL, fcntl(sock, F_GETFL, 0) | O_NONBLOCK);
-
-    struct sockaddr_in server;
-    server.sin_family = AF_INET;
-    server.sin_port = htons(5000);
-    server.sin_addr.s_addr = (in_addr_t) gethostid();
-
-    if (bind(sock, (struct sockaddr *) &server, sizeof(server)) < 0) {
-        close(sock);
-        return show_net_error("Couldn't bind socket");
-    }
-
-    if (listen(sock, 5) < 0) {
-        close(sock);
-        return show_net_error("Couldn't listen on socket");
-    }
-
-    initConsole();
+    init_console();
     consoleClear();
 
-    printf("Waiting for script on port:\n");
     struct in_addr addr = {(in_addr_t) gethostid()};
+    printf("Waiting for script on port:\n");
     printf("%s:5000\n", inet_ntoa(addr));
 
     printf("\nPress any key to cancel\n");
@@ -144,15 +74,15 @@ int net_load() {
         int buffer_size = NET_BUFFER_SIZE;
         setsockopt(cl_sock, SOL_SOCKET, SO_RCVBUF, &buffer_size, sizeof(buffer_size));
 
-        fcntl(cl_sock, F_SETFL, fcntl(sock, F_GETFL, 0) | O_NONBLOCK);
+        fcntl(cl_sock, F_SETFL, fcntl(cl_sock, F_GETFL, 0) | O_NONBLOCK);
 
         printf("\nClient: %s\n", inet_ntoa(client.sin_addr));
 
         unsigned int total_bytes = 0;
         if (recvwait(cl_sock, &total_bytes, sizeof(total_bytes), 0) < 0 || total_bytes == 0) {
             close(cl_sock);
-            close(sock);
-            return show_net_error("Couldn't read file size");
+            net_server_exit(sock);
+            return net_error("Couldn't read file size");
         }
 
         total_bytes = ntohl(total_bytes);
@@ -200,10 +130,7 @@ int net_load() {
         close(cl_sock);
     }
 
-    close(sock);
-
-    free(soc_buffer);
-    socExit();
+    net_server_exit(sock);
 
     gfxExit();
 
