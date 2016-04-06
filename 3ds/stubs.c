@@ -13,9 +13,6 @@
 #include "py/runtime.h"
 #include "py/lexer.h"
 
-void gc_collect(void) {
-}
-
 mp_import_stat_t mp_import_stat(const char *path) {
     FILE *f = fopen(path, "r");
     if (f != NULL) {

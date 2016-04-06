@@ -1,0 +1,22 @@
+ifeq ($(strip $(APP_SYSTEM_MODE)),)
+APP_SYSTEM_MODE := 64MB
+endif
+
+ifeq ($(strip $(APP_SYSTEM_MODE_EXT)),)
+APP_SYSTEM_MODE_EXT := Legacy
+endif
+
+%.bnr: $(BANNER_IMAGE) $(BANNER_AUDIO)
+	@bannertool makebanner -i $(BANNER_IMAGE) -a $(BANNER_AUDIO) -o $@ > /dev/null
+	@echo build ... $(notdir $@)
+
+%.icn: $(APP_ICON)
+	@bannertool makesmdh -s "$(APP_TITLE)" -l "$(APP_TITLE)" -p "$(APP_AUTHOR)" -i $(APP_ICON) $(ICON_FLAGS) -o $@ > /dev/null
+	@echo build ... $(notdir $@)
+
+%.smdh: $(APP_ICON)
+	@smdhtool --create "$(APP_TITLE)" "$(APP_DESCRIPTION)" "$(APP_AUTHOR)" $(APP_ICON) $@
+	@echo build ... $(notdir $@)
+
+%.cia: %.elf $(BUILD)/banner.bnr $(BUILD)/icon.icn
+	@makerom -f cia -o $@ -elf $< -DAPP_ENCRYPTED=false -rsf $(CURDIR)/template.rsf -target t -exefslogo -icon $(BUILD)/icon.icn -banner $(BUILD)/banner.bnr -DAPP_TITLE="$(APP_TITLE)" -DAPP_PRODUCT_CODE="$(APP_PRODUCT_CODE)" -DAPP_UNIQUE_ID="$(APP_UNIQUE_ID)" -DAPP_SYSTEM_MODE="$(APP_SYSTEM_MODE)" -DAPP_SYSTEM_MODE_EXT="$(APP_SYSTEM_MODE_EXT)" -DAPP_ROMFS="$(CURDIR)/romfs"

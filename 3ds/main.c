@@ -100,7 +100,7 @@ STATIC int do_file(const char *file) {
     FILE *exists = fopen(file, "r");
     if (!exists) {
         init_console();
-        printf("Could not locate %s\n", file);
+        printf("Could not locate \"%s\"\n", file);
         return ERR_FILE_NOT_FOUND;
     }
     fclose(exists);
@@ -122,6 +122,19 @@ STATIC void setup_sys(int argc, char **argv) {
 }
 
 void main_netload(int argc, char **argv) {
+    mp_init();
+    setup_sys(argc, argv);
+    int ret = do_file("romfs:/netload.py");
+
+    if(ret) {
+        fatal_error(false);
+    }
+
+    mp_deinit();
+
+    mod_citrus_exit_all();
+    return;
+
     bool retry = true;
     while (retry) {
         mod_citrus_exit_all();
@@ -149,7 +162,7 @@ void main_netload(int argc, char **argv) {
     }
 }
 
-STATIC void main_repl(int argc, char **argv) {
+void main_repl(int argc, char **argv) {
     if(!net_repl_connect()) {
 
     }
@@ -210,7 +223,6 @@ void run_file(const char *filename, int argc, char **argv) {
 
     int ret = do_file(filename);
     if(ret) {
-        init_console();
         fatal_error(false);
     }
 
@@ -218,13 +230,28 @@ void run_file(const char *filename, int argc, char **argv) {
 }
 
 void main_romfs(int argc, char **argv) {
-    FILE *init = fopen("romfs:/boot", "r");
     char filename[FILENAME_MAX];
-    fread(filename, sizeof(filename), 1, init);
-    if(ferror(init)) {
-        printf("Couldn't read 'romfs:/boot'\nerrno: %d", errno);
+    char boot_filename[FILENAME_MAX];
 
+    FILE *init = fopen("romfs:/boot", "r");
+
+    fread(boot_filename, sizeof(filename), 1, init);
+
+    char *newline = strchr(boot_filename, '\n');
+    if(newline) {
+        *newline = '\0';
+    } else {
+        newline = strchr(boot_filename, '\r');
+        if(newline) {
+            *newline = '\0';
+        }
+    }
+
+    snprintf(filename, FILENAME_MAX, "romfs:/%s", boot_filename);
+
+    if(ferror(init)) {
         init_console();
+        printf("Couldn't read 'romfs:/boot'\nerrno: %d", errno);
         fatal_error(false);
         return;
     }

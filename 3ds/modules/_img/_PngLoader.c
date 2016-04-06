@@ -138,7 +138,7 @@ STATIC mp_obj_t mod__img__PngLoader_make_new(const mp_obj_type_t *type, size_t n
     mp_arg_val_t args[NEW_ARG_COUNT];
     mp_arg_parse_all_kw_array(n_args, n_kw, args_in, NEW_ARG_COUNT, allowed_args, args);
 
-    mod__img__PngLoader_t *obj = m_new_obj(mod__img__PngLoader_t);
+    mod__img__PngLoader_t *obj = m_new_obj_with_finaliser(mod__img__PngLoader_t);
     obj->base.type = (mp_obj_t) &mod__img__PngLoader_type;
 
     mp_obj_t _data = args[NEW_ARG_TEXT].u_obj;

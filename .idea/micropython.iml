@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/3ds/netload.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/3ds/netload.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/3ds/main.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>

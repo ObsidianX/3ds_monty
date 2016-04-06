@@ -13,6 +13,10 @@ format = """\x1b[1;1H
     System version string: %s
 """
 
+TIME_POS = '4;10'
+WIFI_POS = '5;19'
+_3D_POS = '6;15'
+
 
 def gen_info():
     firm = os.get_firm_version()
@@ -26,14 +30,17 @@ def gen_info():
     return (firm, kern, time, wifi, slider, sys_tup, sys_str)
 
 
+print(format % gen_info())
+
 while apt.main_loop():
     hid.scan_input()
 
     if hid.keys_down() & hid.KEY_START:
         break
 
-    info = gen_info()
-    print(format % info)
+    print('\x1b[%sH%d' % (TIME_POS, os.get_time()))
+    print('\x1b[%sH%d' % (WIFI_POS, os.get_wifi_strength()))
+    print('\x1b[%sH%1.2f' % (_3D_POS, os.get_3d_slider_state()))
 
     gfx.flush_buffers()
     gfx.swap_buffers()

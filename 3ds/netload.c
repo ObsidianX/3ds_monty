@@ -39,7 +39,7 @@ static ssize_t sendwait(int sockfd, void *buf, size_t len, int flags) {
 int net_load() {
     int sock = net_server_init(5000);
 
-    int result = 1;
+    int result = 0;
 
     init_console();
     consoleClear();
@@ -55,16 +55,16 @@ int net_load() {
 
     bool waiting = true;
     int cl_sock = -1;
-    while (waiting) {
+    while (aptMainLoop() && waiting) {
         cl_sock = accept(sock, (struct sockaddr *) &client, &client_len);
         if (cl_sock >= 0) {
+            result = 1;
             break;
         }
 
         hidScanInput();
         if (hidKeysDown()) {
             waiting = false;
-            result = 0;
         }
 
         gspWaitForVBlank();
@@ -94,9 +94,9 @@ int net_load() {
         unsigned int received_bytes = 0;
         int ret = 0;
         unsigned char *buffer = malloc(512);
-        FILE *file = fopen("/tmp.py", "w");
+        FILE *file = fopen("/monty_netload.py", "w");
 
-        while (received_bytes < total_bytes) {
+        while (aptMainLoop() && received_bytes < total_bytes) {
             ret = (int) recv(cl_sock, buffer, 512, 0);
             if (ret >= 0) {
                 received_bytes += ret;

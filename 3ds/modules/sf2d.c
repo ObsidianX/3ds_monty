@@ -9,6 +9,8 @@
     STATIC MP_DEFINE_CONST_FUN_OBJ_##__args(mod_sf2d_##__n##_obj, mod_sf2d_##__n)
 #define METHOD_OBJ_VAR_N(__num, __n) \
     STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_sf2d_##__n##_obj, __num, __num, mod_sf2d_##__n)
+#define METHOD_OBJ_VAR(__min, __max, __n) \
+    STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_sf2d_##__n##_obj, __min, __max, mod_sf2d_##__n)
 
 #define LOCAL_CLASS(__n) \
     {MP_ROM_QSTR(MP_QSTR_##__n), MP_ROM_PTR(&mod_sf2d_##__n##_type)}
@@ -72,9 +74,17 @@ STATIC mp_obj_t mod_sf2d_set_3d(mp_obj_t enable) {
     return mp_const_none;
 }
 
-STATIC mp_obj_t mod_sf2d_start_frame(mp_obj_t screen, mp_obj_t side) {
-    gfxScreen_t _screen = _mod_citrus_gfx_get_gfx_screen(screen);
-    gfx3dSide_t _side = _mod_citrus_gfx_get_gfx_3d_side(side);
+enum {
+    START_ARG_SCREEN = 0,
+    START_ARG_SIDE,
+};
+
+STATIC mp_obj_t mod_sf2d_start_frame(size_t n_args, const mp_obj_t *args) {
+    gfxScreen_t _screen = _mod_citrus_gfx_get_gfx_screen(args[0]);
+    gfx3dSide_t _side = GFX_LEFT;
+    if (n_args > 1) {
+        _side = _mod_citrus_gfx_get_gfx_3d_side(args[1]);
+    }
 
     sf2d_start_frame(_screen, _side);
 
@@ -251,7 +261,7 @@ METHOD_OBJ_N(0, init);
 METHOD_OBJ_N(2, init_advanced);
 METHOD_OBJ_N(0, fini);
 METHOD_OBJ_N(1, set_3d);
-METHOD_OBJ_N(2, start_frame);
+METHOD_OBJ_VAR(1, 2, start_frame);
 METHOD_OBJ_N(0, end_frame);
 METHOD_OBJ_N(0, swap_buffers);
 METHOD_OBJ_N(1, set_vblank_wait);

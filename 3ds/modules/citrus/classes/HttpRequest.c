@@ -55,7 +55,7 @@ STATIC mp_obj_t mod_citrus_httpc_Request_make_new(const mp_obj_type_t *type, siz
     mp_arg_val_t args[NEW_ARG_COUNT];
     mp_arg_parse_all_kw_array(n_args, n_kw, args_in, NEW_ARG_COUNT, allowed_args, args);
 
-    mod_citrus_httpc_Request_t *obj = m_new_obj(mod_citrus_httpc_Request_t);
+    mod_citrus_httpc_Request_t *obj = m_new_obj_with_finaliser(mod_citrus_httpc_Request_t);
     obj->base.type = (mp_obj_t) &mod_citrus_httpc_Request_type;
 
     if (!MP_OBJ_IS_STR(args[NEW_ARG_URL].u_obj)) {

@@ -41,7 +41,7 @@ STATIC mp_obj_t mod_citrus_apt_Hook_make_new(const mp_obj_type_t *type, size_t n
     mp_arg_val_t args[NEW_ARG_COUNT];
     mp_arg_parse_all_kw_array(n_args, n_kw, args_in, NEW_ARG_COUNT, allowed_args, args);
 
-    mod_citrus_apt_Hook_t *obj = m_new_obj(mod_citrus_apt_Hook_t);
+    mod_citrus_apt_Hook_t *obj = m_new_obj_with_finaliser(mod_citrus_apt_Hook_t);
     obj->base.type = (mp_obj_t) &mod_citrus_apt_Hook_type;
 
     obj->callback = args[NEW_ARG_CALLBACK].u_obj;

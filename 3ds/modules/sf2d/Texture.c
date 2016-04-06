@@ -309,20 +309,51 @@ STATIC mp_obj_t mod_sf2d_Texture_draw(size_t n_args, const mp_obj_t *pos_args, m
 
 STATIC mp_obj_t mod_sf2d_Texture_draw_quad_uv(size_t n_args, const mp_obj_t *args) {
     // self, l, t, r, b, u0, v0, u1, v1, params
+    SELF(args[0]);
+
+    float left = mp_obj_get_float(args[1]);
+    float top = mp_obj_get_float(args[2]);
+    float right = mp_obj_get_float(args[3]);
+    float bottom = mp_obj_get_float(args[4]);
+
+    float u0 = mp_obj_get_float(args[5]);
+    float v0 = mp_obj_get_float(args[6]);
+    float u1 = mp_obj_get_float(args[7]);
+    float v1 = mp_obj_get_float(args[8]);
+
+    unsigned int params = mp_obj_get_int(args[9]);
+
+    sf2d_draw_quad_uv(self->tex, left, top, right, bottom, u0, v0, u1, v1, params);
     return mp_const_none;
 }
 
 STATIC mp_obj_t mod_sf2d_Texture_set_pixel(size_t n_args, const mp_obj_t *args) {
     // self, x, y, color
+    SELF(args[0]);
+
+    int x = mp_obj_get_int(args[1]);
+    int y = mp_obj_get_int(args[2]);
+
+    u32 color = mp_obj_get_int(args[3]);
+
+    sf2d_set_pixel(self->tex, x, y, color);
     return mp_const_none;
 }
 
 STATIC mp_obj_t mod_sf2d_Texture_get_pixel(mp_obj_t self_in, mp_obj_t x, mp_obj_t y) {
     // returns color
-    return mp_const_none;
+    SELF(self_in);
+
+    int _x = mp_obj_get_int(x);
+    int _y = mp_obj_get_int(y);
+
+    return mp_obj_new_int(sf2d_get_pixel(self->tex, _x, _y));
 }
 
 STATIC mp_obj_t mod_sf2d_Texture_tile32(mp_obj_t self_in) {
+    SELF(self_in);
+
+    sf2d_texture_tile32(self->tex);
     return mp_const_none;
 }
 
@@ -368,9 +399,9 @@ STATIC void mod_sf2d_Texture_attr(mp_obj_t self_in, qstr attr, mp_obj_t *dest) {
         return;
     }
 
-    if(!strcmp(name, qstr_str(MP_QSTR_width))) {
+    if (!strcmp(name, qstr_str(MP_QSTR_width))) {
         dest[0] = mp_obj_new_int(self->tex->width);
-    } else if(!strcmp(name, qstr_str(MP_QSTR_height))) {
+    } else if (!strcmp(name, qstr_str(MP_QSTR_height))) {
         dest[0] = mp_obj_new_int(self->tex->height);
     }
 }

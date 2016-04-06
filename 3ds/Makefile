@@ -7,11 +7,18 @@ QSTR_DEFS = qstrdefsport.h
 include ../py/py.mk
 
 include $(DEVKITARM)/3ds_rules
+include cia_rules
 
-APP_TITLE = Python3DS
-APP_DESCRIPTION = MicroPython for the 3DS
+APP_TITLE = Monty3DS
+APP_DESCRIPTION = Python for the 3DS
 APP_AUTHOR = ObsidianX
 APP_ICON = python.png
+APP_PRODUCT_CODE = CTR-P-MTYP
+APP_UNIQUE_ID = 0x88001
+
+BANNER_IMAGE = banner.png
+BANNER_AUDIO = ni.wav
+
 CROSS_COMPILE = arm-none-eabi-
 BUILD_VERBOSE=1
 V=1
@@ -48,7 +55,8 @@ OBJ = $(OFILES)
 
 DATA = data
 
-all: $(BUILD)/python.3dsx
+all: $(BUILD)/python.3dsx $(BUILD)/python.cia
+
 
 $(OFILES): | $(HEADER_BUILD)/qstrdefs.generated.h $(HEADER_BUILD)/mpversion.h
 
@@ -59,6 +67,8 @@ $(BUILD)/python.3dsx: $(BUILD)/python.elf $(BUILD)/python.smdh
 else
 $(BUILD)/python.3dsx: $(BUILD)/python.elf
 endif
+
+$(BUILD)/python.cia: $(BUILD)/python.elf $(BUILD)/banner.bnr $(BUILD)/icon.icn
 
 $(BUILD)/python.elf: $(OFILES)
 
