@@ -123,7 +123,7 @@ STATIC void mod_sf2d_RenderTarget_attr(mp_obj_t self_in, qstr attr, mp_obj_t *de
         if (load) {
             dest[0] = mp_obj_new_int(self->clear_color);
         } else {
-            self->clear_color = mp_obj_get_int(dest[0]);
+            self->clear_color = mp_obj_get_int(dest[1]);
             dest[0] = MP_OBJ_NULL;
         }
     } else if (!strcmp(name, qstr_str(MP_QSTR_texture))) {

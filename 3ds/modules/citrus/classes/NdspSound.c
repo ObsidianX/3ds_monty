@@ -178,7 +178,7 @@ STATIC void mod_citrus_ndsp_Sound_attr(mp_obj_t self_in, qstr attr, mp_obj_t *de
         if (load) {
             dest[0] = mp_obj_new_bool(self->wave.looping);
         } else {
-            self->wave.looping = mp_obj_is_true(dest[0]);
+            self->wave.looping = mp_obj_is_true(dest[1]);
             dest[0] = NULL;
         }
     }

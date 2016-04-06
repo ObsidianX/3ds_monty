@@ -287,7 +287,7 @@ STATIC void mod_citrus_ndsp_Channel_attr(mp_obj_t self_in, qstr attr, mp_obj_t *
         if (load) {
             dest[0] = mp_obj_new_bool(ndspChnIsPaused(self->id));
         } else {
-            ndspChnSetPaused(self->id, mp_obj_is_true(dest[0]));
+            ndspChnSetPaused(self->id, mp_obj_is_true(dest[1]));
             dest[0] = NULL;
         }
     }

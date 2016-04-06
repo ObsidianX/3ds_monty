@@ -161,21 +161,21 @@ STATIC void mod_sftd_Font_attr(mp_obj_t self_in, qstr attr, mp_obj_t *dest) {
         if (load) {
             dest[0] = mp_obj_new_int(self->size);
         } else {
-            self->size = mp_obj_get_int(dest[0]);
+            self->size = mp_obj_get_int(dest[1]);
             dest[0] = MP_OBJ_NULL;
         }
     } else if (!strcmp(name, qstr_str(MP_QSTR_color))) {
         if (load) {
             dest[0] = mp_obj_new_int(self->color);
         } else {
-            self->color = mp_obj_get_int(dest[0]);
+            self->color = mp_obj_get_int(dest[1]);
             dest[0] = MP_OBJ_NULL;
         }
     } else if (!strcmp(name, qstr_str(MP_QSTR_line_width))) {
         if (load) {
             dest[0] = mp_obj_new_int(self->line_width);
         } else {
-            self->line_width = mp_obj_get_int(dest[0]);
+            self->line_width = mp_obj_get_int(dest[1]);
             dest[0] = MP_OBJ_NULL;
         }
     }

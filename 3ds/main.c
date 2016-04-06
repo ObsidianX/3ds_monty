@@ -132,7 +132,8 @@ void main_netload(int argc, char **argv) {
         mp_deinit();
 
         if(ret) {
-            fatal_error(false);
+            mod_citrus_exit_all();
+            restart = fatal_error(false);
         }
 
         /*if (!ret) {
