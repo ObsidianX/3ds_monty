@@ -3,6 +3,7 @@
 #include <fcntl.h>
 #include <malloc.h>
 #include <stdio.h>
+#include <unistd.h>
 
 #include <3ds.h>
 

@@ -34,7 +34,7 @@ extern void mod_citrus_exit_all(void);
 
 STATIC bool fatal_error(bool restart) {
     bool should_restart = false;
-    if(restart) {
+    if (restart) {
         printf("\x1b[28;12HPress Select to restart.");
     }
     printf("\x1b[29;12H  Press Start to exit.  ");
@@ -87,7 +87,7 @@ STATIC int execute_from_lexer(mp_lexer_t *lex, mp_parse_input_kind_t kind, bool 
 
         nlr_pop();
         return 0;
-    } else if(MP_OBJ_IS_TYPE(nlr.ret_val, &mp_type_SystemExit)) {
+    } else if (MP_OBJ_IS_TYPE(nlr.ret_val, &mp_type_SystemExit)) {
         return ERR_SYS_EXIT;
     } else {
         init_console();
@@ -122,48 +122,39 @@ STATIC void setup_sys(int argc, char **argv) {
 }
 
 void main_netload(int argc, char **argv) {
-    mp_init();
-    setup_sys(argc, argv);
-    int ret = do_file("romfs:/netload.py");
-
-    if(ret) {
-        fatal_error(false);
-    }
-
-    mp_deinit();
-
-    mod_citrus_exit_all();
-    return;
-
-    bool retry = true;
-    while (retry) {
-        mod_citrus_exit_all();
-        int res = net_load();
-        if (!res) {
-            return;
-        } else if (res == 2) {
-            continue;
-        }
-
+    bool restart = true;
+    while (restart) {
         mp_init();
         setup_sys(argc, argv);
 
-        res = do_file("/monty_netload.py");
-        unlink("/monty_netload.py");
+        int ret = do_file("romfs:/netload.py");
 
         mp_deinit();
 
-        if (res) {
-            retry = fatal_error(true);
+        if(ret) {
+            fatal_error(false);
         }
 
-        // ensure all services are exited to be a good citizen
-        mod_citrus_exit_all();
+        /*if (!ret) {
+            mp_init();
+            setup_sys(argc, argv);
+
+            ret = do_file("/monty_netload.py");
+
+            mp_deinit();
+
+            if (ret) {
+                restart = fatal_error(true);
+            }
+        }*/
     }
+
+    unlink("/monty_netload.py");
+    mod_citrus_exit_all();
 }
 
 void main_repl(int argc, char **argv) {
-    if(!net_repl_connect()) {
+    if (!net_repl_connect()) {
 
     }
 
@@ -173,10 +164,10 @@ void main_repl(int argc, char **argv) {
     mp_init();
     setup_sys(argc, argv);
 
-    for (;;) {
+    for (; ;) {
         // non-blocking
         net_repl_recv(&packet);
-        switch(packet.type) {
+        switch (packet.type) {
             case REPL_QUIT:
                 return;
             case REPL_WAIT:
@@ -197,7 +188,7 @@ void main_repl(int argc, char **argv) {
             if (packet.type == REPL_QUIT) {
                 free(line);
                 return;
-            } else if(packet.line_len == 0) {
+            } else if (packet.line_len == 0) {
                 break;
             }
 
@@ -222,7 +213,7 @@ void run_file(const char *filename, int argc, char **argv) {
     setup_sys(argc, argv);
 
     int ret = do_file(filename);
-    if(ret) {
+    if (ret) {
         fatal_error(false);
     }
 
@@ -238,18 +229,18 @@ void main_romfs(int argc, char **argv) {
     fread(boot_filename, sizeof(filename), 1, init);
 
     char *newline = strchr(boot_filename, '\n');
-    if(newline) {
+    if (newline) {
         *newline = '\0';
     } else {
         newline = strchr(boot_filename, '\r');
-        if(newline) {
+        if (newline) {
             *newline = '\0';
         }
     }
 
     snprintf(filename, FILENAME_MAX, "romfs:/%s", boot_filename);
 
-    if(ferror(init)) {
+    if (ferror(init)) {
         init_console();
         printf("Couldn't read 'romfs:/boot'\nerrno: %d", errno);
         fatal_error(false);

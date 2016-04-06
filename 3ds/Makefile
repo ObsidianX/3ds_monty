@@ -55,7 +55,8 @@ OBJ = $(OFILES)
 
 DATA = data
 
-all: $(BUILD)/python.3dsx $(BUILD)/python.cia
+all: $(BUILD)/python.3dsx
+#$(BUILD)/python.cia
 
 
 $(OFILES): | $(HEADER_BUILD)/qstrdefs.generated.h $(HEADER_BUILD)/mpversion.h
