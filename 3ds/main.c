@@ -13,13 +13,13 @@
 
 #include "config.h"
 #include "basic_console.h"
-#include "netload.h"
 #include "netrepl.h"
 
 #define ERR_FILE_NOT_FOUND 1
 #define ERR_MEMORY_ALLOC 2
 #define ERR_PARSE 3
 #define ERR_SYS_EXIT 4
+#define ERR_NETLOAD 5
 
 static const char *sys_paths[] = {
         "romfs:",
@@ -90,6 +90,14 @@ STATIC int execute_from_lexer(mp_lexer_t *lex, mp_parse_input_kind_t kind, bool 
     } else if (MP_OBJ_IS_TYPE(nlr.ret_val, &mp_type_SystemExit)) {
         return ERR_SYS_EXIT;
     } else {
+        mp_obj_exception_t *exception = MP_OBJ_FROM_PTR(nlr.ret_val);
+        if(exception->args != NULL && exception->args->len == 1) {
+            int code = mp_obj_get_int(exception->args->items[0]);
+            if(code == 0xDEAD0000) {
+                return ERR_NETLOAD;
+            }
+        }
+
         init_console();
         mp_obj_print_exception(&mp_plat_print, MP_OBJ_FROM_PTR(nlr.ret_val));
         return ERR_PARSE;
@@ -130,13 +138,13 @@ void main_netload(int argc, char **argv) {
         int ret = do_file("romfs:/netload.py");
 
         mp_deinit();
+        mod_citrus_exit_all();
 
-        if(ret) {
-            mod_citrus_exit_all();
+        if (ret == ERR_PARSE) {
             restart = fatal_error(false);
-        }
-
-        /*if (!ret) {
+        } else if(ret == ERR_NETLOAD) {
+            restart = false;
+        } else {
             mp_init();
             setup_sys(argc, argv);
 
@@ -147,7 +155,7 @@ void main_netload(int argc, char **argv) {
             if (ret) {
                 restart = fatal_error(true);
             }
-        }*/
+        }
     }
 
     unlink("/monty_netload.py");
@@ -219,6 +227,8 @@ void run_file(const char *filename, int argc, char **argv) {
     }
 
     mp_deinit();
+
+    mod_citrus_exit_all();
 }
 
 void main_romfs(int argc, char **argv) {

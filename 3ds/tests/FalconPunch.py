@@ -19,7 +19,5 @@ while True:
         break  # EOF
     sock.sendall(chunk)
 
-sock.recv(1)
-
 sock.close()
 sys.exit()

@@ -298,6 +298,8 @@ STATIC mp_obj_t mod_sf2d_Texture_draw(size_t n_args, const mp_obj_t *pos_args, m
         } else {
             sf2d_draw_texture_rotate(self->tex, x, y, angle);
         }
+    } else if (HASARG(DRAW_ARG_CENTER_TUPLE)) {
+        sf2d_draw_texture_rotate_hotspot(self->tex, x, y, 0, center_x, center_y);
     } else if (HASARG(DRAW_ARG_COLOR)) {
         sf2d_draw_texture_blend(self->tex, x, y, color);
     } else {

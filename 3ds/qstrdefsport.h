@@ -732,3 +732,6 @@ Q(SO_SNDLOWAT)
 Q(SO_RCVLOWAT)
 Q(SO_TYPE)
 Q(SO_ERROR)
+
+// time
+Q(time)
