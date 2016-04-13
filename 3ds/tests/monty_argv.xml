@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcut>
+    <executable>/3ds/monty_argv/monty_argv.3dsx</executable>
+    <arg>/os-test.py</arg>
+    <name>os-test.py</name>
+    <description>Test of Monty3DS</description>
+</shortcut>

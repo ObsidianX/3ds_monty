@@ -87,12 +87,13 @@ STATIC int execute_from_lexer(mp_lexer_t *lex, mp_parse_input_kind_t kind, bool 
 
         nlr_pop();
         return 0;
-    } else if (MP_OBJ_IS_TYPE(nlr.ret_val, &mp_type_SystemExit)) {
-        return ERR_SYS_EXIT;
     } else {
-        mp_obj_exception_t *exception = MP_OBJ_FROM_PTR(nlr.ret_val);
-        if(exception->args != NULL && exception->args->len == 1) {
-            int code = mp_obj_get_int(exception->args->items[0]);
+        if (mp_obj_exception_match(nlr.ret_val, &mp_type_SystemExit)) {
+            return ERR_SYS_EXIT;
+        }
+
+        if(mp_obj_is_exception_type(nlr.ret_val) && ((mp_obj_exception_t *)nlr.ret_val)->args != NULL && ((mp_obj_exception_t *)nlr.ret_val)->args->len == 1) {
+            int code = mp_obj_get_int(((mp_obj_exception_t *)nlr.ret_val)->args->items[0]);
             if(code == 0xDEAD0000) {
                 return ERR_NETLOAD;
             }
@@ -222,7 +223,7 @@ void run_file(const char *filename, int argc, char **argv) {
     setup_sys(argc, argv);
 
     int ret = do_file(filename);
-    if (ret) {
+    if (ret && ret != ERR_SYS_EXIT) {
         fatal_error(false);
     }
 
@@ -263,7 +264,9 @@ void main_romfs(int argc, char **argv) {
 }
 
 void main_args(int argc, char **argv) {
-    run_file(argv[1], argc, argv);
+    if(argc > 1) {
+        run_file(argv[1], argc, argv);
+    }
 }
 
 int main(int argc, char **argv) {

@@ -7,8 +7,4 @@
 #define _3DS_MODE_ROMFS   (2)
 #define _3DS_MODE_ARGS    (3)
 
-#ifndef _3DS_MODE
-#define _3DS_MODE (_3DS_MODE_NETLOAD)
-#endif
-
 #endif // _3DS_CONFIG_H_

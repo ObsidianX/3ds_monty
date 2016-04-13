@@ -9,6 +9,9 @@
 *.hex
 *.dis
 *.exe
+*.3dsx
+*.cia
+*.smdh
 
 # Packages 
 ############

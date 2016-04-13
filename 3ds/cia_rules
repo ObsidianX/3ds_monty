@@ -11,7 +11,7 @@ endif
 	@echo build ... $(notdir $@)
 
 %.icn: $(APP_ICON)
-	@bannertool makesmdh -s "$(APP_TITLE)" -l "$(APP_TITLE)" -p "$(APP_AUTHOR)" -i $(APP_ICON) $(ICON_FLAGS) -o $@ > /dev/null
+	@bannertool makesmdh -s "$(APP_TITLE)" -l "$(APP_TITLE_LONG)" -p "$(APP_AUTHOR)" -i $(APP_ICON) $(ICON_FLAGS) -o $@ > /dev/null
 	@echo build ... $(notdir $@)
 
 %.smdh: $(APP_ICON)
