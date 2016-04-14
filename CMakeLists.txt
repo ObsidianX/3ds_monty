@@ -3,8 +3,9 @@ project(micropython)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES 3ds/main.c 3ds/netload.c)
+set(SOURCE_FILES 3ds/main.c)
 
+include_directories(/opt/devkitpro/devkitARM/arm-none-eabi/include)
 include_directories(/opt/devkitpro/libctru/include)
 include_directories(/opt/devkitpro/portlibs/armv6k/include)
 include_directories(.)
