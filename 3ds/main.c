@@ -188,7 +188,7 @@ STATIC int boot_file(const char *device, const char *boot_from, int argc, char *
     return run_file(filename, argc, argv, return_result);
 }
 
-STATIC void main_netload(int argc, char **argv) {
+void main_netload(int argc, char **argv) {
     bool restart = true;
 
     while (restart) {
