@@ -41,3 +41,6 @@ __pycache__/
 ######################
 GNUmakefile
 user.props
+
+CMakeLists.txt
+.DS_Store
