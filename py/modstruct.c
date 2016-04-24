@@ -173,7 +173,7 @@ STATIC mp_obj_t struct_unpack_from(size_t n_args, const mp_obj_t *args) {
         }
         mp_obj_t item;
         if (*fmt == 's') {
-            item = mp_obj_new_bytes(p, sz);
+            item = mp_obj_new_str((const char *)p, sz, false);
             p += sz;
             res->items[i++] = item;
         } else {

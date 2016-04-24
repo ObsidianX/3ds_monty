@@ -735,3 +735,12 @@ Q(SO_ERROR)
 
 // time
 Q(time)
+
+// os
+Q(mkdir)
+Q(makedirs)
+
+// os.path
+Q(exists)
+Q(isfile)
+Q(isdir)

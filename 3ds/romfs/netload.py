@@ -1,4 +1,6 @@
 from citrus import *
+from os import mkdir
+from os import path
 import sf2d
 import sftd
 import img
@@ -165,17 +167,26 @@ class NetLoad:
         self.font.size = 20
 
         if hid.keys_down() & hid.KEY_START:
+            globals()['monty_cancel'] = True
             self.quit = True
 
         try:
             self.client, self.client_addr = self.server.accept()
 
-            self.filesize = struct.unpack('!I', self.client.recv(4))[0]
-            self.output = open('/monty_netload.py', 'w')
+            self.filesize, self.filetype, filename_len = struct.unpack('!IBH', self.client.recv(7))
+            self.filename = struct.unpack('!%ds' % filename_len, self.client.recv(filename_len))[0]
+
+            if not path.exists('/monty3ds'):
+                mkdir('/monty3ds')
+            self.output = open('/monty3ds/' + self.filename, 'w')
 
             self.state = STATE_RECEIVING
-        except BaseException:
-            pass
+
+            self.client.send(struct.pack('!I', self.filesize))
+        except BaseException as e:
+            if self.client is not None:
+                self.client.close()
+                self.client = None
 
     def state_receiving(self):
         progress = float(self.downloaded) / float(self.filesize)
@@ -199,6 +210,9 @@ class NetLoad:
                 self.client.close()
                 self.client = None
                 self.state = STATE_DONE
+
+                globals()['monty_filename'] = self.filename
+                globals()['monty_filetype'] = self.filetype
         except BaseException:
             pass
 
@@ -213,6 +227,3 @@ class NetLoad:
 
 app = NetLoad()
 app.run()
-
-if app.quit:
-    raise Exception(0xDEAD0000)

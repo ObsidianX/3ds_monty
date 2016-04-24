@@ -28,6 +28,7 @@
 #define MICROPY_PY_BUILTINS_SET                 (0)
 #define MICROPY_PY_BUILTINS_SLICE               (1)
 #define MICROPY_PY_BUILTINS_PROPERTY            (0)
+#define MICROPY_PY_BUILTINS_STR_UNICODE         (1)
 #define MICROPY_PY___FILE__                     (1)
 #define MICROPY_PY_GC                           (0)
 #define MICROPY_PY_ARRAY                        (1)
@@ -88,6 +89,7 @@ extern const struct _mp_obj_module_t mp_module_socket;
 extern const struct _mp_obj_module_t mp_module_img;
 extern const struct _mp_obj_module_t mp_module_ustruct;
 extern const struct _mp_obj_module_t mp_module_time;
+extern const struct _mp_obj_module_t mp_module_os;
 
 #define MICROPY_PORT_BUILTIN_MODULES \
     { MP_OBJ_NEW_QSTR(MP_QSTR_citrus), (mp_obj_t)&mp_module_citrus  }, \
@@ -96,4 +98,5 @@ extern const struct _mp_obj_module_t mp_module_time;
     { MP_OBJ_NEW_QSTR(MP_QSTR_socket), (mp_obj_t)&mp_module_socket  }, \
     { MP_OBJ_NEW_QSTR(MP_QSTR__img),   (mp_obj_t)&mp_module_img     }, \
     { MP_OBJ_NEW_QSTR(MP_QSTR_struct), (mp_obj_t)&mp_module_ustruct }, \
-    { MP_OBJ_NEW_QSTR(MP_QSTR_time),   (mp_obj_t)&mp_module_time    },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_time),   (mp_obj_t)&mp_module_time    }, \
+    { MP_OBJ_NEW_QSTR(MP_QSTR_os),     (mp_obj_t)&mp_module_os      },
