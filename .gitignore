@@ -44,3 +44,4 @@ user.props
 
 CMakeLists.txt
 .DS_Store
+.idea/
