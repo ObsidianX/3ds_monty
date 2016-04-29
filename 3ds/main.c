@@ -159,7 +159,7 @@ STATIC int boot_file(const char *device, const char *boot_from, int argc, char *
     char boot_filename[PATH_MAX];
 
     sprintf(boot_from_path, "%s%s", device, boot_from);
-    int init_fd = open(boot_from, O_RDONLY);
+    int init_fd = open(boot_from_path, O_RDONLY);
 
     int count = read(init_fd, boot_filename, sizeof(filename));
 
