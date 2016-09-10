@@ -1,4 +1,11 @@
 #!/usr/bin/python
+
+# Slightly modified version of mooglazer/blockfeed's FalconPunch
+# https://github.com/blockfeed/FalconPunch
+#
+# The only difference is an extra log and a different size used
+# in the initial struct ('I' instead of 'q')
+
 import os, socket, sys, struct
 
 statinfo = os.stat(sys.argv[2])
