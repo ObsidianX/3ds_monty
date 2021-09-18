@@ -34,7 +34,7 @@ s = socket.socket()
 s.connect((ip, MONTY_PORT))
 
 s.send(info_packet)
-s.send(base_filename)
+s.send(base_filename.encode())
 
 server_filesize = struct.unpack('!I', s.recv(4))[0]
 if server_filesize != stat.st_size:
